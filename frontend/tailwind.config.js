@@ -11,7 +11,7 @@ export default {
       },
       colors: {
         primary: '#FFFFFF',
-        secondary: '#EEEEEE',
+        secondary: '#EEEEEEB3',
       },
       backgroundImage: {
         gradient: 'linear-gradient(to right, #8D621D, #B79766)',

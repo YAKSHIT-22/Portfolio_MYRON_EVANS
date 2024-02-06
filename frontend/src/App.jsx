@@ -13,7 +13,7 @@ function App() {
         <Router>
           <NavBar />
 
-          <div className="md:px-12 md:py-6">
+          <div className="md:px-10 md:py-6">
             <Routes>
               <Route path="/" element={<HomeScreen />} exact />
               <Route path="/my-work" element={<MyWorkScreen />} />

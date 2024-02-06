@@ -30,7 +30,7 @@ function NavBar() {
     },
   ]
   return (
-    <nav className="z-99 sticky top-0 flex w-full flex-wrap items-center justify-evenly overflow-hidden border-b-2 border-b-golden bg-primary px-12 py-4 text-primary">
+    <nav className="sticky top-0 z-50 flex w-full flex-wrap items-center justify-evenly overflow-hidden border-b-2 border-b-golden bg-primary px-12 py-4 text-primary">
       {/* Icon Div */}
       <div className="w-1/6 px-8">
         <Link to="/">
