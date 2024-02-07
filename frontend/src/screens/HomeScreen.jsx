@@ -152,12 +152,12 @@ function HomeScreen() {
       {/* Section 5 ~ Services */}
       <section className='mt-10'>
         <div className='flex flex-col jsutify-center items-center'>
-          <h1 className='text-5xl'> My <span className='bg-gradient'>Skills</span></h1>
+          <h1 className='text-5xl'> My <span className='bg-gradient px-3'>Skills</span></h1>
           <p className='text-lg font-sans w-5/6 mt-10'>Throughout the years I have fostered skills that help me create interesting and unique projects.  Check them out and see if I have a skill that could benefit you and your customers.</p>
           <div className='flex flex-col justify-items-start items-start w-5/6 mt-10 '>
             <h3 className='text-lg w-100 inline'>Full Stack Developer with:</h3>
             <div className='flex w-full'>
-              <SkillsCard />
+              <SkillsCard title="FLutter/Dart" percent={45} icon="icon" />
             </div>
           </div>
         </div>
