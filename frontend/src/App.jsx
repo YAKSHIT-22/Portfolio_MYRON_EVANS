@@ -8,12 +8,12 @@ import AffRefScreen from './screens/AffRefScreen'
 
 function App() {
   return (
-    <div className="min-h-screen w-full bg-sm-primary font-arial text-primary md:bg-primary">
+    <div className="min-h-screen w-full bg-sm-primary font-arial tracking-wider text-primary md:bg-primary">
       <div>
         <Router>
           <NavBar />
 
-          <div className="md:px-10 md:py-6">
+          <div className="font-medium md:px-10 md:py-6">
             <Routes>
               <Route path="/" element={<HomeScreen />} exact />
               <Route path="/my-work" element={<MyWorkScreen />} />
