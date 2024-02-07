@@ -3,6 +3,20 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'Arial Rounded MT Bold';
-  src: url('./assets/fonts/arlrdbd.ttf');
+  font-family: 'Arial Rounded MT';
+  src:
+    url('./assets/fonts/ARIALROUNDEDMTLIGHT.woff'),
+    /* Light */ url('./assets/fonts/ARIALROUNDEDMT.woff'),
+    /* Regular */ url('./assets/fonts/ARLRDBD.woff'),
+    /* Bold */ url('./assets/fonts/ARIALROUNDEDMTEXTRABOLD.woff'); /* Extra Bold */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a {
+  @apply font-bold;
 }
