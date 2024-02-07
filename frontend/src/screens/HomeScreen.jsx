@@ -6,7 +6,6 @@ import myAmbitionIcon from '../assets/Animations/icons animation/My Ambition/Lot
 import faceAnimation from '../assets/Animations/Face Animation/Preview.gif'
 import imageBg from '../assets/svgs/img-bg.svg'
 import section2Img from '../assets/images/Home Page/Section 2 img.png'
-import whatDrivesMe from '../assets/Animations/Title Animation/Home Page Desktop/What Drives me_/What Drives me.json'
 
 function HomeScreen() {
   function defaultOptions(animationData) {
@@ -29,13 +28,13 @@ function HomeScreen() {
           alt="Animated Face"
           className="-mt-16 w-[65%]"
         />
-        <h1 className="text-main-heading -mt-16 text-center">
+        <h1 className="-mt-16 text-center text-main-heading">
           <p>The Synthesis of</p>
           <p>Technology and Design</p>
         </h1>
         <Link
           to="/my-work"
-          className="hover:shadow-custom hover:shadow-golden mt-7 rounded-full bg-gradient px-10 py-3 transition-all"
+          className="mt-7 rounded-full bg-gradient px-10 py-3 transition-all hover:shadow-custom hover:shadow-golden"
         >
           Explore My Work
         </Link>
@@ -46,10 +45,10 @@ function HomeScreen() {
         {/* Left Side ~ Text Side */}
         <div className="w-1/2">
           <div>
-            <h3 className="text-content-heading bg-gradient bg-clip-text text-transparent">
+            <h3 className="bg-gradient bg-clip-text text-content-heading font-bold text-transparent">
               What drives me
             </h3>
-            <h2 className="text-section-heading">
+            <h2 className="text-section-heading font-bold">
               <p>Crafting stories through</p>
               <p>Development and Design</p>
             </h2>
@@ -66,8 +65,10 @@ function HomeScreen() {
                 isClickToPauseDisabled
                 style={{ margin: 0, cursor: 'unset' }}
               />
-              <h2 className="text-content-heading mt-4">My Ambition</h2>
-              <p className="text-body mt-4 text-secondary">
+              <h2 className="mt-4 text-content-heading font-extrabold">
+                My Ambition
+              </h2>
+              <p className="mt-4 text-body text-secondary">
                 My ambition is to offer the pinnacle of perfect user centered
                 software design and development to my clients. I aim to offer
                 the best services and an outstanding experience to anyone who
@@ -88,7 +89,7 @@ function HomeScreen() {
                 style={{ margin: 0, cursor: 'unset' }}
               />
               <h2 className="text-content-heading">My Purpose</h2>
-              <p className="text-body mt-4 text-secondary">
+              <p className="mt-4 text-body text-secondary">
                 My purpose is to impact as many people as possible in a positive
                 way through my faith in Jesus Christ, interactions, and work.
               </p>
@@ -100,10 +101,10 @@ function HomeScreen() {
         <div className="relative ml-24 mt-52 h-96 w-1/3">
           <img src={imageBg} className="absolute -right-4 -top-40" />
           <img src={section2Img} className="absolute -bottom-1" />
-          <div className="absolute -bottom-7 right-0 bg-gradient px-4 py-2 text-[1.5rem]">
+          <h1 className="absolute -bottom-10 right-0 bg-gradient px-6 py-2 text-[1.5rem]">
             <p>Frontend Developer</p>
             <p>and Designer</p>
-          </div>
+          </h1>
         </div>
       </section>
 

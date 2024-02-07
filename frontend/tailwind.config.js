@@ -6,7 +6,6 @@ export default {
       backgroundColor: {
         primary: '#2C2B2B',
         secondary: '#201F1F',
-        button: '#8D611D',
         'sm-primary': '#333333',
       },
       colors: {
@@ -17,7 +16,7 @@ export default {
         gradient: 'linear-gradient(to right, #8D621D, #B79766)',
       },
       fontFamily: {
-        arial: ['Arial Rounded MT Bold', 'sans-serif'],
+        arial: ['Arial Rounded MT', 'cursive'],
       },
       borderColor: {
         golden: '#C9B18D',
