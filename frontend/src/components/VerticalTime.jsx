@@ -57,7 +57,12 @@ const VerticalTime = ({ date, title1, title2, subtitle, description, id }) => {
       <h5 className="te mt-3 text-[20px] text-primary"> {subtitle}</h5>
       <p
         className="mt-3 text-body leading-7 text-secondary"
-        style={{ fontWeight: 300, marginTop: '1rem' }}
+        style={{
+          fontWeight: 300,
+          marginTop: '1rem',
+          fontSize: '1rem',
+          lineHeight: '1.75rem',
+        }}
       >
         {description}
       </p>

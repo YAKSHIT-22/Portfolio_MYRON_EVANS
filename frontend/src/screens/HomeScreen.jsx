@@ -89,7 +89,7 @@ function HomeScreen() {
       </section>
 
       {/* Section 3 ~ Vertical Timeline*/}
-      <section>
+      <section className="mt-24">
         <div className="mt7">
           <VerticalTimeline>
             {Experience &&
@@ -109,7 +109,7 @@ function HomeScreen() {
       </section>
 
       {/* Section 4 ~ Share Div */}
-      <section>
+      <section className="mt-24">
         <div className="relative mt-7 flex w-full items-center justify-center">
           {/* Background image div */}
           <div
@@ -143,10 +143,10 @@ function HomeScreen() {
       </section>
 
       {/* Section 5 ~ Services */}
-      <section className="mt-10"></section>
+      <section className="mt-24"></section>
 
       {/* Section 6 ~ Skills */}
-      <section>
+      <section className="mt-24">
         <div className="flex flex-col items-center justify-center">
           <h1 className="text-5xl">
             {' '}
@@ -167,7 +167,7 @@ function HomeScreen() {
       </section>
 
       {/* Section 7 ~ Core Values */}
-      <section></section>
+      <section className="mt-24"></section>
 
       {/* Section 8 ~ Carousel*/}
       <section></section>

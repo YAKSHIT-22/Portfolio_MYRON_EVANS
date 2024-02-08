@@ -37,3 +37,7 @@ a p {
 * {
   @apply font-inter font-light;
 }
+
+.vertical-timeline::before {
+  border-radius: 2rem;
+}
