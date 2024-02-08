@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom'
 import Lottie from 'react-lottie'
-
+//icons imports
 import myPurposeIcon from '../assets/Animations/icons animation/My Purpose/LottieJSON.json'
 import myAmbitionIcon from '../assets/Animations/icons animation/My Ambition/LottieJSON.json'
+import softwareDesignIcon from '../assets/Animations/icons animation/Software Design/LottieJSON.json'
+import softwareDeveloperIcon from '../assets/Animations/icons animation/Software Development/LottieJSON.json'
 import faceAnimation from '../assets/Animations/Face Animation/Preview.gif'
 import imageBg from '../assets/svgs/img-bg.svg'
 import section2Img from '../assets/images/Home Page/Section 2 img.png'
@@ -10,9 +12,9 @@ import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeli
 import 'react-vertical-timeline-component/style.min.css';
 
 // import Section4 from '../assets/images/Home Page/Section4.jpeg'
+
 import { Experience } from '../assets/data'
 import whatDrivesMe from '../assets/Animations/Title Animation/Home Page Desktop/What Drives me_/What Drives me.json'
-import verticalTime from '../components/VerticalTime'
 import VerticalTime from '../components/VerticalTime'
 import SkillsCard from '../components/SkillsCard'
 function HomeScreen() {
@@ -150,7 +152,68 @@ function HomeScreen() {
       </section>
 
       {/* Section 5 ~ Services */}
-      <section className='mt-10'>
+      <section className='mt-28'>
+        <div className='Services-container flex flex-col justify-center items-center'>
+          <div className='heading-container flex flex-col items-center w-[52rem]'>
+            <h1 className="text-5xl leading-12">
+              My <span className='px-2 bg-gradient'>Services</span>
+            </h1>
+            <p className='text-lg leading-6 gap-4 pt-4 text-[rgba(238, 238, 238, 0.7)]'>Throughout the years I have fostered skills that help me create interesting and unique projects. Check them out and see if I have a skill that could benefit you and your customers.</p>
+          </div>
+          <div className='Service-Cards-Holder flex justify-evenly'>
+            <div className="Service-Card-1 flex flex-col justify-center h-fit w-[50rem] bg-primary shadow-2xl mx-16 my-28">
+              <div className="flex flex-col items-center my-9 ">
+                <div className='icon-holder-software bg-secondary rounded-xl p-1 my-10 -top-40'>
+                  <Lottie
+                    title="Software Design"
+                    options={defaultOptions(softwareDesignIcon)}
+                    height={98}
+                    width={115}
+                    renderer={''}
+                    isClickToPauseDisabled
+                    style={{ margin: 0, cursor: 'unset' }}
+                  />
+                </div>
+                <div className='service-content-wrapper flex flex-col items-center w-[25rem]'>
+                  <h1 className='text-4xl my-9'>Software Design</h1>
+                  <p className='text-lg'>UX/UI, UX Research, Wireframes, Design System Creation, Design Mockups, Design Prototypes, Animations Using Figma</p>
+                </div>
+              </div>
+              <div className='h-20 w-100 bg-primary'></div>
+              <div className='h-2 w-100 bg-gradient'></div>
+
+
+            </div>
+            <div className="Service-Card-2 h-fit w-[50rem] bg-primary shadow-2xl mx-16 my-28">
+              <div className="flex flex-col items-center my-9 ">
+                <div className='icon-holder-software bg-secondary rounded-xl p-1 my-10 -top-40'>
+                  <Lottie
+                    title="Software Development"
+                    options={defaultOptions(softwareDeveloperIcon)}
+                    height={98}
+                    width={115}
+                    renderer={''}
+                    isClickToPauseDisabled
+                    style={{ margin: 0, cursor: 'unset' }}
+                  />
+                </div>
+                <div className='service-content-wrapper flex flex-col items-center w-[25rem]'>
+                  <h1 className='text-4xl my-9'>Software Development</h1>
+                  <p className='text-lg'> Cross Platform Apps, Apps for iOS,Android and Web, Full Stack Development, Mobile App Development, Web App Development.</p>
+                </div>
+              </div>
+              <div className='h-20 w-100 bg-primary'></div>
+              <div className='h-2 w-100 bg-gradient'></div>
+
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+
+      {/* Section 6 ~ Skills */}
+      <section className='mt-20'>
         <div className='flex flex-col jsutify-center items-center'>
           <h1 className='text-5xl'> My <span className='bg-gradient px-3'>Skills</span></h1>
           <p className='text-lg font-sans w-5/6 mt-10'>Throughout the years I have fostered skills that help me create interesting and unique projects.  Check them out and see if I have a skill that could benefit you and your customers.</p>
@@ -162,9 +225,6 @@ function HomeScreen() {
           </div>
         </div>
       </section>
-
-      {/* Section 6 ~ Skills */}
-      <section></section>
 
       {/* Section 7 ~ Core Values */}
       <section></section>
