@@ -17,6 +17,9 @@ export default {
       },
       fontFamily: {
         arial: ['Arial Rounded MT', 'cursive'],
+        rubik: ['Rubik', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
+        mulish: ['Mulish', 'sans-serif'],
       },
       borderColor: {
         golden: '#C9B18D',
