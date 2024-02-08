@@ -15,7 +15,7 @@ function AnimatedIcon({ iconData, height, width }) {
 export default AnimatedIcon
 
 AnimatedIcon.propTypes = {
-  iconData: PropTypes.string.isRequired,
+  iconData: PropTypes.object.isRequired,
   height: PropTypes.number,
   width: PropTypes.number,
 }

@@ -30,7 +30,7 @@ function NavBar() {
     },
   ]
   return (
-    <nav className="sticky top-0 z-50 flex w-full flex-wrap items-center justify-evenly overflow-hidden border-b-2 border-b-golden bg-primary px-12 py-4 font-bold text-primary">
+    <nav className="sticky top-0 z-50 flex w-full flex-wrap items-center justify-evenly overflow-hidden border-b-2 border-b-golden bg-primary px-12 py-4 text-primary">
       {/* Icon Div */}
       <div className="w-1/6 px-8">
         <Link to="/">
@@ -44,7 +44,7 @@ function NavBar() {
           <Link
             to={link.to}
             key={link.id}
-            className="transition-all hover:text-secondary"
+            className="font-inter font-medium tracking-normal transition-all hover:text-secondary"
           >
             {link.title}
           </Link>
@@ -52,7 +52,7 @@ function NavBar() {
       </div>
 
       {/* Button Div */}
-      <div className="flex w-1/6 items-center justify-center">
+      <div className="flex w-1/6 items-center justify-center font-medium">
         <button className="h-fit rounded-md bg-gradient px-7 py-2 text-secondary transition-all hover:text-primary hover:shadow-custom hover:shadow-golden">
           Get in Touch
         </button>

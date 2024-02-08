@@ -34,6 +34,16 @@ a p {
   @apply font-arial font-bold;
 }
 
+h1 span,
+h2 span,
+h3 span,
+h4 span,
+h5 span,
+h6 span,
+a span {
+  @apply font-arial font-bold;
+}
+
 * {
   @apply font-inter font-light;
 }

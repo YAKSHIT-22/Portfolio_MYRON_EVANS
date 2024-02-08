@@ -11,7 +11,8 @@ import faceAnimation from '../assets/Animations/Face Animation/Preview.gif'
 import imageBg from '../assets/svgs/img-bg.svg'
 import section2Img from '../assets/images/Home Page/Section 2 img.png'
 
-import { Experience } from '../assets/data'
+import experienceData from '../data/experience.json'
+import skillsData from '../data/skills'
 
 import VerticalTime from '../components/VerticalTime'
 import SkillsCard from '../components/SkillsCard'
@@ -62,8 +63,8 @@ function HomeScreen() {
               <p className="mt-4 text-body text-secondary">
                 My ambition is to offer the pinnacle of perfect user centered
                 software design and development to my clients. I aim to offer
-                the best services and an outstanding experience to anyone who
-                works with me. I have spent many years offering world class
+                the best services and an outstanding experienceData to anyone
+                who works with me. I have spent many years offering world class
                 customer service in retail work environments, I strive to offer
                 excellent service, I know how to satisfy my clients, and I’ll
                 get to know what is best for yours.
@@ -95,8 +96,8 @@ function HomeScreen() {
       <section className="mt-24">
         <div className="mt7">
           <VerticalTimeline>
-            {Experience &&
-              Experience.map((n) => (
+            {experienceData &&
+              experienceData.map((n) => (
                 <VerticalTime
                   key={n.id}
                   id={n.id}
@@ -146,75 +147,116 @@ function HomeScreen() {
       </section>
 
       {/* Section 5 ~ Services */}
-      <section className='mt-28'>
-        <div className='Services-container flex flex-col justify-center items-center'>
-          <div className='heading-container flex flex-col items-center w-[52rem]'>
-            <h1 className="text-5xl leading-12">
-              My <span className='px-2 bg-gradient'>Services</span>
-            </h1>
-            <p className='text-lg leading-6 gap-4 pt-4 text-[rgba(238, 238, 238, 0.7)]'>Throughout the years I have fostered skills that help me create interesting and unique projects. Check them out and see if I have a skill that could benefit you and your customers.</p>
+      <section className="mt-28 md:flex md:flex-col md:items-center md:justify-center">
+        <div className="heading-container flex w-[54rem] flex-col items-center">
+          <h1 className="text-section-heading">
+            My <p className="inline bg-gradient px-2 ">Services</p>
+          </h1>
+          <div className="pt-4 text-center text-body text-secondary">
+            <p className="font-[300]">
+              Throughout the years I have fostered skills that help me create
+              interesting and unique{' '}
+            </p>
+            <p className="font-[300]">
+              projects. Check them out and see if I have a skill that could
+              benefit you and your customers.
+            </p>
           </div>
-          <div className='Service-Cards-Holder flex justify-evenly'>
-            <div className="Service-Card-1 flex flex-col justify-center h-fit w-[50rem] bg-primary shadow-2xl mx-16 my-28">
-              <div className="flex flex-col items-center my-9 ">
-                <div className='icon-holder-software bg-secondary rounded-xl p-1 my-10 -top-40'>
-                  <Lottie
-                    title="Software Design"
-                    options={defaultOptions(softwareDesignIcon)}
-                    height={98}
-                    width={115}
-                    renderer={''}
-                    isClickToPauseDisabled
-                    style={{ margin: 0, cursor: 'unset' }}
-                  />
-                </div>
-                <div className='service-content-wrapper flex flex-col items-center w-[25rem]'>
-                  <h1 className='text-4xl my-9'>Software Design</h1>
-                  <p className='text-lg'>UX/UI, UX Research, Wireframes, Design System Creation, Design Mockups, Design Prototypes, Animations Using Figma</p>
+        </div>
+        <div className="item-center flex w-full justify-evenly">
+          <div className="mx-8 my-16 h-fit w-1/2 bg-sm-primary shadow-2xl">
+            <div className="my-9 flex flex-col items-center pb-[6.7rem]">
+              <div className="my-10 rounded-xl bg-secondary p-1">
+                <AnimatedIcon
+                  iconData={softwareDesignIcon}
+                  height={98}
+                  width={115}
+                />
+              </div>
+              <div className="w-[25rem] items-center">
+                <h1 className="my-9 text-center text-content-heading">
+                  Software Design
+                </h1>
+                <div className="text-center text-body text-secondary">
+                  <p>UX/UI, UX Research, Wireframes, Design</p>
+                  <p>System Creation, Design Mockups, Design</p>
+                  <p>Prototypes, Animations Using Figma</p>
                 </div>
               </div>
-              <div className='h-20 w-100 bg-primary'></div>
-              <div className='h-2 w-100 bg-gradient'></div>
-
-
             </div>
-            <div className="Service-Card-2 h-fit w-[50rem] bg-primary shadow-2xl mx-16 my-28">
-              <div className="flex flex-col items-center my-9 ">
-                <div className='icon-holder-software bg-secondary rounded-xl p-1 my-10 -top-40'>
-                  <Lottie
-                    title="Software Development"
-                    options={defaultOptions(softwareDeveloperIcon)}
-                    height={98}
-                    width={115}
-                    renderer={''}
-                    isClickToPauseDisabled
-                    style={{ margin: 0, cursor: 'unset' }}
-                  />
-                </div>
-                <div className='service-content-wrapper flex flex-col items-center w-[25rem]'>
-                  <h1 className='text-4xl my-9'>Software Development</h1>
-                  <p className='text-lg'> Cross Platform Apps, Apps for iOS,Android and Web, Full Stack Development, Mobile App Development, Web App Development.</p>
+            <div className="w-100 h-2 bg-gradient"></div>
+          </div>
+          <div className="mx-8 my-16 h-fit w-1/2 bg-sm-primary shadow-2xl">
+            <div className="my-9 flex flex-col items-center pb-20">
+              <div className="icon-holder-software -top-40 my-10 rounded-xl bg-secondary p-1">
+                <AnimatedIcon
+                  iconData={softwareDeveloperIcon}
+                  height={98}
+                  width={115}
+                />
+              </div>
+              <div className="service-content-wrapper flex w-[25rem] flex-col items-center">
+                <h1 className="my-9 text-center text-content-heading">
+                  Software Development
+                </h1>
+                <div className="text-center text-body text-secondary">
+                  <p>Cross Platform Apps, Apps for iOS,</p>
+                  <p>Android and Web, Full Stack Development,</p>
+                  <p>Mobile App Development, Web App Development.</p>
                 </div>
               </div>
-              <div className='h-20 w-100 bg-primary'></div>
-              <div className='h-2 w-100 bg-gradient'></div>
-
             </div>
+            <div className="w-100 h-2 bg-gradient"></div>
           </div>
-
         </div>
       </section>
 
-
       {/* Section 6 ~ Skills */}
-      <section className='mt-20'>
-        <div className='flex flex-col jsutify-center items-center'>
-          <h1 className='text-5xl'> My <span className='bg-gradient px-3'>Skills</span></h1>
-          <p className='text-lg font-sans w-5/6 mt-10'>Throughout the years I have fostered skills that help me create interesting and unique projects.  Check them out and see if I have a skill that could benefit you and your customers.</p>
-          <div className='flex flex-col justify-items-start items-start w-5/6 mt-10 '>
-            <h3 className='text-lg w-100 inline'>Full Stack Developer with:</h3>
-            <div className='flex w-full'>
-              <SkillsCard title="FLutter/Dart" percent={45} icon="icon" />
+      <section className="mt-20">
+        <div className="flex flex-col items-center justify-center">
+          <h1 className="text-section-heading">
+            My <span className="bg-gradient px-3">Skills</span>
+          </h1>
+          <div className="mt-2 text-center text-body text-secondary">
+            <p>
+              Throughout the years I have fostered skills that help me create
+              interesting and unique
+            </p>
+            <p>
+              projects. Check them out and see if I have a skill that could
+              benefit you and your customers.
+            </p>
+          </div>
+          <div className="mt-16 flex w-full flex-col items-start justify-start ">
+            <h3 className="text-content-heading font-bold">
+              Full Stack Developer with:
+            </h3>
+            <div className="mt-4 flex w-full flex-wrap items-center justify-start">
+              {skillsData.fsdSkills.map((skill) => (
+                <SkillsCard
+                  key={skill.id}
+                  id={skill.id}
+                  title={skill.title}
+                  percent={skill.percent}
+                  icon={skill.icon}
+                  altText={skill.altText}
+                />
+              ))}
+            </div>
+          </div>
+          <div className="mt-16 flex w-full flex-col items-start justify-start ">
+            <h3 className="text-content-heading font-bold">As a Designer:</h3>
+            <div className="mt-4 flex w-full flex-wrap items-center justify-start">
+              {skillsData.designSkills.map((skill) => (
+                <SkillsCard
+                  key={skill.id}
+                  id={skill.id}
+                  title={skill.title}
+                  percent={skill.percent}
+                  icon={skill.icon}
+                  altText={skill.altText}
+                />
+              ))}
             </div>
           </div>
         </div>
