@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
-import Lottie from 'react-lottie'
-//icons imports
+
+import 'react-vertical-timeline-component/style.min.css'
+import { VerticalTimeline } from 'react-vertical-timeline-component'
+
 import myPurposeIcon from '../assets/Animations/icons animation/My Purpose/LottieJSON.json'
 import myAmbitionIcon from '../assets/Animations/icons animation/My Ambition/LottieJSON.json'
 import softwareDesignIcon from '../assets/Animations/icons animation/Software Design/LottieJSON.json'
@@ -8,27 +10,14 @@ import softwareDeveloperIcon from '../assets/Animations/icons animation/Software
 import faceAnimation from '../assets/Animations/Face Animation/Preview.gif'
 import imageBg from '../assets/svgs/img-bg.svg'
 import section2Img from '../assets/images/Home Page/Section 2 img.png'
-import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
-import 'react-vertical-timeline-component/style.min.css';
-
-// import Section4 from '../assets/images/Home Page/Section4.jpeg'
 
 import { Experience } from '../assets/data'
-import whatDrivesMe from '../assets/Animations/Title Animation/Home Page Desktop/What Drives me_/What Drives me.json'
+
 import VerticalTime from '../components/VerticalTime'
 import SkillsCard from '../components/SkillsCard'
-function HomeScreen() {
-  function defaultOptions(animationData) {
-    return {
-      loop: false,
-      autoplay: true,
-      animationData: animationData,
-      rendererSettings: {
-        preserveAspectRatio: 'xMidYMid slice',
-      },
-    }
-  }
+import AnimatedIcon from '../components/AnimatedIcon'
 
+function HomeScreen() {
   return (
     <div>
       {/* Section 1 ~ Face Animation */}
@@ -58,7 +47,7 @@ function HomeScreen() {
             <h3 className="bg-gradient bg-clip-text text-content-heading font-bold text-transparent">
               What drives me
             </h3>
-            <h2 className="text-section-heading font-bold">
+            <h2 className="text-section-heading font-extrabold">
               <p>Crafting stories through</p>
               <p>Development and Design</p>
             </h2>
@@ -66,15 +55,7 @@ function HomeScreen() {
 
           <div className="w-full">
             <div className="mt-7">
-              <Lottie
-                title="My Ambition"
-                options={defaultOptions(myAmbitionIcon)}
-                height={52}
-                width={80}
-                renderer={''}
-                isClickToPauseDisabled
-                style={{ margin: 0, cursor: 'unset' }}
-              />
+              <AnimatedIcon iconData={myAmbitionIcon} height={42} width={70} />
               <h2 className="mt-4 text-content-heading font-extrabold">
                 My Ambition
               </h2>
@@ -89,15 +70,7 @@ function HomeScreen() {
               </p>
             </div>
             <div className="mt-7">
-              <Lottie
-                title="My Purpose"
-                options={defaultOptions(myPurposeIcon)}
-                height={80}
-                width={80}
-                renderer={''}
-                isClickToPauseDisabled
-                style={{ margin: 0, cursor: 'unset' }}
-              />
+              <AnimatedIcon iconData={myPurposeIcon} height={62} width={80} />
               <h2 className="text-content-heading">My Purpose</h2>
               <p className="mt-4 text-body text-secondary">
                 My purpose is to impact as many people as possible in a positive
@@ -119,32 +92,53 @@ function HomeScreen() {
       </section>
 
       {/* Section 3 ~ Vertical Timeline*/}
-      <section>
-        <div className='mt7'>
-          <VerticalTimeline >
-            {Experience && Experience.map((n) => (
-
-              <VerticalTime date={n.date} subtitle={n.subtitle} title={n.title} description={n.description} id={n.id} key={n.id} />
-            ))}
-          </VerticalTimeline >
+      <section className="mt-24">
+        <div className="mt7">
+          <VerticalTimeline>
+            {Experience &&
+              Experience.map((n) => (
+                <VerticalTime
+                  key={n.id}
+                  id={n.id}
+                  date={n.date}
+                  title1={n.title1}
+                  title2={n.title2}
+                  subtitle={n.subtitle}
+                  description={n.description}
+                />
+              ))}
+          </VerticalTimeline>
         </div>
-
-
       </section>
 
       {/* Section 4 ~ Share Div */}
-
-      <section>
-        <div className="mt-7 w-full flex justify-center items-center relative">
+      <section className="mt-24">
+        <div className="relative mt-7 flex w-full items-center justify-center">
           {/* Background image div */}
-          <div className='absolute left-auto right-auto w-5/6 inset-0 rounded-[2rem] h-[39rem] bg-no-repeat bg-center bg-cover opacity-40 duration-500 ease-in-out hover:opacity-20' style={{ backgroundImage: "url('/Section4.jpeg')" }} ></div>
+          <div
+            className="absolute inset-0 left-auto right-auto h-[35rem] w-5/6 rounded-3xl bg-cover bg-center bg-no-repeat opacity-40 duration-500 ease-in-out hover:opacity-20"
+            style={{ backgroundImage: "url('/Section4.jpeg')" }}
+          ></div>
 
           {/* Text content div  cerate it responsive for md */}
 
-          <div className='relative z-10 h-[39rem] flex flex-col items-center justify-center mt-6rem ml-7rem text-white'>
-            <h1 className='w-[42rem] text-5xl text-center'>Share my website and story with someone it can help</h1>
-            <span className='w-[42rem] mt-[4rem]'>We all have struggles and failures in life, please share my website with anyone you believe my story can help. If you are inspired by my story and would like to support me, please contact me for a project, refer a client to me using my affiliate referral program, or visit my store, some of the proceeds from my store will go towards helping my freelance career grow and the rest will go to Bridging Tech and Tech Kids Unlimited. </span>
-            <Link to="/my-work" className="hover:shadow-custom text-center w-fit h-15 mt-7 rounded-full bg-gradient px-10 py-3 transition-all">
+          <div className="pl-18 relative z-10 flex h-full flex-col items-center justify-center py-14 text-white">
+            <h1 className="w-[42rem] text-center text-section-heading">
+              Share my website and story with someone it can help
+            </h1>
+            <span className="mt-16 w-[42rem] text-body">
+              We all have struggles and failures in life, please share my
+              website with anyone you believe my story can help. If you are
+              inspired by my story and would like to support me, please contact
+              me for a project, refer a client to me using my affiliate referral
+              program, or visit my store, some of the proceeds from my store
+              will go towards helping my freelance career grow and the rest will
+              go to Bridging Tech and Tech Kids Unlimited.{' '}
+            </span>
+            <Link
+              to="/my-work"
+              className="h-15 font-rubik mt-7 w-fit rounded-full bg-gradient px-10 py-3 text-center font-medium transition-all hover:shadow-custom hover:shadow-golden"
+            >
               SHARE NOW
             </Link>
           </div>
@@ -227,7 +221,7 @@ function HomeScreen() {
       </section>
 
       {/* Section 7 ~ Core Values */}
-      <section></section>
+      <section className="mt-24"></section>
 
       {/* Section 8 ~ Carousel*/}
       <section></section>
