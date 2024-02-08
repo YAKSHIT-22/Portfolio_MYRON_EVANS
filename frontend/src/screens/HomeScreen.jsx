@@ -13,16 +13,28 @@ import section2Img from '../assets/images/Home Page/Section 2 img.png'
 
 import experienceData from '../data/experience.json'
 import skillsData from '../data/skills'
+import values from '../data/services'
+
+
 
 import VerticalTime from '../components/VerticalTime'
 import SkillsCard from '../components/SkillsCard'
 import AnimatedIcon from '../components/AnimatedIcon'
+import ServiceCard from '../components/ServiceCard'
+import qualityIcon from "../assets/Animations/icons animation/Quality/LottieJSON.json"
+//importing parallax
+// import { Parallax, ParallaxLayer } from '@react-spring/web'
 
 function HomeScreen() {
   return (
     <div>
+
       {/* Section 1 ~ Face Animation */}
+      {/* <Parallax> */}
+      {/* <ParallaxLayer speed={1}> */}
+
       <section className="flex flex-col items-center">
+
         <img
           src={faceAnimation}
           alt="Animated Face"
@@ -38,7 +50,10 @@ function HomeScreen() {
         >
           Explore My Work
         </Link>
+
       </section>
+      {/* </ParallaxLayer> */}
+      {/* <ParallaxLayer speed={0.5}> */}
 
       {/* Section 2 ~ What Drives Me*/}
       <section className="mt-24 w-full md:flex md:flex-wrap md:items-center md:justify-evenly">
@@ -91,6 +106,7 @@ function HomeScreen() {
           </h1>
         </div>
       </section>
+      {/* </ParallaxLayer> */}
 
       {/* Section 3 ~ Vertical Timeline*/}
       <section className="mt-24">
@@ -263,13 +279,30 @@ function HomeScreen() {
       </section>
 
       {/* Section 7 ~ Core Values */}
-      <section className="mt-24"></section>
+      <section className="mt-28 bg-[#201F1F] w-[100%] flex flex-col md:flex-col md:items-center md:justify-center">
+        <div className='flex flex-col items-center text-center px-20 py-24 w-[90%]'>
+          <h1 className='text-section-heading'>
+            The Core Values That Drives<br /> <span className='inlnie bg-gradient px-2'>Everything</span> I do
+          </h1>
+          <div className='values-containers flex flex-row flex-wrap justify-around  py-16 w-[100%]'>
+            {values.values && values.values.map((vals) => (
+              <ServiceCard key={vals.id} id={vals.id} title={vals.title} desc={vals.desc} icon={vals.icon} />
+            ))}
+
+          </div>
+        </div>
+
+      </section>
 
       {/* Section 8 ~ Carousel*/}
       <section></section>
 
       {/* Section 9 ~ Explore My Works */}
-      <section></section>
+      <section>
+
+      </section>
+      {/* </Parallax> */}
+
 
       {/* Section 10 ~ Get in Touch */}
       <section></section>
