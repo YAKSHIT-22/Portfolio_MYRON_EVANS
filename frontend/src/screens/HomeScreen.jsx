@@ -163,7 +163,7 @@ function HomeScreen() {
           <div className='Service-Cards-Holder flex justify-evenly'>
             <div className="Service-Card-1 flex flex-col justify-center h-fit w-[50rem] bg-primary shadow-2xl mx-16 my-28">
               <div className="flex flex-col items-center my-9 ">
-                <div className='icon-holder-software bg-secondary rounded-xl p-1 my-10 -top-40'>
+                <div className='icon-holder-software bg-secondary rounded-xl  py-4 px-2 my-10  -top-40'>
                   <Lottie
                     title="Software Design"
                     options={defaultOptions(softwareDesignIcon)}
@@ -186,7 +186,7 @@ function HomeScreen() {
             </div>
             <div className="Service-Card-2 h-fit w-[50rem] bg-primary shadow-2xl mx-16 my-28">
               <div className="flex flex-col items-center my-9 ">
-                <div className='icon-holder-software bg-secondary rounded-xl p-1 my-10 -top-40'>
+                <div className='icon-holder-software bg-secondary rounded-xl py-4 px-2 my-10 -top-40'>
                   <Lottie
                     title="Software Development"
                     options={defaultOptions(softwareDeveloperIcon)}
