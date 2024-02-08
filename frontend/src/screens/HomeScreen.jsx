@@ -6,7 +6,15 @@ import myAmbitionIcon from '../assets/Animations/icons animation/My Ambition/Lot
 import faceAnimation from '../assets/Animations/Face Animation/Preview.gif'
 import imageBg from '../assets/svgs/img-bg.svg'
 import section2Img from '../assets/images/Home Page/Section 2 img.png'
+import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
+import 'react-vertical-timeline-component/style.min.css';
 
+// import Section4 from '../assets/images/Home Page/Section4.jpeg'
+import { Experience } from '../assets/data'
+import whatDrivesMe from '../assets/Animations/Title Animation/Home Page Desktop/What Drives me_/What Drives me.json'
+import verticalTime from '../components/VerticalTime'
+import VerticalTime from '../components/VerticalTime'
+import SkillsCard from '../components/SkillsCard'
 function HomeScreen() {
   function defaultOptions(animationData) {
     return {
@@ -109,13 +117,51 @@ function HomeScreen() {
       </section>
 
       {/* Section 3 ~ Vertical Timeline*/}
-      <section></section>
+      <section>
+        <div className='mt7'>
+          <VerticalTimeline >
+            {Experience && Experience.map((n) => (
+
+              <VerticalTime date={n.date} subtitle={n.subtitle} title={n.title} description={n.description} id={n.id} key={n.id} />
+            ))}
+          </VerticalTimeline >
+        </div>
+
+
+      </section>
 
       {/* Section 4 ~ Share Div */}
-      <section></section>
+
+      <section>
+        <div className="mt-7 w-full flex justify-center items-center relative">
+          {/* Background image div */}
+          <div className='absolute left-auto right-auto w-5/6 inset-0 rounded-[2rem] h-[39rem] bg-no-repeat bg-center bg-cover opacity-40 duration-500 ease-in-out hover:opacity-20' style={{ backgroundImage: "url('/Section4.jpeg')" }} ></div>
+
+          {/* Text content div  cerate it responsive for md */}
+
+          <div className='relative z-10 h-[39rem] flex flex-col items-center justify-center mt-6rem ml-7rem text-white'>
+            <h1 className='w-[42rem] text-5xl text-center'>Share my website and story with someone it can help</h1>
+            <span className='w-[42rem] mt-[4rem]'>We all have struggles and failures in life, please share my website with anyone you believe my story can help. If you are inspired by my story and would like to support me, please contact me for a project, refer a client to me using my affiliate referral program, or visit my store, some of the proceeds from my store will go towards helping my freelance career grow and the rest will go to Bridging Tech and Tech Kids Unlimited. </span>
+            <Link to="/my-work" className="hover:shadow-custom text-center w-fit h-15 mt-7 rounded-full bg-gradient px-10 py-3 transition-all">
+              SHARE NOW
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* Section 5 ~ Services */}
-      <section></section>
+      <section className='mt-10'>
+        <div className='flex flex-col jsutify-center items-center'>
+          <h1 className='text-5xl'> My <span className='bg-gradient px-3'>Skills</span></h1>
+          <p className='text-lg font-sans w-5/6 mt-10'>Throughout the years I have fostered skills that help me create interesting and unique projects.  Check them out and see if I have a skill that could benefit you and your customers.</p>
+          <div className='flex flex-col justify-items-start items-start w-5/6 mt-10 '>
+            <h3 className='text-lg w-100 inline'>Full Stack Developer with:</h3>
+            <div className='flex w-full'>
+              <SkillsCard title="FLutter/Dart" percent={45} icon="icon" />
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Section 6 ~ Skills */}
       <section></section>
