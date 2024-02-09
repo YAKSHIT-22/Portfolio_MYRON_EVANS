@@ -1,5 +1,7 @@
 import React from 'react'
 import AnimatedIcon from './AnimatedIcon'
+import { PropTypes } from 'prop-types'
+
 
 const ServiceCard = ({ id, title, icon, desc }) => {
     return (
@@ -21,3 +23,10 @@ const ServiceCard = ({ id, title, icon, desc }) => {
 }
 
 export default ServiceCard
+
+ServiceCard.propTypes = {
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    icon: PropTypes.string.isRequired,
+    desc: PropTypes.string,
+}

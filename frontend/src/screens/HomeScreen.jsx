@@ -305,7 +305,30 @@ function HomeScreen() {
 
 
       {/* Section 10 ~ Get in Touch */}
-      <section></section>
+      <section className='pt-24 bg-secondary'>
+        <div className="paernt-get-in-touch-container flex flex-col items-center text-center">
+          <div className='flex flex-col'>
+            <h1 className='text-section-heading'>Get In Touch</h1>
+            <p className='text-body'>Let’s touch base and discuss how I can make a lasting positive impact on your company</p>
+          </div>
+          <div className='flex flex-col text-left w-1/2'>
+            <div className='text-left'>
+              <h1 className='text-section-heading'>Let’s <span className='bg-gradient px-2'>Talk</span>
+                <br />About Your Project</h1>
+
+            </div>
+            <div className='text-body'>
+              Start a conversation
+              <br />by filling the form to the right.
+            </div>
+
+          </div>
+          <div className='w-1/2'>
+
+          </div>
+
+        </div>
+      </section>
     </div>
   )
 }
