@@ -6,9 +6,12 @@ import { VerticalTimeline } from 'react-vertical-timeline-component'
 import myPurposeIcon from '../assets/Animations/icons animation/My Purpose/LottieJSON.json'
 import myAmbitionIcon from '../assets/Animations/icons animation/My Ambition/LottieJSON.json'
 import glassIcon from '../assets/Animations/icons animation/Glass icon/GlassV03_02/Glass_icon_V03_02.json'
+import qualityIcon from '../assets/Animations/icons animation/Quality/LottieJSON.json'
 import softwareDesignIcon from '../assets/Animations/icons animation/Software Design/LottieJSON.json'
 import softwareDeveloperIcon from '../assets/Animations/icons animation/Software Development/LottieJSON.json'
+
 import faceAnimation from '../assets/Animations/Face Animation/Preview.gif'
+
 import imageBg from '../assets/svgs/img-bg.svg'
 import section2Img from '../assets/images/Home Page/Section 2 img.png'
 import section9Img from '../assets/images/Home Page/Section 9.png'
@@ -17,13 +20,10 @@ import experienceData from '../data/experience.json'
 import skillsData from '../data/skills'
 import values from '../data/services'
 
-
-
 import VerticalTime from '../components/HomeScreen/VerticalTime'
 import SkillsCard from '../components/HomeScreen/SkillsCard'
 import AnimatedIcon from '../components/Icons/AnimatedIcon'
 import ServiceCard from '../components/ServiceCard'
-import qualityIcon from "../assets/Animations/icons animation/Quality/LottieJSON.json"
 //importing parallax
 // import { Parallax, ParallaxLayer } from '@react-spring/web'
 import Carousel from '../components/HomeScreen/Carousel'
@@ -31,13 +31,11 @@ import Carousel from '../components/HomeScreen/Carousel'
 function HomeScreen() {
   return (
     <div>
-
       {/* Section 1 ~ Face Animation */}
       {/* <Parallax> */}
       {/* <ParallaxLayer speed={1}> */}
 
       <section className="flex flex-col items-center">
-
         <img
           src={faceAnimation}
           alt="Animated Face"
@@ -53,7 +51,6 @@ function HomeScreen() {
         >
           Explore My Work
         </Link>
-
       </section>
       {/* </ParallaxLayer> */}
       {/* <ParallaxLayer speed={0.5}> */}
@@ -282,19 +279,26 @@ function HomeScreen() {
       </section>
 
       {/* Section 7 ~ Core Values */}
-      <section className="mt-28 bg-[#201F1F] w-[100%] flex flex-col md:flex-col md:items-center md:justify-center">
-        <div className='flex flex-col items-center text-center px-20 py-24 w-[90%]'>
-          <h1 className='text-section-heading'>
-            The Core Values That Drives<br /> <span className='inlnie bg-gradient px-2'>Everything</span> I do
+      <section className="mt-28 flex w-[100%] flex-col bg-[#201F1F] md:flex-col md:items-center md:justify-center">
+        <div className="flex w-[90%] flex-col items-center px-20 py-24 text-center">
+          <h1 className="text-section-heading">
+            The Core Values That Drives
+            <br /> <span className="inlnie bg-gradient px-2">Everything</span> I
+            do
           </h1>
-          <div className='values-containers flex flex-row flex-wrap justify-around  py-16 w-[100%]'>
-            {values.values && values.values.map((vals) => (
-              <ServiceCard key={vals.id} id={vals.id} title={vals.title} desc={vals.desc} icon={vals.icon} />
-            ))}
-
+          <div className="values-containers flex w-[100%] flex-row flex-wrap  justify-around py-16">
+            {values.values &&
+              values.values.map((vals) => (
+                <ServiceCard
+                  key={vals.id}
+                  id={vals.id}
+                  title={vals.title}
+                  desc={vals.desc}
+                  icon={vals.icon}
+                />
+              ))}
           </div>
         </div>
-
       </section>
 
       {/* Section 8 ~ Carousel*/}
@@ -361,28 +365,30 @@ function HomeScreen() {
       </section>
 
       {/* Section 10 ~ Get in Touch */}
-      <section className='pt-24 bg-secondary'>
+      <section className="bg-secondary pt-24">
         <div className="paernt-get-in-touch-container flex flex-col items-center text-center">
-          <div className='flex flex-col'>
-            <h1 className='text-section-heading'>Get In Touch</h1>
-            <p className='text-body'>Let’s touch base and discuss how I can make a lasting positive impact on your company</p>
+          <div className="flex flex-col">
+            <h1 className="text-section-heading">Get In Touch</h1>
+            <p className="text-body">
+              Let’s touch base and discuss how I can make a lasting positive
+              impact on your company
+            </p>
           </div>
-          <div className='flex flex-col text-left w-1/2'>
-            <div className='text-left'>
-              <h1 className='text-section-heading'>Let’s <span className='bg-gradient px-2'>Talk</span>
-                <br />About Your Project</h1>
-
+          <div className="flex w-1/2 flex-col text-left">
+            <div className="text-left">
+              <h1 className="text-section-heading">
+                Let’s <span className="bg-gradient px-2">Talk</span>
+                <br />
+                About Your Project
+              </h1>
             </div>
-            <div className='text-body'>
+            <div className="text-body">
               Start a conversation
-              <br />by filling the form to the right.
+              <br />
+              by filling the form to the right.
             </div>
-
           </div>
-          <div className='w-1/2'>
-
-          </div>
-
+          <div className="w-1/2"></div>
         </div>
       </section>
     </div>
