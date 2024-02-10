@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { VerticalTimelineElement } from 'react-vertical-timeline-component'
 
 import 'react-vertical-timeline-component/style.min.css'
-import LineIcon from './LineIcon'
+import LineIcon from '../Icons/LineIcon'
 
 const VerticalTime = ({ date, title1, title2, subtitle, description, id }) => {
   return (
@@ -29,7 +29,7 @@ const VerticalTime = ({ date, title1, title2, subtitle, description, id }) => {
       position={id % 2 ? 'left' : 'right'}
     >
       <div className="items-left relative mb-1 space-x-2"></div>
-      <h3 className="vertical-timeline-element-subtitle font-mulish ml-1 text-button font-medium text-secondary">
+      <h3 className="vertical-timeline-element-subtitle ml-1 font-mulish text-button font-medium text-secondary">
         {date}
       </h3>
       <h4 className="vertical-timeline-element-title mt-3 min-w-80 bg-gradient bg-clip-text text-content-heading text-transparent">

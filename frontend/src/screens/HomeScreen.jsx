@@ -5,36 +5,37 @@ import { VerticalTimeline } from 'react-vertical-timeline-component'
 
 import myPurposeIcon from '../assets/Animations/icons animation/My Purpose/LottieJSON.json'
 import myAmbitionIcon from '../assets/Animations/icons animation/My Ambition/LottieJSON.json'
+import glassIcon from '../assets/Animations/icons animation/Glass icon/GlassV03_02/Glass_icon_V03_02.json'
+import qualityIcon from '../assets/Animations/icons animation/Quality/LottieJSON.json'
 import softwareDesignIcon from '../assets/Animations/icons animation/Software Design/LottieJSON.json'
 import softwareDeveloperIcon from '../assets/Animations/icons animation/Software Development/LottieJSON.json'
+
 import faceAnimation from '../assets/Animations/Face Animation/Preview.gif'
+
 import imageBg from '../assets/svgs/img-bg.svg'
 import section2Img from '../assets/images/Home Page/Section 2 img.png'
+import section9Img from '../assets/images/Home Page/Section 9.png'
 
 import experienceData from '../data/experience.json'
 import skillsData from '../data/skills'
 import values from '../data/services'
 
-
-
-import VerticalTime from '../components/VerticalTime'
-import SkillsCard from '../components/SkillsCard'
-import AnimatedIcon from '../components/AnimatedIcon'
+import VerticalTime from '../components/HomeScreen/VerticalTime'
+import SkillsCard from '../components/HomeScreen/SkillsCard'
+import AnimatedIcon from '../components/Icons/AnimatedIcon'
 import ServiceCard from '../components/ServiceCard'
-import qualityIcon from "../assets/Animations/icons animation/Quality/LottieJSON.json"
 //importing parallax
 // import { Parallax, ParallaxLayer } from '@react-spring/web'
+import Carousel from '../components/HomeScreen/Carousel'
 
 function HomeScreen() {
   return (
     <div>
-
       {/* Section 1 ~ Face Animation */}
       {/* <Parallax> */}
       {/* <ParallaxLayer speed={1}> */}
 
       <section className="flex flex-col items-center">
-
         <img
           src={faceAnimation}
           alt="Animated Face"
@@ -50,13 +51,12 @@ function HomeScreen() {
         >
           Explore My Work
         </Link>
-
       </section>
       {/* </ParallaxLayer> */}
       {/* <ParallaxLayer speed={0.5}> */}
 
       {/* Section 2 ~ What Drives Me*/}
-      <section className="mt-24 w-full md:flex md:flex-wrap md:items-center md:justify-evenly">
+      <section className="mt-24 w-full md:flex md:flex-wrap md:items-center md:justify-evenly md:px-10">
         {/* Left Side ~ Text Side */}
         <div className="w-1/2">
           <div>
@@ -109,7 +109,7 @@ function HomeScreen() {
       {/* </ParallaxLayer> */}
 
       {/* Section 3 ~ Vertical Timeline*/}
-      <section className="mt-24">
+      <section className="mt-24 md:px-10">
         <div className="mt7">
           <VerticalTimeline>
             {experienceData &&
@@ -129,7 +129,7 @@ function HomeScreen() {
       </section>
 
       {/* Section 4 ~ Share Div */}
-      <section className="mt-24">
+      <section className="mt-24 md:px-10">
         <div className="relative mt-7 flex w-full items-center justify-center">
           {/* Background image div */}
           <div
@@ -154,7 +154,7 @@ function HomeScreen() {
             </span>
             <Link
               to="/my-work"
-              className="h-15 font-rubik mt-7 w-fit rounded-full bg-gradient px-10 py-3 text-center font-medium transition-all hover:shadow-custom hover:shadow-golden"
+              className="h-15 mt-7 w-fit rounded-full bg-gradient px-10 py-3 text-center font-rubik font-medium transition-all hover:shadow-custom hover:shadow-golden"
             >
               SHARE NOW
             </Link>
@@ -163,7 +163,7 @@ function HomeScreen() {
       </section>
 
       {/* Section 5 ~ Services */}
-      <section className="mt-28 md:flex md:flex-col md:items-center md:justify-center">
+      <section className="mt-28 md:flex md:flex-col md:items-center md:justify-center md:px-10">
         <div className="heading-container flex w-[54rem] flex-col items-center">
           <h1 className="text-section-heading">
             My <p className="inline bg-gradient px-2 ">Services</p>
@@ -228,7 +228,7 @@ function HomeScreen() {
       </section>
 
       {/* Section 6 ~ Skills */}
-      <section className="mt-20">
+      <section className="mt-20 md:px-10">
         <div className="flex flex-col items-center justify-center">
           <h1 className="text-section-heading">
             My <span className="bg-gradient px-3">Skills</span>
@@ -279,54 +279,116 @@ function HomeScreen() {
       </section>
 
       {/* Section 7 ~ Core Values */}
-      <section className="mt-28 bg-[#201F1F] w-[100%] flex flex-col md:flex-col md:items-center md:justify-center">
-        <div className='flex flex-col items-center text-center px-20 py-24 w-[90%]'>
-          <h1 className='text-section-heading'>
-            The Core Values That Drives<br /> <span className='inlnie bg-gradient px-2'>Everything</span> I do
+      <section className="mt-28 flex w-[100%] flex-col bg-[#201F1F] md:flex-col md:items-center md:justify-center">
+        <div className="flex w-[90%] flex-col items-center px-20 py-24 text-center">
+          <h1 className="text-section-heading">
+            The Core Values That Drives
+            <br /> <span className="inlnie bg-gradient px-2">Everything</span> I
+            do
           </h1>
-          <div className='values-containers flex flex-row flex-wrap justify-around  py-16 w-[100%]'>
-            {values.values && values.values.map((vals) => (
-              <ServiceCard key={vals.id} id={vals.id} title={vals.title} desc={vals.desc} icon={vals.icon} />
-            ))}
-
+          <div className="values-containers flex w-[100%] flex-row flex-wrap  justify-around py-16">
+            {values.values &&
+              values.values.map((vals) => (
+                <ServiceCard
+                  key={vals.id}
+                  id={vals.id}
+                  title={vals.title}
+                  desc={vals.desc}
+                  icon={vals.icon}
+                />
+              ))}
           </div>
         </div>
-
       </section>
 
       {/* Section 8 ~ Carousel*/}
-      <section></section>
+      <section className="mt-24 md:px-10">
+        <div>
+          <h3 className="bg-gradient bg-clip-text text-center text-content-heading text-transparent">
+            Client Testimonials
+          </h3>
+          <div className="text-center text-section-heading">
+            <h2>
+              Check out the <span className="bg-gradient px-3">Feedback</span>
+            </h2>
+            <h2>From people I&apos;ve worked with</h2>
+          </div>
+          <div className="text-center text-secondary">
+            <p className="font-arial text-body">
+              I work very hard to please my client here is just a few of the
+              nice things
+            </p>
+            <p className="font-arial text-body ">
+              people say about me and my work.
+            </p>
+          </div>
+        </div>
+        <Carousel />
+      </section>
 
       {/* Section 9 ~ Explore My Works */}
-      <section>
+      <section className="mt-24 flex flex-col items-start justify-evenly bg-sm-primary pb-12 pt-24 md:flex-row">
+        <div>
+          <img src={section9Img} className="" />
+        </div>
+        <div className="w-2/4">
+          <h3 className="mb-1 text-clip bg-gradient bg-clip-text text-content-heading text-transparent">
+            Born to serve
+          </h3>
+          <h2 className="mb-16 text-section-heading leading-[53px]">
+            <p className="inline-block">The perfect addition to</p>
+            <br />
+            <p className="inline-block">any team</p>
+          </h2>
 
+          <p className="mb-10 text-body text-secondary">
+            <p>
+              I want to thank you for spending time on my portfolio site, I
+              truly
+            </p>
+            <p>
+              hope it is clear to you now that I am the right fit for your
+              company.
+            </p>
+            <p>Cheers to the success of your business! </p>
+          </p>
+
+          <Link
+            to="/my-work"
+            className="rounded-full bg-gradient px-3 py-3 font-rubik font-medium"
+          >
+            Explore My Works
+          </Link>
+
+          <AnimatedIcon iconData={glassIcon} height={300} width={300} />
+        </div>
       </section>
-      {/* </Parallax> */}
-
 
       {/* Section 10 ~ Get in Touch */}
-      <section className='pt-24 bg-secondary'>
+      <section className="bg-secondary pt-24">
         <div className="paernt-get-in-touch-container flex flex-col items-center text-center">
-          <div className='flex flex-col'>
-            <h1 className='text-section-heading'>Get In Touch</h1>
-            <p className='text-body'>Let’s touch base and discuss how I can make a lasting positive impact on your company</p>
+          <div className="flex flex-col">
+            <h1 className="text-section-heading">Get In Touch</h1>
+            <p className="text-body">
+              Let’s touch base and discuss how I can make a lasting positive
+              impact on your company
+            </p>
           </div>
-          <div className='flex flex-col text-left w-1/2'>
-            <div className='text-left'>
-              <h1 className='text-section-heading'>Let’s <span className='bg-gradient px-2'>Talk</span>
-                <br />About Your Project</h1>
-
+          <div className="flex w-1/2 flex-col text-left">
+            <div className="text-left">
+              <h1 className="text-section-heading">
+                Let’s <span className="bg-gradient px-2">Talk</span>
+                <br />
+                About Your Project
+              </h1>
             </div>
-            <div className='text-body'>
+            <div className="text-body">
               Start a conversation
-              <br />by filling the form to the right.
+              <br />
+              by filling the form to the right.
             </div>
-
           </div>
-          <div className='w-1/2'>
-
-          </div>
-
+          <div className="w-1/2"></div>
         </div>
       </section>
     </div>
