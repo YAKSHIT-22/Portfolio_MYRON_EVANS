@@ -5,11 +5,13 @@ import { VerticalTimeline } from 'react-vertical-timeline-component'
 
 import myPurposeIcon from '../assets/Animations/icons animation/My Purpose/LottieJSON.json'
 import myAmbitionIcon from '../assets/Animations/icons animation/My Ambition/LottieJSON.json'
+import glassIcon from '../assets/Animations/icons animation/Glass icon/GlassV03_02/Glass_icon_V03_02.json'
 import softwareDesignIcon from '../assets/Animations/icons animation/Software Design/LottieJSON.json'
 import softwareDeveloperIcon from '../assets/Animations/icons animation/Software Development/LottieJSON.json'
 import faceAnimation from '../assets/Animations/Face Animation/Preview.gif'
 import imageBg from '../assets/svgs/img-bg.svg'
 import section2Img from '../assets/images/Home Page/Section 2 img.png'
+import section9Img from '../assets/images/Home Page/Section 9.png'
 
 import experienceData from '../data/experience.json'
 import skillsData from '../data/skills'
@@ -23,7 +25,7 @@ function HomeScreen() {
   return (
     <div>
       {/* Section 1 ~ Face Animation */}
-      <section className="flex flex-col items-center">
+      <section className="flex flex-col items-center md:px-10">
         <img
           src={faceAnimation}
           alt="Animated Face"
@@ -42,7 +44,7 @@ function HomeScreen() {
       </section>
 
       {/* Section 2 ~ What Drives Me*/}
-      <section className="mt-24 w-full md:flex md:flex-wrap md:items-center md:justify-evenly">
+      <section className="mt-24 w-full md:flex md:flex-wrap md:items-center md:justify-evenly md:px-10">
         {/* Left Side ~ Text Side */}
         <div className="w-1/2">
           <div>
@@ -94,7 +96,7 @@ function HomeScreen() {
       </section>
 
       {/* Section 3 ~ Vertical Timeline*/}
-      <section className="mt-24">
+      <section className="mt-24 md:px-10">
         <div className="mt7">
           <VerticalTimeline>
             {experienceData &&
@@ -114,7 +116,7 @@ function HomeScreen() {
       </section>
 
       {/* Section 4 ~ Share Div */}
-      <section className="mt-24">
+      <section className="mt-24 md:px-10">
         <div className="relative mt-7 flex w-full items-center justify-center">
           {/* Background image div */}
           <div
@@ -148,7 +150,7 @@ function HomeScreen() {
       </section>
 
       {/* Section 5 ~ Services */}
-      <section className="mt-28 md:flex md:flex-col md:items-center md:justify-center">
+      <section className="mt-28 md:flex md:flex-col md:items-center md:justify-center md:px-10">
         <div className="heading-container flex w-[54rem] flex-col items-center">
           <h1 className="text-section-heading">
             My <p className="inline bg-gradient px-2 ">Services</p>
@@ -213,7 +215,7 @@ function HomeScreen() {
       </section>
 
       {/* Section 6 ~ Skills */}
-      <section className="mt-20">
+      <section className="mt-20 md:px-10">
         <div className="flex flex-col items-center justify-center">
           <h1 className="text-section-heading">
             My <span className="bg-gradient px-3">Skills</span>
@@ -264,10 +266,10 @@ function HomeScreen() {
       </section>
 
       {/* Section 7 ~ Core Values */}
-      <section className="mt-24"></section>
+      <section className="mt-24 md:px-10"></section>
 
       {/* Section 8 ~ Carousel*/}
-      <section className="mt-24">
+      <section className="mt-24 md:px-10">
         <div>
           <h3 className="bg-gradient bg-clip-text text-center text-content-heading text-transparent">
             Client Testimonials
@@ -292,7 +294,42 @@ function HomeScreen() {
       </section>
 
       {/* Section 9 ~ Explore My Works */}
-      <section></section>
+      <section className="mt-24 flex flex-col items-start justify-evenly bg-sm-primary pb-12 pt-24 md:flex-row">
+        <div>
+          <img src={section9Img} className="" />
+        </div>
+        <div className="w-2/4">
+          <h3 className="mb-1 text-clip bg-gradient bg-clip-text text-content-heading text-transparent">
+            Born to serve
+          </h3>
+          <h2 className="mb-16 text-section-heading leading-[53px]">
+            <p className="inline-block">The perfect addition to</p>
+            <br />
+            <p className="inline-block">any team</p>
+          </h2>
+
+          <p className="mb-10 text-body text-secondary">
+            <p>
+              I want to thank you for spending time on my portfolio site, I
+              truly
+            </p>
+            <p>
+              hope it is clear to you now that I am the right fit for your
+              company.
+            </p>
+            <p>Cheers to the success of your business! </p>
+          </p>
+
+          <Link
+            to="/my-work"
+            className="rounded-full bg-gradient px-3 py-3 font-rubik font-medium"
+          >
+            Explore My Works
+          </Link>
+
+          <AnimatedIcon iconData={glassIcon} height={300} width={300} />
+        </div>
+      </section>
 
       {/* Section 10 ~ Get in Touch */}
       <section></section>

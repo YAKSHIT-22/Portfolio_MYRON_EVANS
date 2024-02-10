@@ -35,7 +35,7 @@ function Carousel() {
         {testimonials.map((testimonial, idx) => (
           <div
             key={testimonial.id}
-            className={`slide ${imgIndex === idx && 'activeSlide'} mb-2 mt-12 h-fit bg-sm-primary shadow-2xl`}
+            className={`slide ${imgIndex === idx ? 'activeSlide shadow-xl' : 'shadow-lg'} mb-2 mt-12 h-fit bg-sm-primary`}
           >
             <div className="mt-8 flex flex-col items-center pb-3">
               <div className="activeSlideImage mb-3 h-44 w-40 rounded-xl p-1">
