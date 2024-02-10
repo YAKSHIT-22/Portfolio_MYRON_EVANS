@@ -14,9 +14,10 @@ import section2Img from '../assets/images/Home Page/Section 2 img.png'
 import experienceData from '../data/experience.json'
 import skillsData from '../data/skills'
 
-import VerticalTime from '../components/VerticalTime'
-import SkillsCard from '../components/SkillsCard'
-import AnimatedIcon from '../components/AnimatedIcon'
+import VerticalTime from '../components/HomeScreen/VerticalTime'
+import SkillsCard from '../components/HomeScreen/SkillsCard'
+import AnimatedIcon from '../components/Icons/AnimatedIcon'
+import Carousel from '../components/HomeScreen/Carousel'
 
 function HomeScreen() {
   return (
@@ -138,7 +139,7 @@ function HomeScreen() {
             </span>
             <Link
               to="/my-work"
-              className="h-15 font-rubik mt-7 w-fit rounded-full bg-gradient px-10 py-3 text-center font-medium transition-all hover:shadow-custom hover:shadow-golden"
+              className="h-15 mt-7 w-fit rounded-full bg-gradient px-10 py-3 text-center font-rubik font-medium transition-all hover:shadow-custom hover:shadow-golden"
             >
               SHARE NOW
             </Link>
@@ -266,7 +267,29 @@ function HomeScreen() {
       <section className="mt-24"></section>
 
       {/* Section 8 ~ Carousel*/}
-      <section></section>
+      <section className="mt-24">
+        <div>
+          <h3 className="bg-gradient bg-clip-text text-center text-content-heading text-transparent">
+            Client Testimonials
+          </h3>
+          <div className="text-center text-section-heading">
+            <h2>
+              Check out the <span className="bg-gradient px-3">Feedback</span>
+            </h2>
+            <h2>From people I&apos;ve worked with</h2>
+          </div>
+          <div className="text-center text-secondary">
+            <p className="font-arial text-body">
+              I work very hard to please my client here is just a few of the
+              nice things
+            </p>
+            <p className="font-arial text-body ">
+              people say about me and my work.
+            </p>
+          </div>
+        </div>
+        <Carousel />
+      </section>
 
       {/* Section 9 ~ Explore My Works */}
       <section></section>
