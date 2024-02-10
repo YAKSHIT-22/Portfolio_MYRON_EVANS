@@ -8,7 +8,7 @@ import AffRefScreen from './screens/AffRefScreen'
 
 function App() {
   return (
-    <div className="min-h-screen w-full bg-sm-primary font-arial tracking-wider text-primary md:bg-primary">
+    <div className="min-h-screen w-full bg-primary font-arial tracking-wider text-primary md:bg-primary">
       <div>
         <Router>
           <NavBar />
