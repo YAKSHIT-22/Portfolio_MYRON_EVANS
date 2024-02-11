@@ -1,5 +1,5 @@
 import React from 'react'
-import AnimatedIcon from './AnimatedIcon'
+import AnimatedIcon from './Icons/AnimatedIcon'
 import { PropTypes } from 'prop-types'
 
 
