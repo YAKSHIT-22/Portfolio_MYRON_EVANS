@@ -21,6 +21,6 @@ export default ServiceCard
 ServiceCard.propTypes = {
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
-  icon: PropTypes.string.isRequired,
+  icon: PropTypes.object.isRequired,
   desc: PropTypes.string,
 }

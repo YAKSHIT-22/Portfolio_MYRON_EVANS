@@ -49,10 +49,10 @@ function Carousel() {
                 <h1 className="text-center text-content-heading">
                   {testimonial.name}
                 </h1>
-                <h3 className="text-body text-secondary">
+                <div className="text-body text-secondary">
                   <h5 className="-mb-2">{testimonial.position}</h5>
                   <h6>{testimonial.company}</h6>
-                </h3>
+                </div>
                 <div className="mt-7 px-10 text-center text-body text-secondary">
                   <p>{testimonial.testimony}</p>
                 </div>
