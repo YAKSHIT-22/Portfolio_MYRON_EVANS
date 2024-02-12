@@ -15,7 +15,7 @@ function AnimatedIcon({ iconData, height, width }) {
       {
         root: null, // viewport
         rootMargin: '0px', // no margin
-        threshold: 0.1, // trigger when 90% of the target is visible
+        threshold: 0.1, // trigger when 10% of the target is visible
       },
     )
 
