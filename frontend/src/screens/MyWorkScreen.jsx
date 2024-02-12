@@ -1,7 +1,8 @@
 import ProjectBlog from '../components/ProjectBlog'
-import { useState } from "react"
+import { useState } from 'react'
+
 function MyWorkScreen() {
-  const [ReadM, useReadM] = useState({img:"",title:'',desc:''})
+  const [ReadM, useReadM] = useState({ img: '', title: '', desc: '' })
   return (
     <div>
       <div className="flex w-full flex-col items-center text-center ">
