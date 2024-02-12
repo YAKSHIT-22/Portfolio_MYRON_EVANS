@@ -6,7 +6,6 @@ import { VerticalTimeline } from 'react-vertical-timeline-component'
 import myPurposeIcon from '../assets/Animations/icons animation/My Purpose/LottieJSON.json'
 import myAmbitionIcon from '../assets/Animations/icons animation/My Ambition/LottieJSON.json'
 import glassIcon from '../assets/Animations/icons animation/Glass icon/GlassV03_02/Glass_icon_V03_02.json'
-import qualityIcon from '../assets/Animations/icons animation/Quality/LottieJSON.json'
 import softwareDesignIcon from '../assets/Animations/icons animation/Software Design/LottieJSON.json'
 import softwareDeveloperIcon from '../assets/Animations/icons animation/Software Development/LottieJSON.json'
 
@@ -366,7 +365,7 @@ function HomeScreen() {
 
       {/* Section 10 ~ Get in Touch */}
       <section className="bg-secondary pt-24">
-        <div className="paernt-get-in-touch-container flex flex-col items-center text-center">
+        <div className="parent-get-in-touch-container flex flex-col items-center text-center">
           <div className="flex flex-col">
             <h1 className="text-section-heading">Get In Touch</h1>
             <p className="text-body">
