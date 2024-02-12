@@ -1,24 +1,16 @@
-import {
-  applyMiddleware,
-  combineReducers,
-  configureStore,
-} from '@reduxjs/toolkit'
-import { thunk } from 'redux-thunk'
+import { configureStore } from '@reduxjs/toolkit'
 
 import { test as testReducer } from './redux/reducers/test.js'
 
-const reducer = combineReducers({
+const reducer = {
   test: testReducer,
-})
-
-const middleware = [thunk]
+}
 
 const initialState = {}
 
 const store = configureStore({
   reducer: reducer,
   preloadedState: initialState,
-  middleware: () => middleware,
 })
 
 export default store
