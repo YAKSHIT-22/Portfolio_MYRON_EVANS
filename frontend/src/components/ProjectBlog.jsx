@@ -1,28 +1,41 @@
 import React from 'react'
 import { PropTypes } from 'prop-types'
 import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { insideBlog } from '../redux/actions/myblogActions'
+
 
 const ProjectBlog = ({ img, desc, title }) => {
+
+    const disp = useDispatch();
+    const blogselector = useSelector((state) => state);
+
+    const classDisplay = (blogselector.blog.insideBlog) ? 'hidden' : 'flex'
+    const classToshow = (blogselector.blog.insideBlog) ? 'flex' : 'hidden';
 
     const clickButton = () => {
         const divToShift = document.getElementById('background-image-holder')
         const ofSet = divToShift.offsetTop;
         console.log(ofSet)
-        divToShift.parentElement.style.top = `-${(ofSet - 100) / 16}rem`
+        if (blogselector.blog.insideBlog)
+            divToShift.parentElement.style.top = `-${(ofSet - 200) / 16}rem`
         divToShift.className = `mt-4 top-[${(ofSet - 100) / 16}rem] flex  w-[58rem] h-[34rem] bg-no-repeat rounded-[2rem]`
-        const divToShow = document.getElementById('description')
-        divToShow.className = "block"
-        const divToHide = document.getElementById('divToHide')
-        divToHide.style.display = "none"
-
+        // const divToShow = document.getElementById('description')
+        // divToShow.className = "block"
+        // const divToHide = document.getElementById('divToHide')
+        // divToHide.style.display = "none"
+        disp(insideBlog());
 
     }
+    console.log(blogselector)
+
+
 
     return (
         <div>
             <div className={`mt-12 flex flex-col-reverse  w-[72rem] h-[44rem]  bg-no-repeat rounded-[2rem]`} id='background-image-holder' style={{ backgroundImage: `url('${img}')` }}>
 
-                <div className='flex  flex-col p-10 gap-8 rounded-[2rem]  items-start bg-gradient-to-t from-black to-[rgb(0,0,0,0)]' id='divToHide'>
+                <div className={`${classDisplay}  flex-col p-10 gap-8 rounded-[2rem]  items-start bg-gradient-to-t from-black to-[rgb(0,0,0,0)]`} id='divToHide'>
                     <h1 className='text-section-heading text-center'>{title}</h1>
                     <p>{desc}</p>
 
@@ -36,7 +49,7 @@ const ProjectBlog = ({ img, desc, title }) => {
                 </div>
 
             </div>
-            <div className='hidden ' id='description'>
+            <div className={`${classToshow}`} id='description'>
                 <p>{desc}</p>                    </div>
 
         </div>
@@ -47,7 +60,7 @@ const ProjectBlog = ({ img, desc, title }) => {
 export default ProjectBlog
 
 ProjectBlog.propTypes = {
-  img: PropTypes.string,
-  desc: PropTypes.string,
-  title: PropTypes.string,
+    img: PropTypes.string,
+    desc: PropTypes.string,
+    title: PropTypes.string,
 }
