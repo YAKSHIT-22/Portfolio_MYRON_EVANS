@@ -4,10 +4,8 @@ import { test as testReducer } from './redux/reducers/test.js'
 import { myblogReducer } from '../src/redux/reducers/myblogReduces.js'
 const reducer = {
   test: testReducer,
-  blog: myblogReducer
-
+  blog: myblogReducer,
 }
-
 
 const initialState = {}
 
