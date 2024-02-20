@@ -16,10 +16,12 @@ const ProjectBlog = ({ img, desc, title }) => {
     const props = useSpring(
         {
             from: {
+                top: '0px',
                 backgroundImage: `url('${img}')`,
                 height: '44rem'
             },
             to: {
+                top: blogselector.blog.insideBlog ? '-174px' : '0px',
                 backgroundImage: `url('${img}')`
                 , height: blogselector.blog.insideBlog ? `22rem` : '44rem'
             },
@@ -70,7 +72,7 @@ const ProjectBlog = ({ img, desc, title }) => {
 
     return (
         <div>
-            <animated.div className={`mt-12 flex flex-col-reverse  w-[72rem] bg-no-repeat rounded-[2rem]`} style={props}><div id='background-image-holder' >
+            <animated.div className={`mt-12 flex relative flex-col-reverse max-w-[72rem] w-[72rem] bg-no-repeat rounded-[2rem]`} style={props}><div id='background-image-holder' >
 
                 <div className={`${classDisplay}  flex-col p-10 gap-8 rounded-[2rem]  items-start bg-gradient-to-t from-black to-[rgb(0,0,0,0)]`} id='divToHide'>
                     <h1 className='text-section-heading text-center'>{title}</h1>
