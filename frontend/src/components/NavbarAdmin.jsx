@@ -74,7 +74,7 @@ const NavbarAdmin = () => {
                     <div className=' w-5/6 items-start'>
                         <p>Development</p>
                         <input className='w-[95%] h-14 rounded-xl px-4 bg-primary border-none outline-none ' placeholder='Put Developement URL' />
-
+                        
 
                     </div>
 
