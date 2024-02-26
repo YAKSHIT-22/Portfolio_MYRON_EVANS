@@ -5,6 +5,7 @@ import MyWorkScreen from './screens/MyWorkScreen'
 import BlogScreen from './screens/BlogScreen'
 import StoreScreen from './screens/StoreScreen'
 import AffRefScreen from './screens/AffRefScreen'
+import AdminScreen from './screens/AdminScreen'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
               <Route path="/blogs" element={<BlogScreen />} />
               <Route path="/aff-ref" element={<AffRefScreen />} />
               <Route path="/store" element={<StoreScreen />} />
+              <Route path="/admin" element={<AdminScreen />} />
             </Routes>
           </div>
         </Router>

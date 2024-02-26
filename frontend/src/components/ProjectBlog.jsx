@@ -8,11 +8,12 @@ import { useState } from 'react'
 
 const ProjectBlog = ({ img, desc, title }) => {
     const disp = useDispatch();
-    const [classname, setclassname] = useState('')
+    const [position, setPosition] = useState(0)
+
     const blogselector = useSelector((state) => state);
 
     const classDisplay = (blogselector.blog.insideBlog) ? 'hidden' : 'flex'
-    const classToshow = (blogselector.blog.insideBlog) ? 'flex' : 'hidden';
+
     const props = useSpring(
         {
             from: {
@@ -21,7 +22,7 @@ const ProjectBlog = ({ img, desc, title }) => {
                 height: '44rem'
             },
             to: {
-                top: blogselector.blog.insideBlog ? '-174px' : '0px',
+                top: blogselector.blog.insideBlog ? `-${position - 10}px` : '0px',
                 backgroundImage: `url('${img}')`
                 , height: blogselector.blog.insideBlog ? `22rem` : '44rem'
             },
@@ -61,10 +62,13 @@ const ProjectBlog = ({ img, desc, title }) => {
     console.log(blogselector)
     const props2 = useSpring({
         from: {
-            opacity: 0
+            opacity: 0,
+            top: "0px",
         },
         to: {
-            opacity: blogselector.blog.insideBlog ? 1 : 0
+            opacity: blogselector.blog.insideBlog ? 1 : 0,
+            top: blogselector.blog.insideBlog ? `-${position - 50}px` : '0px',
+
 
         }
     })
@@ -72,23 +76,31 @@ const ProjectBlog = ({ img, desc, title }) => {
 
     return (
         <div>
-            <animated.div className={`mt-12 flex relative flex-col-reverse max-w-[72rem] w-[72rem] bg-no-repeat rounded-[2rem]`} style={props}><div id='background-image-holder' >
+            <animated.div className={`mt-12 flex relative flex-col-reverse max-w-[72rem] w-[72rem] bg-no-repeat rounded-[2rem]`} style={props}
+                ref={el => {
+                    // el can be null - see https://reactjs.org/docs/refs-and-the-dom.html#caveats-with-callback-refs
+                    if (!el) return;
 
-                <div className={`${classDisplay}  flex-col p-10 gap-8 rounded-[2rem]  items-start bg-gradient-to-t from-black to-[rgb(0,0,0,0)]`} id='divToHide'>
-                    <h1 className='text-section-heading text-center'>{title}</h1>
-                    <p>{desc}</p>
+                    console.log(el.getBoundingClientRect().top);
+                    setPosition(el.getBoundingClientRect().top)
+                }}
+            ><div id='background-image-holder' >
 
-                    <button
-                        onClick={clickButton}
-                        className="w-fit rounded-full bg-gradient px-10 py-3 transition-all hover:shadow-custom hover:shadow-golden">
-                        Read More
-                    </button>
+                    <div className={`${classDisplay}  flex-col p-10 gap-8 rounded-[2rem]  items-start bg-gradient-to-t from-black to-[rgb(0,0,0,0)]`} id='divToHide'>
+                        <h1 className='text-section-heading text-center'>{title}</h1>
+                        <p>{desc}</p>
+
+                        <button
+                            onClick={clickButton}
+                            className="w-fit rounded-full bg-gradient px-10 py-3 transition-all hover:shadow-custom hover:shadow-golden">
+                            Read More
+                        </button>
+
+                    </div>
 
                 </div>
-
-            </div>
             </animated.div>
-            <animated.div style={props2}>
+            <animated.div class='relative' style={props2}>
                 <div >
                     <p>{desc}</p>
                 </div>

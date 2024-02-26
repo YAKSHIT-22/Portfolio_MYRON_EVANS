@@ -5,18 +5,21 @@ import { outsideBlog } from '../redux/actions/myblogActions';
 import { animated, useSpring } from '@react-spring/web';
 function MyWorkScreen() {
   const disp = useDispatch();
+  const [position, setPosition] = useState(0);
   const [ReadM, useReadM] = useState({ img: '', title: '', desc: '' })
   const blogselector = useSelector((state) => state);
   // const classToHide = (blogselector.blog.insideBlog) ? 'hidden' : 'flex';
   // const classToshow = (blogselector.blog.insideBlog) ? 'flex' : 'hidden';
-  const porpsToShow = useSpring({
+
+  const ButtonToshow = useSpring({
     from: {
       opacity: 0,
-      top: '0px',
+      // top: "-10px",
     },
     to: {
       opacity: blogselector.blog.insideBlog ? 1 : 0,
-      top: blogselector.blog.insideBlog ? '-174px' : '0px',
+      // top: "-10px",
+
     }
   })
   const propsToHide = useSpring({
@@ -49,7 +52,9 @@ function MyWorkScreen() {
             </div>
           </div>
         </animated.div>
-        <animated.div className={`flex relative`} style={porpsToShow} onClick={() => { disp(outsideBlog()) }}>Back Button</animated.div>
+        <animated.div
+          
+          className={`flex relative -top-40`} style={ButtonToshow} onClick={() => { disp(outsideBlog()) }}>Back Button</animated.div>
         <ProjectBlog
           img={'ph1.jpeg'}
           desc="A barbershop management app. Shop management, barber management,  client management.  "
