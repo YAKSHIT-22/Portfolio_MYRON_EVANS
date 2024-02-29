@@ -330,6 +330,7 @@ function HomeScreen() {
         <div>
           <img src={section9Img} className="" />
         </div>
+        
         <div className="w-2/4">
           <h3 className="mb-1 text-clip bg-gradient bg-clip-text text-content-heading text-transparent">
             Born to serve
@@ -345,6 +346,7 @@ function HomeScreen() {
               I want to thank you for spending time on my portfolio site, I
               truly
             </p>
+
             <p>
               hope it is clear to you now that I am the right fit for your
               company.
@@ -356,6 +358,7 @@ function HomeScreen() {
             to="/my-work"
             className="rounded-full bg-gradient px-3 py-3 font-rubik font-medium"
           >
+
             Explore My Works
           </Link>
 

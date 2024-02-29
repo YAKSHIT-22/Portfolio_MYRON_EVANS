@@ -1,5 +1,5 @@
 import { PropTypes } from 'prop-types'
-import redRect from '../assets/svgs/redRect.svg'
+import BoxIcon from '../components/Icons/BoxIcon'
 import blockS from '../assets/svgs/blockS.svg'
 import direction from '../assets/svgs/direction.svg'
 import { redirect } from 'react-router-dom'
@@ -7,17 +7,17 @@ function BlogScreen({ img, title, desc }) {
   const dataJ = [
     {
       color: 'Red',
-      icon: `${redRect}`
+      colourCode: `#f9444g`
 
     },
     {
       color: 'blue',
-      icon: `${redRect}`
+      colourCode: `#de0a26`
 
     },
     {
       color: 'green',
-      icon: `${redRect}`
+      colourCode: `#f01e2c`
     },
   ]
   return <section className='flex flex-col justify-center'>
@@ -37,7 +37,7 @@ function BlogScreen({ img, title, desc }) {
 
             <div className='flex' key={key}>
               <h3 className='text-lg m-auto px-2'>1.{val.color}</h3>
-              <img src={val.icon} alt='' />
+              <BoxIcon hexi={val.colourCode} />
             </div>
           ))}
 

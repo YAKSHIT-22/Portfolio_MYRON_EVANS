@@ -6,6 +6,7 @@ import BlogScreen from './screens/BlogScreen'
 import StoreScreen from './screens/StoreScreen'
 import AffRefScreen from './screens/AffRefScreen'
 import AdminScreen from './screens/AdminScreen'
+import { AddNewBlog } from './screens/adminScreens/AddNewBlog'
 
 function App() {
   return (
@@ -22,6 +23,8 @@ function App() {
               <Route path="/aff-ref" element={<AffRefScreen />} />
               <Route path="/store" element={<StoreScreen />} />
               <Route path="/admin" element={<AdminScreen />} />
+              <Route path="/addNewBlog" element={<AddNewBlog />} />
+
             </Routes>
           </div>
         </Router>

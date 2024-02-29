@@ -24,7 +24,7 @@ const ProjectBlog = ({ img, desc, title }) => {
             to: {
                 top: blogselector.blog.insideBlog ? `-${position - 10}px` : '0px',
                 backgroundImage: `url('${img}')`
-                , height: blogselector.blog.insideBlog ? `22rem` : '44rem'
+                , height: blogselector.blog.insideBlog ? `40rem` : '40rem'
             },
         },
 
