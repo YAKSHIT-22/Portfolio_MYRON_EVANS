@@ -5,7 +5,7 @@ import testimonials from '../../data/testimonials'
 
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-import '../../assets/css/Carousel.css'
+import '../../assets/css/Home Screen/Carousel.css'
 
 function Carousel() {
   const [imgIndex, setImgIndex] = useState(0)

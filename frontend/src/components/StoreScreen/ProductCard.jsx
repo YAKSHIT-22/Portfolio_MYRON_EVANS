@@ -1,4 +1,4 @@
-import '../../assets/css/ProductCard.css'
+import '../../assets/css/Store Screen/ProductCard.css'
 import { DEV_BACKEND_URL } from '../../redux/constants/backend_url.js'
 import { Link } from 'react-router-dom'
 

@@ -6,6 +6,7 @@ import { Link, useLocation } from 'react-router-dom'
 import shoppingCartIcon from '../assets/icons/shopping_cart.svg'
 import Notification from '../components/StoreScreen/Notification.jsx'
 import ImageGallery from '../components/StoreScreen/ImageGallery.jsx'
+import AddToCart from '../components/StoreScreen/AddToCart.jsx'
 
 const ProductDetailScreen = () => {
   const location = useLocation()
@@ -107,6 +108,20 @@ const ProductDetailScreen = () => {
                       ></div>
                     ))}
                   </div>
+                </div>
+
+                <AddToCart
+                  price={data.price}
+                  qty={data.variants[sizeIdx].color[colorIdx].count_of_product}
+                />
+
+                <div
+                  className={
+                    'mt-3 flex items-center text-[14px] text-secondary'
+                  }
+                >
+                  <p className={'mr-3'}>Free Standard Shipping</p>
+                  <p className={'underline'}>Free Returns</p>
                 </div>
               </div>
             </>

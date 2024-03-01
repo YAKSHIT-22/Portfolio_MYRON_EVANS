@@ -49,6 +49,7 @@ class ProductSizeSerializer(serializers.ModelSerializer):
 class ProductSerializer(serializers.ModelSerializer):
 	provider = serializers.SerializerMethodField(read_only=True)
 	variants = serializers.SerializerMethodField(read_only=True)
+	images = serializers.SerializerMethodField(read_only=True)
 
 	@staticmethod
 	def get_provider(instance):
@@ -75,4 +76,4 @@ class ProductSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = Product
-		fields = ('id', 'name', 'type', 'variants', 'price', 'description', 'provider')
+		fields = ('id', 'name', 'type', 'variants', 'price', 'description', 'provider', 'images')

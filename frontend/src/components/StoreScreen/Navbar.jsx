@@ -1,4 +1,4 @@
-import '../../assets/css/StoreNavbar.css'
+import '../../assets/css/Store Screen/StoreNavbar.css'
 import { useState } from 'react'
 
 const Navbar = () => {
