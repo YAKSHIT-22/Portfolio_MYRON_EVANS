@@ -92,8 +92,6 @@ const NavbarAdmin = () => {
 
                     </div>
 
-
-
                 </div>
                 <div className='flex flex-col pt-10 px-2'>
                     <div className='text-base'> Upload mockup Image</div>
@@ -116,7 +114,7 @@ const NavbarAdmin = () => {
                 <div className='flex justify-center'>
                     <Link className='mt-10'>
                         <div className=" rounded-md bg-gradient text-center w-64 px-3 py-3 font-rubik font-medium"> Preview</div>
-                    </Link>
+                    </Link>  
                 </div>
             </div>
         </div>

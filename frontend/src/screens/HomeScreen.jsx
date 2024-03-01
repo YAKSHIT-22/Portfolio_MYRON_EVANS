@@ -26,8 +26,48 @@ import ServiceCard from '../components/ServiceCard'
 //importing parallax
 // import { Parallax, ParallaxLayer } from '@react-spring/web'
 import Carousel from '../components/HomeScreen/Carousel'
+import { useInView, animated } from '@react-spring/web'
 
 function HomeScreen() {
+
+  const [refs1, fromLeft] = useInView(
+    () => ({
+      from: {
+
+        opacity: 0,
+        
+
+      },
+      to: {
+
+        opacity: 1,
+        
+
+      },
+      durations: 2000
+    }),
+    // {
+    //   rootMargin: '-40% 0%',
+    // }
+  )
+  const [refs2, fromRight] = useInView(
+    () => ({
+      from: {
+        x: 150,
+        opacity: 0,
+      },
+      to: {
+        x: 0,
+        opacity: 1,
+
+
+      },
+      duration: 2000
+    }),
+    // {
+    //   rootMargin: '-40% 0%',
+    // }
+  )
   return (
     <div>
       {/* Section 1 ~ Face Animation */}
@@ -58,15 +98,22 @@ function HomeScreen() {
       <section className="mt-24 w-full md:flex md:flex-wrap md:items-center md:justify-evenly md:px-10">
         {/* Left Side ~ Text Side */}
         <div className="w-1/2">
-          <div>
-            <h3 className="bg-gradient bg-clip-text text-content-heading font-bold text-transparent">
+          <animated.div
+
+          >
+            <animated.h3 className="bg-gradient bg-clip-text text-content-heading font-bold text-transparent"
+        
+            >
               What drives me
-            </h3>
-            <h2 className="text-section-heading font-extrabold">
+            </animated.h3>
+            <animated.h2 className="text-section-heading font-extrabold"
+              style={fromRight}
+              ref={refs2}
+            >
               <p>Crafting stories through</p>
               <p>Development and Design</p>
-            </h2>
-          </div>
+            </animated.h2>
+          </animated.div>
 
           <div className="w-full">
             <div className="mt-7">
@@ -330,8 +377,11 @@ function HomeScreen() {
         <div>
           <img src={section9Img} className="" />
         </div>
-        
-        <div className="w-2/4">
+
+        <animated.div className="w-2/4"
+          style={fromLeft}
+          ref={refs1}
+        >
           <h3 className="mb-1 text-clip bg-gradient bg-clip-text text-content-heading text-transparent">
             Born to serve
           </h3>
@@ -363,34 +413,74 @@ function HomeScreen() {
           </Link>
 
           <AnimatedIcon iconData={glassIcon} height={300} width={300} />
-        </div>
+        </animated.div>
       </section>
 
       {/* Section 10 ~ Get in Touch */}
       <section className="bg-secondary pt-24">
-        <div className="parent-get-in-touch-container flex flex-col items-center text-center">
-          <div className="flex flex-col">
-            <h1 className="text-section-heading">Get In Touch</h1>
-            <p className="text-body">
-              Let’s touch base and discuss how I can make a lasting positive
-              impact on your company
-            </p>
-          </div>
-          <div className="flex w-1/2 flex-col text-left">
-            <div className="text-left">
-              <h1 className="text-section-heading">
-                Let’s <span className="bg-gradient px-2">Talk</span>
+        <h1 className="text-section-heading text-center m-2">Get In Touch</h1>
+
+        <p className="text-body text-wrap text-center mb-20">
+          Let’s touch base and discuss how I can make a lasting positive
+          impact on your company
+        </p>
+        <div className="parent-get-in-touch-container flex flex-row items-center text-center justify-center">
+
+          <div className="flex flex-col w-80% mx-20">
+
+
+            <div className="flex  flex-col text-left">
+              <div className="text-left">
+                <h1 className="text-section-heading">
+                  Let’s <span className="bg-gradient px-2">Talk</span>
+                  <br />
+                  About Your Project
+                </h1>
+              </div>
+              <div className="text-body">
+                Start a conversation
                 <br />
-                About Your Project
-              </h1>
-            </div>
-            <div className="text-body">
-              Start a conversation
-              <br />
-              by filling the form to the right.
+                by filling the form to the right.
+              </div>
             </div>
           </div>
-          <div className="w-1/2"></div>
+          <div className="w-1/2 flex flex-col text-left gap-5 ">
+            <div className='flex gap-10'>
+              <div className='w-[40%]'>
+                <p className='py-2'>Full Name*</p>
+
+                <input className='w-[100%] h-14 px-4   rounded-full  bg-primary border-none outline-none ' placeholder='John David' />
+              </div >
+              <div className=" w-[40%]">
+                <p className='py-2'>email*</p>
+
+
+                <input className='w-[100%] h-14 px-4   rounded-full  bg-primary border-none outline-none ' placeholder='example@yourmail.com' />
+              </div>
+
+            </div>
+            <div className='flex gap-10'>
+              <div className='w-[40%]' >
+                <p className='py-2'>Phone*</p>
+
+                <input className='w-[100%] h-14 px-4   rounded-full  bg-primary border-none outline-none ' placeholder='Put Developement URL' />
+              </div>
+              <div className='w-[40%]'>
+                <p className='py-2'>Subject</p>
+
+
+                <input className='w-[100%] h-14 px-4   rounded-full  bg-primary border-none outline-none ' placeholder='Put Developement URL' />
+              </div>
+
+
+            </div>
+            <div className='w-[90%]'>
+              <p className='py-2'> Textarea </p>
+              <textarea className='w-[100%] h-44 px-4   rounded-3xl  bg-primary border-none outline-none ' />
+
+            </div>
+
+          </div>
         </div>
       </section>
     </div>

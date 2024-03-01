@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { ColorPicker, useColor } from "react-color-palette";
 import BoxIcon from '../../components/Icons/BoxIcon';
@@ -18,6 +18,7 @@ import {
     IconSignature,
     IconTableColumn,
 } from "@tabler/icons-react";
+import { data } from 'autoprefixer';
 
 
 const Skeleton = () => (
@@ -129,8 +130,8 @@ const Hexcodes = ["#FF4F00", "#982424", "#f2f2f2", // Very light gray
 
 
 export const AddNewBlog = () => {
-    const [color, setColor] = useColor("hex", "#121212");
-    const dataJ = [
+    const [colorI, setColor] = useColor("hex", "#121212");
+    const [dataJ, setdataJ] = useState([
         {
             color: 'Red',
             colourCode: `#FF5858`
@@ -145,7 +146,20 @@ export const AddNewBlog = () => {
             color: 'green',
             colourCode: `#2A8CFF`
         },
-    ]
+    ])
+
+    const handleInputchange = (key, newColor) => {
+        setdataJ((prevData) =>
+            prevData.map((item, index) => (index === key ? { ...item, color: newColor } : item))
+        );
+    };
+    const handleColorchange = (key) => {
+        setdataJ((prevData) =>
+            prevData.map((item, index) => (index === key ? { ...item, colourCode: colorI.hex } : item))
+        );
+    };
+
+
     return (
         <div className='mx-12'>
             <div className='flex flex-col'>
@@ -161,7 +175,7 @@ export const AddNewBlog = () => {
                     <div className='flex'>
                         <div className=' w-52 h-[21rem] rounded-xl overflow-hidden '>
                             <ColorPicker
-                                color={color}
+                                color={colorI}
                                 onChange={setColor} hideHSV dark />;
                         </div>
                         <div className='mx-8 bg-secondary h-[21rem] w-10/12' >
@@ -169,10 +183,12 @@ export const AddNewBlog = () => {
                             {/* create buttons where on click whill change the hex code to  that div's hex code */}
                             <div className='flex flex-wrap'>
                                 {Hexcodes.map((codes, i) => (
-                                    <div key={i} className={` relative z-1 bg-[${codes}] aspect-square w-24 m-2 rounded-sm`} onClick={(e) => {
+                                    <div key={i} className={` relative z-1 aspect-square w-24 m-2 rounded-sm`} onClick={(e) => {
                                         e.preventDefault()
-                                        console.log(e.target.style)
-                                    }}  >
+                                        
+                                        console.log(e.target.style.backgroundColor)
+
+                                    }} style={{ 'backgroundColor': codes }} >
                                     </div>
                                 ))}
                             </div>
@@ -187,8 +203,12 @@ export const AddNewBlog = () => {
                             {dataJ.map((val, key) => (
 
                                 <div className='flex ' key={key}>
-                                    <p className='m-auto'>{`${key + 1}.`}</p><input className='text-lg m-auto px-2 border-none w-20 bg-secondary outline-none' placeholder={`${val.color}`} />
-                                    <div className='px-4' onClick={console.log(color)}><BoxIcon hexi={val.colourCode} /></div>
+                                    <p className='m-auto'>{`${key + 1}.`}</p><input className='text-lg m-auto px-2 border-none w-20 bg-secondary outline-none' placeholder={`${val.color}`} onChange={(e) => handleInputchange(key, e.target.value)} name={`${val.color}`} />
+                                    <div className='px-4' onClick={() => {
+                                        handleColorchange(key)
+                                        val.colourCode = colorI.hex
+                                        console.log(dataJ)
+                                    }}><BoxIcon hexi={val.colourCode} /></div>
                                 </div>
                             ))}
 

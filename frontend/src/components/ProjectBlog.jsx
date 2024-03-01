@@ -3,7 +3,7 @@ import { PropTypes } from 'prop-types'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { insideBlog } from '../redux/actions/myblogActions'
-import { useSpring, animated } from '@react-spring/web'
+import { useSpring, useInView, animated } from '@react-spring/web'
 import { useState } from 'react'
 
 const ProjectBlog = ({ img, desc, title }) => {
@@ -28,6 +28,21 @@ const ProjectBlog = ({ img, desc, title }) => {
             },
         },
 
+    )
+    const [refs, springs] = useInView(
+        () => ({
+            from: {
+                opacity: "0%",
+
+            },
+            to: {
+                opacity: "100%",
+            },
+
+        }),
+        // {
+        //   rootMargin: '-40% 0%',
+        // }
     )
     console.log(props.classname)
 
@@ -60,18 +75,6 @@ const ProjectBlog = ({ img, desc, title }) => {
 
     }
     console.log(blogselector)
-    const props2 = useSpring({
-        from: {
-            opacity: 0,
-            top: "0px",
-        },
-        to: {
-            opacity: blogselector.blog.insideBlog ? 1 : 0,
-            top: blogselector.blog.insideBlog ? `-${position - 50}px` : '0px',
-
-
-        }
-    })
 
 
     return (
@@ -89,22 +92,35 @@ const ProjectBlog = ({ img, desc, title }) => {
                     <div className={`${classDisplay}  flex-col p-10 gap-8 rounded-[2rem]  items-start bg-gradient-to-t from-black to-[rgb(0,0,0,0)]`} id='divToHide'>
                         <h1 className='text-section-heading text-center'>{title}</h1>
                         <p>{desc}</p>
-
-                        <button
-                            onClick={clickButton}
-                            className="w-fit rounded-full bg-gradient px-10 py-3 transition-all hover:shadow-custom hover:shadow-golden">
-                            Read More
-                        </button>
+                        <div className='flex gap-8'>
+                            <animated.button
+                                style={springs}
+                                ref={refs}
+                                // onClick={clickButton}
+                                className="w-fit rounded-full bg-gradient px-10 py-3 transition-all hover:shadow-custom hover:shadow-golden">
+                                Read More
+                            </animated.button>
+                            <animated.button
+                                // onClick={clickButton}
+                                style={springs}
+                                ref={refs}
+                                className="w-fit rounded-full bg-gradient px-10 py-3 transition-all hover:shadow-custom hover:shadow-golden">
+                                Download
+                            </animated.button>
+                            <animated.button
+                                // onClick={clickButton}
+                                style={springs}
+                                ref={refs}
+                                className="w-fit rounded-full bg-gradient px-10 py-3 transition-all hover:shadow-custom hover:shadow-golden">
+                                View
+                            </animated.button>
+                        </div>
 
                     </div>
 
                 </div>
             </animated.div>
-            <animated.div class='relative' style={props2}>
-                <div >
-                    <p>{desc}</p>
-                </div>
-            </animated.div>
+
 
         </div>
 
