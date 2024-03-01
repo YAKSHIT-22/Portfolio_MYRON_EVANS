@@ -19,6 +19,14 @@ class Products(GenericAPIView):
 			serializer = self.get_serializer(product)
 			return Response(serializer.data, status=status.HTTP_200_OK)
 
-		# Get All Products
-		serializer = self.get_serializer(self.get_queryset(), many=True)
+		# Get All Products by type
+		product_type = req.GET.get('type')
+
+		products = self.get_queryset()
+		if product_type:
+			products = products.filter(type=product_type)
+
+		print(products)
+
+		serializer = self.get_serializer(products, many=True)
 		return Response(serializer.data, status=status.HTTP_200_OK)

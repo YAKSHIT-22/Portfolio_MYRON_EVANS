@@ -4,8 +4,16 @@ from provider.models import Provider
 
 
 class Product(models.Model):
+	TYPE_CHOICES = (
+		('', 'Select Type'),
+		('1', 'T-Shirt'),
+		('2', 'Sweat Pants'),
+		('3', 'Sweaters'),
+		('4', 'Accessories'),
+	)
+
 	name = models.CharField(max_length=200)
-	type = models.CharField(max_length=200)
+	type = models.CharField(max_length=200, choices=TYPE_CHOICES)
 	price = models.FloatField()
 	description = models.TextField()
 	provider = models.ForeignKey(Provider, on_delete=models.CASCADE, null=True, blank=True)
