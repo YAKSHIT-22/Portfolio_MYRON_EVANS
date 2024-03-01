@@ -112,7 +112,7 @@ const ProductDetailScreen = () => {
 
                 <AddToCart
                   price={data.price}
-                  qty={data.variants[sizeIdx].color[colorIdx].count_of_product}
+                  qty={data.variants[sizeIdx].color[colorIdx]?.count_of_product}
                 />
 
                 <div

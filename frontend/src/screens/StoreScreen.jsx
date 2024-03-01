@@ -5,12 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getAllProducts } from '../redux/actions/ecommerce_store/productActions.js'
 
 function StoreScreen() {
-  const dispatch = useDispatch()
   const { loading, error, data } = useSelector((state) => state.products)
-
-  useEffect(() => {
-    dispatch(getAllProducts())
-  }, [dispatch])
 
   return (
     <div>

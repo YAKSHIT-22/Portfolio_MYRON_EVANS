@@ -47,7 +47,7 @@ const AddToCart = ({ price, qty }) => {
     <div className={'flex flex-col md:flex-row'}>
       <button
         className={
-          'mr-5 w-4/5 bg-gradient py-4 font-arial text-button text-white'
+          'mr-5 w-4/5 bg-gradient py-4 font-arial text-button font-bold text-white'
         }
       >
         Add to Cart - ${total}

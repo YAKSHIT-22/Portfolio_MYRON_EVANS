@@ -10,11 +10,18 @@ import axios from 'axios'
 import { DEV_BACKEND_URL } from '../../constants/backend_url.js'
 
 const url = `${DEV_BACKEND_URL}/product`
-export const getAllProducts = () => async (dispatch) => {
+export const getAllProducts = (type) => async (dispatch) => {
   try {
     dispatch({ type: GET_ALL_PRODUCTS_REQUEST })
 
-    const { data } = await axios.get(`${url}/all`)
+    let allProducts
+    if (type > 0 && type < 5) {
+      allProducts = await axios.get(`${url}/all?type=${type}`)
+    } else {
+      allProducts = await axios.get(`${url}/all`)
+    }
+
+    const { data } = allProducts
 
     dispatch({ type: GET_ALL_PRODUCTS_SUCCESS, payload: data })
   } catch (e) {

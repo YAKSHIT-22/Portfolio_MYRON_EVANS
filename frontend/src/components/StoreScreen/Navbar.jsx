@@ -1,8 +1,16 @@
 import '../../assets/css/Store Screen/StoreNavbar.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { getAllProducts } from '../../redux/actions/ecommerce_store/productActions.js'
+import { useDispatch } from 'react-redux'
 
 const Navbar = () => {
-  const [activeNavbarItem, setActiveNavbarItem] = useState('T-Shirts')
+  const dispatch = useDispatch()
+
+  const [activeNavbarItem, setActiveNavbarItem] = useState(1)
+
+  useEffect(() => {
+    dispatch(getAllProducts(activeNavbarItem))
+  }, [dispatch, activeNavbarItem])
 
   const navbarItems = [
     'All',
@@ -23,8 +31,8 @@ const Navbar = () => {
           <div
             key={idx}
             id={'navbar-item'}
-            className={`${item === activeNavbarItem && 'active'} hover:active cursor-pointer text-body`}
-            onClick={() => setActiveNavbarItem(item)}
+            className={`${idx === activeNavbarItem && 'active'} hover:active cursor-pointer text-body`}
+            onClick={() => setActiveNavbarItem(idx)}
           >
             <p className={'px-8 py-2 font-medium'}>{item}</p>
           </div>
