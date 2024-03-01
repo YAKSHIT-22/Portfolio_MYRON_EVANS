@@ -14,6 +14,7 @@ const ProductDetailScreen = () => {
 
   const dispatch = useDispatch()
   const { loading, data, error } = useSelector((state) => state.product_detail)
+  const { products } = useSelector((state) => state.cart)
 
   const [sizeIdx, setSizeIdx] = useState(0)
   const [colorIdx, setColorIdx] = useState(0)
@@ -49,10 +50,12 @@ const ProductDetailScreen = () => {
           >
             Shopping Cart
           </p>
-          <Notification
-            num={2}
-            className={'mx-1 bg-gradient px-2 py-1 text-[10px]'}
-          />
+          {products.length > 0 && (
+            <Notification
+              num={products.length}
+              className={'mx-1 bg-gradient px-2 py-1 text-[10px]'}
+            />
+          )}
         </Link>
       </div>
 
@@ -113,6 +116,9 @@ const ProductDetailScreen = () => {
                 <AddToCart
                   price={data.price}
                   qty={data.variants[sizeIdx].color[colorIdx]?.count_of_product}
+                  sizeIdx={sizeIdx}
+                  colorIdx={colorIdx}
+                  product={data}
                 />
 
                 <div

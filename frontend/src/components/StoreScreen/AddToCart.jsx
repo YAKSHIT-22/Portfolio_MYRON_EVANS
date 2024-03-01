@@ -2,10 +2,14 @@
 import { useEffect, useState } from 'react'
 
 import '../../assets/css/Store Screen/AddToCart.css'
+import { useDispatch } from 'react-redux'
+import { addToCart } from '../../redux/actions/ecommerce_store/productActions.js'
 
-const AddToCart = ({ price, qty }) => {
+const AddToCart = ({ price, qty, sizeIdx, colorIdx, product }) => {
   const [quantity, setQuantity] = useState(1)
   const [total, setTotal] = useState(quantity * price)
+
+  const dispatch = useDispatch()
 
   function handleBlur(e) {
     let productQty = parseInt(e.target.value)
@@ -35,6 +39,25 @@ const AddToCart = ({ price, qty }) => {
     setQuantity(Math.min(quantity + 1, qty))
   }
 
+  function makePayload(product, price, quantity, sizeIdx, colorIdx) {
+    product = {
+      id: product.id,
+      name: product.name,
+      total: total,
+      quantity: quantity,
+      color: product.variants[sizeIdx].color[colorIdx].name,
+      size: product.variants[sizeIdx].size,
+    }
+
+    return product
+  }
+
+  function addToCartHandler() {
+    product = makePayload(product, price, quantity, sizeIdx, colorIdx)
+
+    dispatch(addToCart(product))
+  }
+
   function handleDecrement() {
     setQuantity(Math.max(quantity - 1, 1))
   }
@@ -49,6 +72,7 @@ const AddToCart = ({ price, qty }) => {
         className={
           'mr-5 w-4/5 bg-gradient py-4 font-arial text-button font-bold text-white'
         }
+        onClick={addToCartHandler}
       >
         Add to Cart - ${total}
       </button>

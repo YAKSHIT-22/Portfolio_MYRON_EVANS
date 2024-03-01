@@ -1,8 +1,6 @@
 import Navbar from '../components/StoreScreen/Navbar.jsx'
 import ProductCard from '../components/StoreScreen/ProductCard.jsx'
-import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { getAllProducts } from '../redux/actions/ecommerce_store/productActions.js'
+import { useSelector } from 'react-redux'
 
 function StoreScreen() {
   const { loading, error, data } = useSelector((state) => state.products)

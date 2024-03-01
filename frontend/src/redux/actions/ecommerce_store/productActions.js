@@ -1,4 +1,5 @@
 import {
+  ADD_TO_CART,
   GET_ALL_PRODUCTS_ERROR,
   GET_ALL_PRODUCTS_REQUEST,
   GET_ALL_PRODUCTS_SUCCESS,
@@ -46,4 +47,11 @@ export const getProduct = (id) => async (dispatch) => {
       error: e.response.data.detail ? e.response.data.detail : e.response.data,
     })
   }
+}
+
+export const addToCart = (product) => (dispatch, getState) => {
+  dispatch({ type: ADD_TO_CART, payload: product })
+
+  const { products } = getState().cart
+  localStorage.setItem('cart', JSON.stringify(products))
 }

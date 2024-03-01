@@ -23,7 +23,7 @@ class Products(GenericAPIView):
 		product_type = req.GET.get('type')
 
 		products = self.get_queryset()
-		if product_type:
+		if product_type and product_type != '0':
 			products = products.filter(type=product_type)
 
 		print(products)
