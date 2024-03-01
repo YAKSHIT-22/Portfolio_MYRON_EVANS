@@ -35,13 +35,13 @@ function HomeScreen() {
       from: {
 
         opacity: 0,
-        
+
 
       },
       to: {
 
         opacity: 1,
-        
+
 
       },
       durations: 2000
@@ -102,7 +102,7 @@ function HomeScreen() {
 
           >
             <animated.h3 className="bg-gradient bg-clip-text text-content-heading font-bold text-transparent"
-        
+
             >
               What drives me
             </animated.h3>
@@ -146,10 +146,12 @@ function HomeScreen() {
         <div className="relative ml-24 mt-52 h-96 w-1/3">
           <img src={imageBg} className="absolute -right-4 -top-40" />
           <img src={section2Img} className="absolute -bottom-1" />
-          <h1 className="absolute -bottom-10 right-0 bg-gradient px-6 py-2 text-[1.5rem]">
+          <animated.h1 className="absolute -bottom-10 right-0 bg-gradient px-6 py-2 text-[1.5rem]"
+            style={fromLeft}
+            ref={refs1}>
             <p>Frontend Developer</p>
             <p>and Designer</p>
-          </h1>
+          </animated.h1>
         </div>
       </section>
       {/* </ParallaxLayer> */}

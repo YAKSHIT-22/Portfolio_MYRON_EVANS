@@ -134,7 +134,7 @@ function BlogScreen({ img, title, desc }) {
       </div>
     </div>
     <div className='Bento-blog-container mt-10'>
-      <FrontBentoGrid className="max-w-4xl mx-auto">
+      <FrontBentoGrid className="max-w-[90rem] mx-auto">
         {items.map((item, i) => (
           <FrontBentoGridItem
             key={i}
