@@ -7,11 +7,10 @@
 
 @font-face {
   font-family: 'Arial Rounded MT';
-  src:
-    url('./assets/fonts/ARIALROUNDEDMTLIGHT.woff'),
-    /* Light */ url('./assets/fonts/ARIALROUNDEDMT.woff'),
-    /* Regular */ url('./assets/fonts/ARLRDBD.woff'),
-    /* Bold */ url('./assets/fonts/ARIALROUNDEDMTEXTRABOLD.woff'); /* Extra Bold */
+  src: url('./fonts/ARIALROUNDEDMTLIGHT.woff'),
+    /* Light */ url('./fonts/ARIALROUNDEDMT.woff'),
+    /* Regular */ url('./fonts/ARLRDBD.woff'),
+    /* Bold */ url('./fonts/ARIALROUNDEDMTEXTRABOLD.woff'); /* Extra Bold */
 }
 
 h1,

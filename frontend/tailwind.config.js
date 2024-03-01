@@ -11,6 +11,7 @@ export default {
       colors: {
         primary: '#FFFFFF',
         secondary: '#EEEEEEB3',
+        golden: '#C9B18D',
       },
       backgroundImage: {
         gradient: 'linear-gradient(to right, #8D621D, #B79766)',

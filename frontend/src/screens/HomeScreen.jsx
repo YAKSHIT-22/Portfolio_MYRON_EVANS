@@ -340,7 +340,7 @@ function HomeScreen() {
             <p className="inline-block">any team</p>
           </h2>
 
-          <p className="mb-10 text-body text-secondary">
+          <div className="mb-10 text-body text-secondary">
             <p>
               I want to thank you for spending time on my portfolio site, I
               truly
@@ -350,7 +350,7 @@ function HomeScreen() {
               company.
             </p>
             <p>Cheers to the success of your business! </p>
-          </p>
+          </div>
 
           <Link
             to="/my-work"
