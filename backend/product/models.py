@@ -28,6 +28,9 @@ class ProductSize(models.Model):
 
 	def __str__(self):
 		return self.size
+	
+	class Meta:
+		unique_together = ('size', 'product')
 
 
 class ProductColor(models.Model):

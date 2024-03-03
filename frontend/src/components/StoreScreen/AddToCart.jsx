@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import '../../assets/css/Store Screen/AddToCart.css'
 import { useDispatch } from 'react-redux'
 import { addToCart } from '../../redux/actions/ecommerce_store/productActions.js'
+import QuantityField from './QuantityField.jsx'
 
 const AddToCart = ({ price, qty, sizeIdx, colorIdx, product }) => {
   const [quantity, setQuantity] = useState(1)
@@ -11,42 +12,18 @@ const AddToCart = ({ price, qty, sizeIdx, colorIdx, product }) => {
 
   const dispatch = useDispatch()
 
-  function handleBlur(e) {
-    let productQty = parseInt(e.target.value)
-    if (!isNaN(productQty)) {
-      if (productQty > parseInt(qty)) {
-        productQty = qty
-      }
-      setQuantity(productQty)
-    } else {
-      setQuantity(1)
-    }
-  }
-
-  function handleChange(e) {
-    let productQty = parseInt(e.target.value)
-    if (!isNaN(productQty)) {
-      if (productQty > parseInt(qty)) {
-        productQty = qty
-      }
-      setQuantity(productQty)
-    } else {
-      setQuantity('')
-    }
-  }
-
-  function handleIncrement() {
-    setQuantity(Math.min(quantity + 1, qty))
-  }
-
   function makePayload(product, price, quantity, sizeIdx, colorIdx) {
     product = {
       id: product.id,
       name: product.name,
       total: total,
       quantity: quantity,
-      color: product.variants[sizeIdx].color[colorIdx].name,
-      size: product.variants[sizeIdx].size,
+      color: {
+        idx: colorIdx,
+        name: product.variants[sizeIdx].color[colorIdx].name,
+      },
+      size: { idx: sizeIdx, size: product.variants[sizeIdx].size },
+      image: product.variants[sizeIdx].color[colorIdx]?.images[0]?.image,
     }
 
     return product
@@ -56,10 +33,6 @@ const AddToCart = ({ price, qty, sizeIdx, colorIdx, product }) => {
     product = makePayload(product, price, quantity, sizeIdx, colorIdx)
 
     dispatch(addToCart(product))
-  }
-
-  function handleDecrement() {
-    setQuantity(Math.max(quantity - 1, 1))
   }
 
   useEffect(() => {
@@ -76,31 +49,7 @@ const AddToCart = ({ price, qty, sizeIdx, colorIdx, product }) => {
       >
         Add to Cart - ${total}
       </button>
-      <div className="flex w-1/5 items-center justify-between border border-white">
-        <button
-          type="button"
-          className="rounded-l-md px-2 py-1 text-xs font-medium focus:outline-none"
-          onClick={handleDecrement}
-          disabled={quantity === 1}
-        >
-          -
-        </button>
-        <input
-          type="number"
-          className="w-full bg-transparent text-center focus:outline-none"
-          value={quantity}
-          onBlur={handleBlur}
-          onChange={handleChange}
-        />
-        <button
-          type="button"
-          className="rounded-r-md px-2 py-1 text-xs font-medium focus:outline-none"
-          onClick={handleIncrement}
-          disabled={quantity === qty}
-        >
-          +
-        </button>
-      </div>
+      <QuantityField qty={qty} setQuantity={setQuantity} quantity={quantity} />
     </div>
   )
 }

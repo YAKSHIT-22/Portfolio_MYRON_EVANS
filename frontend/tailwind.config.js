@@ -21,6 +21,7 @@ export default {
         rubik: ['Rubik', 'sans-serif'],
         inter: ['Inter', 'sans-serif'],
         mulish: ['Mulish', 'sans-serif'],
+        publicsans: ['Public Sans', 'sans-serif'],
       },
       borderColor: {
         golden: '#C9B18D',
@@ -37,6 +38,8 @@ export default {
         'content-heading': ['1.625rem', '2rem'],
         body: ['1rem', '1.75rem'],
         button: ['1.125rem', '1.125rem'],
+        'cart-item-heading': ['1.375rem', '1.875rem'],
+        'cart-item-text': ['0.875rem', '1.25rem'],
       },
     },
   },

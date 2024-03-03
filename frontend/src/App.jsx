@@ -6,6 +6,7 @@ import BlogScreen from './screens/BlogScreen'
 import StoreScreen from './screens/StoreScreen'
 import AffRefScreen from './screens/AffRefScreen'
 import ProductDetailScreen from './screens/ProductDetailScreen.jsx'
+import CartScreen from './screens/CartScreen.jsx'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
               <Route path="/aff-ref" element={<AffRefScreen />} />
               <Route path="/store" element={<StoreScreen />} />
               <Route path="/store/product" element={<ProductDetailScreen />} />
+              <Route path="/store/cart" element={<CartScreen />} />
             </Routes>
           </div>
         </Router>

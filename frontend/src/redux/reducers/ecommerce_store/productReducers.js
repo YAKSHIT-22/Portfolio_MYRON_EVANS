@@ -38,7 +38,11 @@ export const getProduct = (state = {}, action) => {
 
 export const cart = (state = { products: [] }, action) => {
   function checkEquality(x, item) {
-    return x.id === item.id && x.color === item.color && x.size === item.size
+    return (
+      x.id === item.id &&
+      x.color.name === item.color.name &&
+      x.size.size === item.size.size
+    )
   }
 
   switch (action.type) {
