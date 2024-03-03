@@ -6,14 +6,25 @@ import blogboxes from '../assets/svgs/blogboxes.svg'
 import RefferFunds from '../assets/svgs/RefferFundBoxes.svg'
 import upload from '../assets/svgs/upload.svg'
 import downArrow from '../assets/svgs/downArrow.svg'
+import MyronImage from '../../public/assets/Section 9.png'
 const NavbarAdmin = () => {
     return (
         <div className='relative  min-h-screen flex'>
 
             <div className='bg-[#262626] w- text-base min-h-screen'>
                 {/* <!-- logo --> */}
-                <div>
-                    logo
+                <div className='flex flex-col justify-center align-middle text-center'
+
+                >
+                    <div className='aspect-square w-40 self-center rounded-full bg-contain bg-blend-normal bg-center'
+                        style={{ backgroundImage: "url('../../public/assets/Section 9.png')" }}
+
+                    >
+                        {/* Logo */}
+                    </div>
+                    <p className='text-content-heading '>Myron Evans</p>
+                    <p className='text-base'>Admin</p>
+
                 </div>
                 <nav className='flex flex-col w-64'>
 
@@ -114,10 +125,10 @@ const NavbarAdmin = () => {
                 <div className='flex justify-center'>
                     <Link className='mt-10'>
                         <div className=" rounded-md bg-gradient text-center w-64 px-3 py-3 font-rubik font-medium"> Preview</div>
-                    </Link>  
+                    </Link>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 

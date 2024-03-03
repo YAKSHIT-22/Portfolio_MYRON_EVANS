@@ -26,11 +26,12 @@ import VerticalTime from '../components/HomeScreen/VerticalTime'
 import SkillsCard from '../components/HomeScreen/SkillsCard'
 import AnimatedIcon from '../components/Icons/AnimatedIcon'
 import ServiceCard from '../components/ServiceCard'
+import copy from 'react-copy-to-clipboard'
 // import face from ''
 // import { Parallax, ParallaxLayer } from '@react-spring/web'
 
 import Carousel from '../components/HomeScreen/Carousel'
-import { useInView, animated, useSpring } from '@react-spring/web'
+import { useInView, animated } from '@react-spring/web'
 function HomeScreen() {
 
   // useEffect(() => {
@@ -67,17 +68,7 @@ function HomeScreen() {
 
 
   }, [])
-  const hideSpring = useSpring({
-    from: {
-      opacity: 1,
-    }
-    , to: {
-      opacity: 0,
-    },
-    config: {
-      duration: 100
-    }
-  })
+
 
   const scrollProgress = () => {
     const scrollPx = document.documentElement.scrollTop;
@@ -86,6 +77,8 @@ function HomeScreen() {
     console.log(scrolled)
     if (scrollLen > 610 || scrollLen < 2) {
       setScroll(0)
+      //fix error after  the animation gets finished
+
 
 
     }
@@ -100,7 +93,29 @@ function HomeScreen() {
     console.log(scrollLen)
   }
 
-  const [refs1, fromLeft] = useInView(
+  const [refSynth, SyhtnSprings] = useInView(
+    () => ({
+      from: {
+        y: 60,
+        opacity: 0,
+
+      },
+      to: {
+        y: 0,
+        opacity: 1,
+      },
+      config: {
+        duration: 500,
+        // mass: 7,
+        tension: 120,
+
+      },
+    }),
+    // {
+    //   rootMargin: '-40% 0%',
+    // }
+  )
+  const [refAmbition, ambitionSprings] = useInView(
     () => ({
       from: {
 
@@ -110,15 +125,67 @@ function HomeScreen() {
       to: {
 
         opacity: 1,
-
+      },
+      config: {
+        duration: 400,
+        mass: 10,
+        precision: 0.3
+        // tension: 1200,
 
       },
-      durations: 2000
     }),
     // {
     //   rootMargin: '-40% 0%',
     // }
   )
+  const [refPurpose, purposeSprings] = useInView(
+    () => ({
+      from: {
+
+        opacity: 0,
+
+      },
+      to: {
+
+        opacity: 1,
+      },
+      config: {
+        duration: 400,
+        mass: 10,
+        precision: 0.3
+        // tension: 1200,
+
+      },
+    }),
+    // {
+    //   rootMargin: '-40% 0%',
+    // }
+  )
+
+  const [refShare, shareSprings] = useInView(
+    () => ({
+      from: {
+        y: -40,
+        opacity: 0,
+      },
+      to: {
+        y: 0,
+        opacity: 1,
+
+
+      },
+
+      config: {
+        tension: 100,
+        mass: 2
+      },
+      duration: 2000
+    }),
+    // {
+    //   rootMargin: '-40% 0%',
+    // }
+  )
+
 
   const [refs2, fromRight] = useInView(
     () => ({
@@ -138,6 +205,30 @@ function HomeScreen() {
     //   rootMargin: '-40% 0%',
     // }
   )
+  const [refService, serviceSprings] = useInView(
+    () => ({
+      from: {
+        y: -80,
+        opacity: 0,
+      },
+      to: {
+        y: 0,
+        opacity: 1,
+
+
+      },
+
+      config: {
+        tension: 100,
+        mass: 2
+      },
+      duration: 2000
+    }),
+    // {
+    //   rootMargin: '-40% 0%',
+    // }
+  )
+
   return (
     <div>
       {/* Section 1 ~ Face Animation */}
@@ -171,10 +262,13 @@ function HomeScreen() {
           <video className='fixed h-full' src={myronFace} playsInline type="video/webm/" id='video' >
           </video>
         </div> */}
-        <h1 className="-mt-16 text-center text-main-heading">
+        <animated.h1 className="-mt-16 text-center text-main-heading"
+          ref={refSynth}
+          style={SyhtnSprings}
+        >
           <p>The Synthesis of</p>
           <p>Technology and Design</p>
-        </h1>
+        </animated.h1>
         <Link
           to="/my-work"
           className="mt-7 rounded-full bg-gradient px-10 py-3 transition-all hover:shadow-custom hover:shadow-golden"
@@ -206,13 +300,18 @@ function HomeScreen() {
             </animated.h2>
           </animated.div>
 
-          <div className="w-full">
+          <div className="w-full max-w-[40rem]">
             <div className="mt-7">
               <AnimatedIcon iconData={myAmbitionIcon} height={80} width={90} />
-              <h2 className="mt-4 text-content-heading font-extrabold">
+
+              <animated.h2 className="mt-4 text-content-heading font-extrabold"
+                ref={refAmbition}
+                style={ambitionSprings}
+              >
                 My Ambition
-              </h2>
-              <p className="mt-4 text-body text-secondary">
+              </animated.h2>
+              <animated.p className="mt-4 text-body text-secondary"
+                style={ambitionSprings}>
                 My ambition is to offer the pinnacle of perfect user centered
                 software design and development to my clients. I aim to offer
                 the best services and an outstanding experienceData to anyone
@@ -220,15 +319,21 @@ function HomeScreen() {
                 customer service in retail work environments, I strive to offer
                 excellent service, I know how to satisfy my clients, and I’ll
                 get to know what is best for yours.
-              </p>
+              </animated.p>
             </div>
             <div className="mt-7">
               <AnimatedIcon iconData={myPurposeIcon} height={80} width={90} />
-              <h2 className="text-content-heading">My Purpose</h2>
-              <p className="mt-4 text-body text-secondary">
+              <animated.h2 className="text-content-heading"
+                ref={refPurpose}
+                style={purposeSprings}
+              >My Purpose</animated.h2>
+              <animated.p className="mt-4 text-body text-secondary"
+                ref={refPurpose}
+                style={purposeSprings}
+              >
                 My purpose is to impact as many people as possible in a positive
                 way through my faith in Jesus Christ, interactions, and work.
-              </p>
+              </animated.p>
             </div>
           </div>
         </div>
@@ -277,7 +382,10 @@ function HomeScreen() {
 
           {/* Text content div  cerate it responsive for md */}
 
-          <div className="pl-18 relative z-10 flex h-full flex-col items-center justify-center py-14 text-white">
+          <animated.div className="pl-18 relative z-10 flex h-full flex-col items-center justify-center py-14 text-white"
+            ref={refShare}
+            style={shareSprings}
+          >
             <h1 className="w-[42rem] text-center text-section-heading">
               Share my website and story with someone it can help
             </h1>
@@ -290,13 +398,14 @@ function HomeScreen() {
               will go towards helping my freelance career grow and the rest will
               go to Bridging Tech and Tech Kids Unlimited.{' '}
             </span>
+
             <Link
               to="/my-work"
               className="h-15 mt-7 w-fit rounded-full bg-gradient px-10 py-3 text-center font-rubik font-medium transition-all hover:shadow-custom hover:shadow-golden"
             >
               SHARE NOW
             </Link>
-          </div>
+          </animated.div>
         </div>
       </section>
 
@@ -327,7 +436,10 @@ function HomeScreen() {
                   width={115}
                 />
               </div>
-              <div className="w-[25rem] items-center">
+              <animated.div className="w-[25rem] items-center"
+                ref={refService}
+                style={serviceSprings}
+              >
                 <h1 className="my-9 text-center text-content-heading">
                   Software Design
                 </h1>
@@ -336,7 +448,7 @@ function HomeScreen() {
                   <p>System Creation, Design Mockups, Design</p>
                   <p>Prototypes, Animations Using Figma</p>
                 </div>
-              </div>
+              </animated.div>
             </div>
             <div className="w-100 h-2 bg-gradient"></div>
           </div>
@@ -349,7 +461,10 @@ function HomeScreen() {
                   width={115}
                 />
               </div>
-              <div className="service-content-wrapper flex w-[25rem] flex-col items-center">
+              <animated.div className="service-content-wrapper flex w-[25rem] flex-col items-center"
+                ref={refService}
+                style={serviceSprings}
+              >
                 <h1 className="my-9 text-center text-content-heading">
                   Software Development
                 </h1>
@@ -358,7 +473,7 @@ function HomeScreen() {
                   <p>Android and Web, Full Stack Development,</p>
                   <p>Mobile App Development, Web App Development.</p>
                 </div>
-              </div>
+              </animated.div>
             </div>
             <div className="w-100 h-2 bg-gradient"></div>
           </div>
@@ -471,8 +586,7 @@ function HomeScreen() {
         </div>
 
         <animated.div className="w-2/4"
-          style={fromLeft}
-          ref={refs1}
+
         >
           <h3 className="mb-1 text-clip bg-gradient bg-clip-text text-content-heading text-transparent">
             Born to serve

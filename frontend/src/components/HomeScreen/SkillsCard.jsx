@@ -1,5 +1,6 @@
 import { PropTypes } from 'prop-types'
 // import { } from 
+
 import { useInView, animated } from '@react-spring/web'
 const SkillsCard = ({ id, title, icon, percent, altText }) => {
   const level =
@@ -18,7 +19,12 @@ const SkillsCard = ({ id, title, icon, percent, altText }) => {
         width: `${percent}%`,
 
       },
-      durations: 4000
+      config: {
+        delay: '0.7s',
+        durations: 7000,
+        friction: 80,
+
+      }
     }),
     // {
     //   rootMargin: '-40% 0%',
