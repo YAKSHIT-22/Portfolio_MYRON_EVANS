@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useEffect } from 'react'
 
 import 'react-vertical-timeline-component/style.min.css'
 import { VerticalTimeline } from 'react-vertical-timeline-component'
@@ -27,8 +28,31 @@ import ServiceCard from '../components/ServiceCard'
 // import { Parallax, ParallaxLayer } from '@react-spring/web'
 import Carousel from '../components/HomeScreen/Carousel'
 import { useInView, animated } from '@react-spring/web'
-
 function HomeScreen() {
+
+  // useEffect(() => {
+  //   var FRAMES = 600;
+  //   var FPS = 60;
+  //   var video = document.getElementById('video');
+  //   console.log(video.duration)
+  //   window.addEventListener('scroll', function () {
+  //     var time = (window.scrollY / 1200) * FRAMES / FPS;
+  //     video.currentTime = time;
+  //     console.log(time);
+  //     // if(time === video.duration){
+
+  //     // }
+  //     // alert('Hizo scroll')
+  //   });
+
+  //   window.addEventListener('load', function () {
+  //     video.pause();
+  //     video.currentTime = 0;
+  //   });
+
+
+  // }, [])
+
 
   const [refs1, fromLeft] = useInView(
     () => ({
@@ -74,12 +98,17 @@ function HomeScreen() {
       {/* <Parallax> */}
       {/* <ParallaxLayer speed={1}> */}
 
+
       <section className="flex flex-col items-center">
         <img
           src={faceAnimation}
           alt="Animated Face"
           className="-mt-16 w-[65%]"
         />
+        {/* <div className="h-[130rem] flex justify-center">
+          <video className='fixed h-full' src={myronFace} playsInline type="video/webm/" id='video' >
+          </video>
+        </div> */}
         <h1 className="-mt-16 text-center text-main-heading">
           <p>The Synthesis of</p>
           <p>Technology and Design</p>
@@ -117,7 +146,7 @@ function HomeScreen() {
 
           <div className="w-full">
             <div className="mt-7">
-              <AnimatedIcon iconData={myAmbitionIcon} height={42} width={70} />
+              <AnimatedIcon iconData={myAmbitionIcon} height={80} width={90} />
               <h2 className="mt-4 text-content-heading font-extrabold">
                 My Ambition
               </h2>
@@ -132,7 +161,7 @@ function HomeScreen() {
               </p>
             </div>
             <div className="mt-7">
-              <AnimatedIcon iconData={myPurposeIcon} height={62} width={80} />
+              <AnimatedIcon iconData={myPurposeIcon} height={80} width={90} />
               <h2 className="text-content-heading">My Purpose</h2>
               <p className="mt-4 text-body text-secondary">
                 My purpose is to impact as many people as possible in a positive
@@ -147,8 +176,7 @@ function HomeScreen() {
           <img src={imageBg} className="absolute -right-4 -top-40" />
           <img src={section2Img} className="absolute -bottom-1" />
           <animated.h1 className="absolute -bottom-10 right-0 bg-gradient px-6 py-2 text-[1.5rem]"
-            style={fromLeft}
-            ref={refs1}>
+          >
             <p>Frontend Developer</p>
             <p>and Designer</p>
           </animated.h1>
