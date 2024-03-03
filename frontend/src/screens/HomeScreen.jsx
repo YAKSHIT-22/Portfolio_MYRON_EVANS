@@ -11,7 +11,7 @@ import softwareDesignIcon from '../assets/Animations/icons animation/Software De
 import softwareDeveloperIcon from '../assets/Animations/icons animation/Software Development/LottieJSON.json'
 
 import faceAnimation from '../assets/Animations/Face Animation/Preview.gif'
-
+import { useState } from 'react'
 import imageBg from '../assets/svgs/img-bg.svg'
 import section2Img from '../assets/images/Home Page/Section 2 img.png'
 import section9Img from '../assets/images/Home Page/Section 9.png'
@@ -24,8 +24,9 @@ import VerticalTime from '../components/HomeScreen/VerticalTime'
 import SkillsCard from '../components/HomeScreen/SkillsCard'
 import AnimatedIcon from '../components/Icons/AnimatedIcon'
 import ServiceCard from '../components/ServiceCard'
-//importing parallax
+// import face from ''
 // import { Parallax, ParallaxLayer } from '@react-spring/web'
+
 import Carousel from '../components/HomeScreen/Carousel'
 import { useInView, animated } from '@react-spring/web'
 function HomeScreen() {
@@ -52,7 +53,25 @@ function HomeScreen() {
 
 
   // }, [])
+  const [scrolled, setScroll] = useState(31)
+  useEffect(() => {
+    // if (imageNumber < 801) {
+    window.addEventListener('scroll', scrollProgress)
 
+
+    return () => window.removeEventListener('scroll', scrollProgress)
+
+
+
+
+  }, [])
+  const scrollProgress = () => {
+    const scrollPx = document.documentElement.scrollTop;
+    const winHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrollLen = Math.ceil(scrollPx / winHeight * 100 / 0.12)
+    console.log(scrolled)
+    setScroll(scrollLen)
+  }
 
   const [refs1, fromLeft] = useInView(
     () => ({
@@ -74,6 +93,7 @@ function HomeScreen() {
     //   rootMargin: '-40% 0%',
     // }
   )
+
   const [refs2, fromRight] = useInView(
     () => ({
       from: {
@@ -100,11 +120,20 @@ function HomeScreen() {
 
 
       <section className="flex flex-col items-center">
-        <img
-          src={faceAnimation}
-          alt="Animated Face"
-          className="-mt-16 w-[65%]"
-        />
+
+
+        <div className='flex justify-center h-[1915vw]'>
+          {/* <img
+            src={faceAnimation}
+            alt="Animated Face"
+            className="-mt-16 w-[65%]"
+
+
+
+          /> */}
+          <img className='fixed' src={`/assets/Image Sequence/Hero_Animation${scrolled}.png`} />
+        </div>
+
         {/* <div className="h-[130rem] flex justify-center">
           <video className='fixed h-full' src={myronFace} playsInline type="video/webm/" id='video' >
           </video>
