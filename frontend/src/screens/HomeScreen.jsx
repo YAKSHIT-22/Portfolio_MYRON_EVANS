@@ -9,7 +9,7 @@ import glassIcon from '../assets/Animations/icons animation/Glass icon/GlassV03_
 import softwareDesignIcon from '../assets/Animations/icons animation/Software Design/LottieJSON.json'
 import softwareDeveloperIcon from '../assets/Animations/icons animation/Software Development/LottieJSON.json'
 
-import faceAnimation from '../assets/Animations/Face Animation/Preview.gif'
+import faceAnimation from '../assets/Animations/Face Animation/Image Sequence/Preview25.png'
 
 import imageBg from '../assets/svgs/img-bg.svg'
 import section2Img from '../assets/images/Home Page/Section 2 img.png'
