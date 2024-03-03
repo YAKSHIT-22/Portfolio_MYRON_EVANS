@@ -33,7 +33,6 @@ import copy from 'react-copy-to-clipboard'
 import Carousel from '../components/HomeScreen/Carousel'
 import { useInView, animated } from '@react-spring/web'
 function HomeScreen() {
-
   // useEffect(() => {
   //   var FRAMES = 600;
   //   var FPS = 60;
@@ -54,26 +53,22 @@ function HomeScreen() {
   //     video.currentTime = 0;
   //   });
 
-
   // }, [])
   const [scrolled, setScroll] = useState(78)
   useEffect(() => {
     // if (imageNumber < 801) {
     window.addEventListener('scroll', scrollProgress)
 
-
     return () => window.removeEventListener('scroll', scrollProgress)
-
-
-
-
   }, [])
 
 
   const scrollProgress = () => {
-    const scrollPx = document.documentElement.scrollTop;
-    const winHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrollLen = Math.ceil(scrollPx / winHeight * 100 / 0.11) + 80
+    const scrollPx = document.documentElement.scrollTop
+    const winHeight =
+      document.documentElement.scrollHeight -
+      document.documentElement.clientHeight
+    const scrollLen = Math.ceil(((scrollPx / winHeight) * 100) / 0.11) + 80
     console.log(scrolled)
     if (scrollLen > 610 || scrollLen < 2) {
       setScroll(0)
@@ -235,11 +230,8 @@ function HomeScreen() {
       {/* <Parallax> */}
       {/* <ParallaxLayer speed={1}> */}
 
-
       <section className="flex flex-col items-center">
-
-
-        <div className='flex justify-center h-[940vw] scroll-smooth'>
+        <div className="flex h-[940vw] justify-center scroll-smooth">
           {/* <img
             src={faceAnimation}
             alt="Animated Face"
@@ -248,14 +240,19 @@ function HomeScreen() {
 
 
           /> */}
-          <img className='fixed z-0' src={`Image Sequence/Preview${scrolled}.png`} alt="" />
+          <img
+            className="fixed -z-0"
+            src={`Image Sequence/Preview${scrolled}.png`}
+            alt=""
+          />
 
-          <animated.div className='fixed flex justify-center align-center' id='faceContainer'>
-
-            <img src={mt2} className='h-[26.62rem] z-10 mt-[7.16rem] mr-10' />
-            <img src={mt1} className='h-[26.62rem] z-10 mt-[7.16rem] ml-10' />
+          <animated.div
+            className="align-center fixed flex justify-center"
+            id="faceContainer"
+          >
+            <img src={mt2} className="z-10 mr-10 mt-[7.16rem] h-[26.62rem]" />
+            <img src={mt1} className="z-10 ml-10 mt-[7.16rem] h-[26.62rem]" />
           </animated.div>
-
         </div>
 
         {/* <div className="h-[130rem] flex justify-center">
@@ -283,15 +280,12 @@ function HomeScreen() {
       <section className="mt-24 w-full md:flex md:flex-wrap md:items-center md:justify-evenly md:px-10">
         {/* Left Side ~ Text Side */}
         <div className="w-1/2">
-          <animated.div
-
-          >
-            <animated.h3 className="bg-gradient bg-clip-text text-content-heading font-bold text-transparent"
-
-            >
+          <animated.div>
+            <animated.h3 className="bg-gradient bg-clip-text text-content-heading font-bold text-transparent">
               What drives me
             </animated.h3>
-            <animated.h2 className="text-section-heading font-extrabold"
+            <animated.h2
+              className="text-section-heading font-extrabold"
               style={fromRight}
               ref={refs2}
             >
@@ -342,8 +336,7 @@ function HomeScreen() {
         <div className="relative ml-24 mt-52 h-96 w-1/3">
           <img src={imageBg} className="absolute -right-4 -top-40" />
           <img src={section2Img} className="absolute -bottom-1" />
-          <animated.h1 className="absolute -bottom-10 right-0 bg-gradient px-6 py-2 text-[1.5rem]"
-          >
+          <animated.h1 className="absolute -bottom-10 right-0 bg-gradient px-6 py-2 text-[1.5rem]">
             <p>Frontend Developer</p>
             <p>and Designer</p>
           </animated.h1>
@@ -614,7 +607,6 @@ function HomeScreen() {
             to="/my-work"
             className="rounded-full bg-gradient px-3 py-3 font-rubik font-medium"
           >
-
             Explore My Works
           </Link>
 
@@ -624,17 +616,14 @@ function HomeScreen() {
 
       {/* Section 10 ~ Get in Touch */}
       <section className="bg-secondary pt-24">
-        <h1 className="text-section-heading text-center m-2">Get In Touch</h1>
+        <h1 className="m-2 text-center text-section-heading">Get In Touch</h1>
 
-        <p className="text-body text-wrap text-center mb-20">
-          Let’s touch base and discuss how I can make a lasting positive
-          impact on your company
+        <p className="mb-20 text-wrap text-center text-body">
+          Let’s touch base and discuss how I can make a lasting positive impact
+          on your company
         </p>
-        <div className="parent-get-in-touch-container flex flex-row items-center text-center justify-center">
-
-          <div className="flex flex-col w-80% mx-20">
-
-
+        <div className="parent-get-in-touch-container flex flex-row items-center justify-center text-center">
+          <div className="w-80% mx-20 flex flex-col">
             <div className="flex  flex-col text-left">
               <div className="text-left">
                 <h1 className="text-section-heading">
@@ -650,42 +639,47 @@ function HomeScreen() {
               </div>
             </div>
           </div>
-          <div className="w-1/2 flex flex-col text-left gap-5 ">
-            <div className='flex gap-10'>
-              <div className='w-[40%]'>
-                <p className='py-2'>Full Name*</p>
+          <div className="flex w-1/2 flex-col gap-5 text-left ">
+            <div className="flex gap-10">
+              <div className="w-[40%]">
+                <p className="py-2">Full Name*</p>
 
-                <input className='w-[100%] h-14 px-4   rounded-full  bg-primary border-none outline-none ' placeholder='John David' />
-              </div >
+                <input
+                  className="h-14 w-[100%] rounded-full   border-none  bg-primary px-4 outline-none "
+                  placeholder="John David"
+                />
+              </div>
               <div className=" w-[40%]">
-                <p className='py-2'>email*</p>
+                <p className="py-2">email*</p>
 
-
-                <input className='w-[100%] h-14 px-4   rounded-full  bg-primary border-none outline-none ' placeholder='example@yourmail.com' />
+                <input
+                  className="h-14 w-[100%] rounded-full   border-none  bg-primary px-4 outline-none "
+                  placeholder="example@yourmail.com"
+                />
               </div>
-
             </div>
-            <div className='flex gap-10'>
-              <div className='w-[40%]' >
-                <p className='py-2'>Phone*</p>
+            <div className="flex gap-10">
+              <div className="w-[40%]">
+                <p className="py-2">Phone*</p>
 
-                <input className='w-[100%] h-14 px-4   rounded-full  bg-primary border-none outline-none ' placeholder='Put Developement URL' />
+                <input
+                  className="h-14 w-[100%] rounded-full   border-none  bg-primary px-4 outline-none "
+                  placeholder="Put Developement URL"
+                />
               </div>
-              <div className='w-[40%]'>
-                <p className='py-2'>Subject</p>
+              <div className="w-[40%]">
+                <p className="py-2">Subject</p>
 
-
-                <input className='w-[100%] h-14 px-4   rounded-full  bg-primary border-none outline-none ' placeholder='Put Developement URL' />
+                <input
+                  className="h-14 w-[100%] rounded-full   border-none  bg-primary px-4 outline-none "
+                  placeholder="Put Developement URL"
+                />
               </div>
-
-
             </div>
-            <div className='w-[90%]'>
-              <p className='py-2'> Textarea </p>
-              <textarea className='w-[100%] h-44 px-4   rounded-3xl  bg-primary border-none outline-none ' />
-
+            <div className="w-[90%]">
+              <p className="py-2"> Textarea </p>
+              <textarea className="h-44 w-[100%] rounded-3xl   border-none  bg-primary px-4 outline-none " />
             </div>
-
           </div>
         </div>
       </section>
