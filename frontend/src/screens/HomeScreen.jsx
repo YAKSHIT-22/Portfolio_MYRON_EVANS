@@ -10,7 +10,9 @@ import glassIcon from '../assets/Animations/icons animation/Glass icon/GlassV03_
 import softwareDesignIcon from '../assets/Animations/icons animation/Software Design/LottieJSON.json'
 import softwareDeveloperIcon from '../assets/Animations/icons animation/Software Development/LottieJSON.json'
 
-import faceAnimation from '../assets/Animations/Face Animation/Preview.gif'
+import mt1 from '../assets/Animations/Face Animation/myron transparent bg 1.gif'
+import mt2 from '../assets/Animations/Face Animation/myron transparent bg 1_2.gif'
+
 import { useState } from 'react'
 import imageBg from '../assets/svgs/img-bg.svg'
 import section2Img from '../assets/images/Home Page/Section 2 img.png'
@@ -28,7 +30,7 @@ import ServiceCard from '../components/ServiceCard'
 // import { Parallax, ParallaxLayer } from '@react-spring/web'
 
 import Carousel from '../components/HomeScreen/Carousel'
-import { useInView, animated } from '@react-spring/web'
+import { useInView, animated, useSpring } from '@react-spring/web'
 function HomeScreen() {
 
   // useEffect(() => {
@@ -53,7 +55,7 @@ function HomeScreen() {
 
 
   // }, [])
-  const [scrolled, setScroll] = useState(31)
+  const [scrolled, setScroll] = useState(78)
   useEffect(() => {
     // if (imageNumber < 801) {
     window.addEventListener('scroll', scrollProgress)
@@ -65,12 +67,37 @@ function HomeScreen() {
 
 
   }, [])
+  const hideSpring = useSpring({
+    from: {
+      opacity: 1,
+    }
+    , to: {
+      opacity: 0,
+    },
+    config: {
+      duration: 100
+    }
+  })
+
   const scrollProgress = () => {
     const scrollPx = document.documentElement.scrollTop;
     const winHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrollLen = Math.ceil(scrollPx / winHeight * 100 / 0.12)
+    const scrollLen = Math.ceil(scrollPx / winHeight * 100 / 0.11) + 80
     console.log(scrolled)
-    setScroll(scrollLen)
+    if (scrollLen > 610 || scrollLen < 2) {
+      setScroll(0)
+
+
+    }
+    else {
+
+
+      const divtoHide = document.getElementById('faceContainer')
+      divtoHide.style.opacity = 0
+      divtoHide.style.transitionDuration = 100
+      setScroll(scrollLen)
+    }
+    console.log(scrollLen)
   }
 
   const [refs1, fromLeft] = useInView(
@@ -78,7 +105,6 @@ function HomeScreen() {
       from: {
 
         opacity: 0,
-
 
       },
       to: {
@@ -122,7 +148,7 @@ function HomeScreen() {
       <section className="flex flex-col items-center">
 
 
-        <div className='flex justify-center h-[1915vw]'>
+        <div className='flex justify-center h-[940vw] scroll-smooth'>
           {/* <img
             src={faceAnimation}
             alt="Animated Face"
@@ -131,7 +157,14 @@ function HomeScreen() {
 
 
           /> */}
-          <img className='fixed' src={`/assets/Image Sequence/Hero_Animation${scrolled}.png`} />
+          <img className='fixed z-0' src={`Image Sequence/Preview${scrolled}.png`} alt="" />
+
+          <animated.div className='fixed flex justify-center align-center' id='faceContainer'>
+
+            <img src={mt2} className='h-[26.62rem] z-10 mt-[7.16rem] mr-10' />
+            <img src={mt1} className='h-[26.62rem] z-10 mt-[7.16rem] ml-10' />
+          </animated.div>
+
         </div>
 
         {/* <div className="h-[130rem] flex justify-center">
