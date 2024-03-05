@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useEffect } from 'react'
 
 import 'react-vertical-timeline-component/style.min.css'
 import { VerticalTimeline } from 'react-vertical-timeline-component'
@@ -9,8 +10,10 @@ import glassIcon from '../assets/Animations/icons animation/Glass icon/GlassV03_
 import softwareDesignIcon from '../assets/Animations/icons animation/Software Design/LottieJSON.json'
 import softwareDeveloperIcon from '../assets/Animations/icons animation/Software Development/LottieJSON.json'
 
-import faceAnimation from '../assets/Animations/Face Animation/myron transparent bg 1.gif'
+import mt1 from '../assets/Animations/Face Animation/myron transparent bg 1.gif'
+import mt2 from '../assets/Animations/Face Animation/myron transparent bg 1_2.gif'
 
+import { useState } from 'react'
 import imageBg from '../assets/svgs/img-bg.svg'
 import section2Img from '../assets/images/Home Page/Section 2 img.png'
 import section9Img from '../assets/images/Home Page/Section 9.png'
@@ -23,11 +26,204 @@ import VerticalTime from '../components/HomeScreen/VerticalTime'
 import SkillsCard from '../components/HomeScreen/SkillsCard'
 import AnimatedIcon from '../components/Icons/AnimatedIcon'
 import ServiceCard from '../components/ServiceCard'
-//importing parallax
+import copy from 'react-copy-to-clipboard'
+// import face from ''
 // import { Parallax, ParallaxLayer } from '@react-spring/web'
-import Carousel from '../components/HomeScreen/Carousel'
 
+import Carousel from '../components/HomeScreen/Carousel'
+import { useInView, animated } from '@react-spring/web'
 function HomeScreen() {
+  // useEffect(() => {
+  //   var FRAMES = 600;
+  //   var FPS = 60;
+  //   var video = document.getElementById('video');
+  //   console.log(video.duration)
+  //   window.addEventListener('scroll', function () {
+  //     var time = (window.scrollY / 1200) * FRAMES / FPS;
+  //     video.currentTime = time;
+  //     console.log(time);
+  //     // if(time === video.duration){
+
+  //     // }
+  //     // alert('Hizo scroll')
+  //   });
+
+  //   window.addEventListener('load', function () {
+  //     video.pause();
+  //     video.currentTime = 0;
+  //   });
+
+  // }, [])
+  const [scrolled, setScroll] = useState(78)
+  useEffect(() => {
+    // if (imageNumber < 801) {
+    window.addEventListener('scroll', scrollProgress)
+
+    return () => window.removeEventListener('scroll', scrollProgress)
+  }, [])
+
+
+  const scrollProgress = () => {
+    const scrollPx = document.documentElement.scrollTop
+    const winHeight =
+      document.documentElement.scrollHeight -
+      document.documentElement.clientHeight
+    const scrollLen = Math.ceil(((scrollPx / winHeight) * 100) / 0.11) + 80
+    console.log(scrolled)
+    if (scrollLen > 610 || scrollLen < 2) {
+      setScroll(0)
+      //fix error after  the animation gets finished
+
+
+
+    }
+    else {
+
+
+      const divtoHide = document.getElementById('faceContainer')
+      divtoHide.style.opacity = 0
+      divtoHide.style.transitionDuration = 100
+      setScroll(scrollLen)
+    }
+    console.log(scrollLen)
+  }
+
+  const [refSynth, SyhtnSprings] = useInView(
+    () => ({
+      from: {
+        y: 60,
+        opacity: 0,
+
+      },
+      to: {
+        y: 0,
+        opacity: 1,
+      },
+      config: {
+        duration: 500,
+        // mass: 7,
+        tension: 120,
+
+      },
+    }),
+    // {
+    //   rootMargin: '-40% 0%',
+    // }
+  )
+  const [refAmbition, ambitionSprings] = useInView(
+    () => ({
+      from: {
+
+        opacity: 0,
+
+      },
+      to: {
+
+        opacity: 1,
+      },
+      config: {
+        duration: 400,
+        mass: 10,
+        precision: 0.3
+        // tension: 1200,
+
+      },
+    }),
+    // {
+    //   rootMargin: '-40% 0%',
+    // }
+  )
+  const [refPurpose, purposeSprings] = useInView(
+    () => ({
+      from: {
+
+        opacity: 0,
+
+      },
+      to: {
+
+        opacity: 1,
+      },
+      config: {
+        duration: 400,
+        mass: 10,
+        precision: 0.3
+        // tension: 1200,
+
+      },
+    }),
+    // {
+    //   rootMargin: '-40% 0%',
+    // }
+  )
+
+  const [refShare, shareSprings] = useInView(
+    () => ({
+      from: {
+        y: -40,
+        opacity: 0,
+      },
+      to: {
+        y: 0,
+        opacity: 1,
+
+
+      },
+
+      config: {
+        tension: 100,
+        mass: 2
+      },
+      duration: 2000
+    }),
+    // {
+    //   rootMargin: '-40% 0%',
+    // }
+  )
+
+
+  const [refs2, fromRight] = useInView(
+    () => ({
+      from: {
+        x: 150,
+        opacity: 0,
+      },
+      to: {
+        x: 0,
+        opacity: 1,
+
+
+      },
+      duration: 2000
+    }),
+    // {
+    //   rootMargin: '-40% 0%',
+    // }
+  )
+  const [refService, serviceSprings] = useInView(
+    () => ({
+      from: {
+        y: -80,
+        opacity: 0,
+      },
+      to: {
+        y: 0,
+        opacity: 1,
+
+
+      },
+
+      config: {
+        tension: 100,
+        mass: 2
+      },
+      duration: 2000
+    }),
+    // {
+    //   rootMargin: '-40% 0%',
+    // }
+  )
+
   return (
     <div>
       {/* Section 1 ~ Face Animation */}
@@ -35,15 +231,41 @@ function HomeScreen() {
       {/* <ParallaxLayer speed={1}> */}
 
       <section className="flex flex-col items-center">
-        <img
-          src={faceAnimation}
-          alt="Animated Face"
-          className="-mt-16 w-[65%]"
-        />
-        <h1 className="-mt-16 text-center text-main-heading">
+        <div className="flex h-[940vw] justify-center scroll-smooth">
+          {/* <img
+            src={faceAnimation}
+            alt="Animated Face"
+            className="-mt-16 w-[65%]"
+
+
+
+          /> */}
+          <img
+            className="fixed -z-0"
+            src={`Image Sequence/Preview${scrolled}.png`}
+            alt=""
+          />
+
+          <animated.div
+            className="align-center fixed flex justify-center"
+            id="faceContainer"
+          >
+            <img src={mt2} className="z-10 mr-10 mt-[7.16rem] h-[26.62rem]" />
+            <img src={mt1} className="z-10 ml-10 mt-[7.16rem] h-[26.62rem]" />
+          </animated.div>
+        </div>
+
+        {/* <div className="h-[130rem] flex justify-center">
+          <video className='fixed h-full' src={myronFace} playsInline type="video/webm/" id='video' >
+          </video>
+        </div> */}
+        <animated.h1 className="-mt-16 text-center text-main-heading"
+          ref={refSynth}
+          style={SyhtnSprings}
+        >
           <p>The Synthesis of</p>
           <p>Technology and Design</p>
-        </h1>
+        </animated.h1>
         <Link
           to="/my-work"
           className="mt-7 rounded-full bg-gradient px-10 py-3 transition-all hover:shadow-custom hover:shadow-golden"
@@ -58,23 +280,32 @@ function HomeScreen() {
       <section className="mt-24 w-full md:flex md:flex-wrap md:items-center md:justify-evenly md:px-10">
         {/* Left Side ~ Text Side */}
         <div className="w-1/2">
-          <div>
-            <h3 className="bg-gradient bg-clip-text text-content-heading font-bold text-transparent">
+          <animated.div>
+            <animated.h3 className="bg-gradient bg-clip-text text-content-heading font-bold text-transparent">
               What drives me
-            </h3>
-            <h2 className="text-section-heading font-extrabold">
+            </animated.h3>
+            <animated.h2
+              className="text-section-heading font-extrabold"
+              style={fromRight}
+              ref={refs2}
+            >
               <p>Crafting stories through</p>
               <p>Development and Design</p>
-            </h2>
-          </div>
+            </animated.h2>
+          </animated.div>
 
-          <div className="w-full">
+          <div className="w-full max-w-[40rem]">
             <div className="mt-7">
-              <AnimatedIcon iconData={myAmbitionIcon} height={42} width={70} />
-              <h2 className="mt-4 text-content-heading font-extrabold">
+              <AnimatedIcon iconData={myAmbitionIcon} height={80} width={90} />
+
+              <animated.h2 className="mt-4 text-content-heading font-extrabold"
+                ref={refAmbition}
+                style={ambitionSprings}
+              >
                 My Ambition
-              </h2>
-              <p className="mt-4 text-body text-secondary">
+              </animated.h2>
+              <animated.p className="mt-4 text-body text-secondary"
+                style={ambitionSprings}>
                 My ambition is to offer the pinnacle of perfect user centered
                 software design and development to my clients. I aim to offer
                 the best services and an outstanding experienceData to anyone
@@ -82,15 +313,21 @@ function HomeScreen() {
                 customer service in retail work environments, I strive to offer
                 excellent service, I know how to satisfy my clients, and I’ll
                 get to know what is best for yours.
-              </p>
+              </animated.p>
             </div>
             <div className="mt-7">
-              <AnimatedIcon iconData={myPurposeIcon} height={62} width={80} />
-              <h2 className="text-content-heading">My Purpose</h2>
-              <p className="mt-4 text-body text-secondary">
+              <AnimatedIcon iconData={myPurposeIcon} height={80} width={90} />
+              <animated.h2 className="text-content-heading"
+                ref={refPurpose}
+                style={purposeSprings}
+              >My Purpose</animated.h2>
+              <animated.p className="mt-4 text-body text-secondary"
+                ref={refPurpose}
+                style={purposeSprings}
+              >
                 My purpose is to impact as many people as possible in a positive
                 way through my faith in Jesus Christ, interactions, and work.
-              </p>
+              </animated.p>
             </div>
           </div>
         </div>
@@ -99,10 +336,10 @@ function HomeScreen() {
         <div className="relative ml-24 mt-52 h-96 w-1/3">
           <img src={imageBg} className="absolute -right-4 -top-40" />
           <img src={section2Img} className="absolute -bottom-1" />
-          <h1 className="absolute -bottom-10 right-0 bg-gradient px-6 py-2 text-[1.5rem]">
+          <animated.h1 className="absolute -bottom-10 right-0 bg-gradient px-6 py-2 text-[1.5rem]">
             <p>Frontend Developer</p>
             <p>and Designer</p>
-          </h1>
+          </animated.h1>
         </div>
       </section>
       {/* </ParallaxLayer> */}
@@ -138,7 +375,10 @@ function HomeScreen() {
 
           {/* Text content div  cerate it responsive for md */}
 
-          <div className="pl-18 relative z-10 flex h-full flex-col items-center justify-center py-14 text-white">
+          <animated.div className="pl-18 relative z-10 flex h-full flex-col items-center justify-center py-14 text-white"
+            ref={refShare}
+            style={shareSprings}
+          >
             <h1 className="w-[42rem] text-center text-section-heading">
               Share my website and story with someone it can help
             </h1>
@@ -151,13 +391,14 @@ function HomeScreen() {
               will go towards helping my freelance career grow and the rest will
               go to Bridging Tech and Tech Kids Unlimited.{' '}
             </span>
+
             <Link
               to="/my-work"
               className="h-15 mt-7 w-fit rounded-full bg-gradient px-10 py-3 text-center font-rubik font-medium transition-all hover:shadow-custom hover:shadow-golden"
             >
               SHARE NOW
             </Link>
-          </div>
+          </animated.div>
         </div>
       </section>
 
@@ -188,7 +429,10 @@ function HomeScreen() {
                   width={115}
                 />
               </div>
-              <div className="w-[25rem] items-center">
+              <animated.div className="w-[25rem] items-center"
+                ref={refService}
+                style={serviceSprings}
+              >
                 <h1 className="my-9 text-center text-content-heading">
                   Software Design
                 </h1>
@@ -197,7 +441,7 @@ function HomeScreen() {
                   <p>System Creation, Design Mockups, Design</p>
                   <p>Prototypes, Animations Using Figma</p>
                 </div>
-              </div>
+              </animated.div>
             </div>
             <div className="w-100 h-2 bg-gradient"></div>
           </div>
@@ -210,7 +454,10 @@ function HomeScreen() {
                   width={115}
                 />
               </div>
-              <div className="service-content-wrapper flex w-[25rem] flex-col items-center">
+              <animated.div className="service-content-wrapper flex w-[25rem] flex-col items-center"
+                ref={refService}
+                style={serviceSprings}
+              >
                 <h1 className="my-9 text-center text-content-heading">
                   Software Development
                 </h1>
@@ -219,7 +466,7 @@ function HomeScreen() {
                   <p>Android and Web, Full Stack Development,</p>
                   <p>Mobile App Development, Web App Development.</p>
                 </div>
-              </div>
+              </animated.div>
             </div>
             <div className="w-100 h-2 bg-gradient"></div>
           </div>
@@ -330,7 +577,10 @@ function HomeScreen() {
         <div>
           <img src={section9Img} className="" />
         </div>
-        <div className="w-2/4">
+
+        <animated.div className="w-2/4"
+
+        >
           <h3 className="mb-1 text-clip bg-gradient bg-clip-text text-content-heading text-transparent">
             Born to serve
           </h3>
@@ -345,6 +595,7 @@ function HomeScreen() {
               I want to thank you for spending time on my portfolio site, I
               truly
             </p>
+
             <p>
               hope it is clear to you now that I am the right fit for your
               company.
@@ -360,34 +611,76 @@ function HomeScreen() {
           </Link>
 
           <AnimatedIcon iconData={glassIcon} height={300} width={300} />
-        </div>
+        </animated.div>
       </section>
 
       {/* Section 10 ~ Get in Touch */}
       <section className="bg-secondary pt-24">
-        <div className="parent-get-in-touch-container flex flex-col items-center text-center">
-          <div className="flex flex-col">
-            <h1 className="text-section-heading">Get In Touch</h1>
-            <p className="text-body">
-              Let’s touch base and discuss how I can make a lasting positive
-              impact on your company
-            </p>
-          </div>
-          <div className="flex w-1/2 flex-col text-left">
-            <div className="text-left">
-              <h1 className="text-section-heading">
-                Let’s <span className="bg-gradient px-2">Talk</span>
+        <h1 className="m-2 text-center text-section-heading">Get In Touch</h1>
+
+        <p className="mb-20 text-wrap text-center text-body">
+          Let’s touch base and discuss how I can make a lasting positive impact
+          on your company
+        </p>
+        <div className="parent-get-in-touch-container flex flex-row items-center justify-center text-center">
+          <div className="w-80% mx-20 flex flex-col">
+            <div className="flex  flex-col text-left">
+              <div className="text-left">
+                <h1 className="text-section-heading">
+                  Let’s <span className="bg-gradient px-2">Talk</span>
+                  <br />
+                  About Your Project
+                </h1>
+              </div>
+              <div className="text-body">
+                Start a conversation
                 <br />
-                About Your Project
-              </h1>
-            </div>
-            <div className="text-body">
-              Start a conversation
-              <br />
-              by filling the form to the right.
+                by filling the form to the right.
+              </div>
             </div>
           </div>
-          <div className="w-1/2"></div>
+          <div className="flex w-1/2 flex-col gap-5 text-left ">
+            <div className="flex gap-10">
+              <div className="w-[40%]">
+                <p className="py-2">Full Name*</p>
+
+                <input
+                  className="h-14 w-[100%] rounded-full   border-none  bg-primary px-4 outline-none "
+                  placeholder="John David"
+                />
+              </div>
+              <div className=" w-[40%]">
+                <p className="py-2">email*</p>
+
+                <input
+                  className="h-14 w-[100%] rounded-full   border-none  bg-primary px-4 outline-none "
+                  placeholder="example@yourmail.com"
+                />
+              </div>
+            </div>
+            <div className="flex gap-10">
+              <div className="w-[40%]">
+                <p className="py-2">Phone*</p>
+
+                <input
+                  className="h-14 w-[100%] rounded-full   border-none  bg-primary px-4 outline-none "
+                  placeholder="Put Developement URL"
+                />
+              </div>
+              <div className="w-[40%]">
+                <p className="py-2">Subject</p>
+
+                <input
+                  className="h-14 w-[100%] rounded-full   border-none  bg-primary px-4 outline-none "
+                  placeholder="Put Developement URL"
+                />
+              </div>
+            </div>
+            <div className="w-[90%]">
+              <p className="py-2"> Textarea </p>
+              <textarea className="h-44 w-[100%] rounded-3xl   border-none  bg-primary px-4 outline-none " />
+            </div>
+          </div>
         </div>
       </section>
     </div>

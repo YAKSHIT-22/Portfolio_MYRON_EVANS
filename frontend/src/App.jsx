@@ -7,10 +7,12 @@ import StoreScreen from './screens/StoreScreen'
 import AffRefScreen from './screens/AffRefScreen'
 import ProductDetailScreen from './screens/ProductDetailScreen.jsx'
 import CartScreen from './screens/CartScreen.jsx'
+import AdminScreen from './screens/AdminScreen'
+import { AddNewBlog } from './screens/adminScreens/AddNewBlog'
 
 function App() {
   return (
-    <div className="min-h-screen w-full bg-primary font-arial tracking-wider text-primary md:bg-primary">
+    <div className="min-h-screen w-full bg-primary font-arial tracking-wider text-primary md:bg-primary scroll-smooth">
       <div>
         <Router>
           <NavBar />
@@ -24,6 +26,9 @@ function App() {
               <Route path="/store" element={<StoreScreen />} />
               <Route path="/store/product" element={<ProductDetailScreen />} />
               <Route path="/store/cart" element={<CartScreen />} />
+              <Route path="/admin" element={<AdminScreen />} />
+              <Route path="/addNewBlog" element={<AddNewBlog />} />
+
             </Routes>
           </div>
         </Router>
