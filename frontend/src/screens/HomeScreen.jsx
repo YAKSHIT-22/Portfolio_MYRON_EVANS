@@ -19,49 +19,26 @@ import section2Img from '../assets/images/Home Page/Section 2 img.png'
 import section9Img from '../assets/images/Home Page/Section 9.png'
 
 import experienceData from '../data/experience.json'
-import skillsData from '../data/skills'
-import values from '../data/services'
+import skillsData from '../data/skills.js'
+import values from '../data/services.js'
 
-import VerticalTime from '../components/HomeScreen/VerticalTime'
-import SkillsCard from '../components/HomeScreen/SkillsCard'
-import AnimatedIcon from '../components/Icons/AnimatedIcon'
-import ServiceCard from '../components/ServiceCard'
-import copy from 'react-copy-to-clipboard'
-// import face from ''
-// import { Parallax, ParallaxLayer } from '@react-spring/web'
+import VerticalTime from '../components/HomeScreen/VerticalTime.jsx'
+import SkillsCard from '../components/HomeScreen/SkillsCard.jsx'
+import AnimatedIcon from '../components/Icons/AnimatedIcon.jsx'
+import ServiceCard from '../components/ServiceCard.jsx'
+import Carousel from '../components/HomeScreen/Carousel.jsx'
 
-import Carousel from '../components/HomeScreen/Carousel'
 import { useInView, animated } from '@react-spring/web'
+
 function HomeScreen() {
-  // useEffect(() => {
-  //   var FRAMES = 600;
-  //   var FPS = 60;
-  //   var video = document.getElementById('video');
-  //   console.log(video.duration)
-  //   window.addEventListener('scroll', function () {
-  //     var time = (window.scrollY / 1200) * FRAMES / FPS;
-  //     video.currentTime = time;
-  //     console.log(time);
-  //     // if(time === video.duration){
-
-  //     // }
-  //     // alert('Hizo scroll')
-  //   });
-
-  //   window.addEventListener('load', function () {
-  //     video.pause();
-  //     video.currentTime = 0;
-  //   });
-
-  // }, [])
   const [scrolled, setScroll] = useState(78)
+
   useEffect(() => {
     // if (imageNumber < 801) {
     window.addEventListener('scroll', scrollProgress)
 
     return () => window.removeEventListener('scroll', scrollProgress)
   }, [])
-
 
   const scrollProgress = () => {
     const scrollPx = document.documentElement.scrollTop
@@ -73,13 +50,7 @@ function HomeScreen() {
     if (scrollLen > 610 || scrollLen < 2) {
       setScroll(0)
       //fix error after  the animation gets finished
-
-
-
-    }
-    else {
-
-
+    } else {
       const divtoHide = document.getElementById('faceContainer')
       divtoHide.style.opacity = 0
       divtoHide.style.transitionDuration = 100
@@ -88,74 +59,54 @@ function HomeScreen() {
     console.log(scrollLen)
   }
 
-  const [refSynth, SyhtnSprings] = useInView(
-    () => ({
-      from: {
-        y: 60,
-        opacity: 0,
-
-      },
-      to: {
-        y: 0,
-        opacity: 1,
-      },
-      config: {
-        duration: 500,
-        // mass: 7,
-        tension: 120,
-
-      },
-    }),
-    // {
-    //   rootMargin: '-40% 0%',
-    // }
-  )
+  const [refSynth, SyhtnSprings] = useInView(() => ({
+    from: {
+      y: 60,
+      opacity: 0,
+    },
+    to: {
+      y: 0,
+      opacity: 1,
+    },
+    config: {
+      duration: 500,
+      // mass: 7,
+      tension: 120,
+    },
+  }))
   const [refAmbition, ambitionSprings] = useInView(
     () => ({
       from: {
-
         opacity: 0,
-
       },
       to: {
-
         opacity: 1,
       },
       config: {
         duration: 400,
         mass: 10,
-        precision: 0.3
+        precision: 0.3,
         // tension: 1200,
-
       },
     }),
     // {
     //   rootMargin: '-40% 0%',
     // }
   )
-  const [refPurpose, purposeSprings] = useInView(
-    () => ({
-      from: {
-
-        opacity: 0,
-
-      },
-      to: {
-
-        opacity: 1,
-      },
-      config: {
-        duration: 400,
-        mass: 10,
-        precision: 0.3
-        // tension: 1200,
-
-      },
-    }),
-    // {
-    //   rootMargin: '-40% 0%',
-    // }
-  )
+  const [refPurpose, purposeSprings] = useInView(() => ({
+    from: {
+      opacity: 0,
+    },
+    to: {
+      opacity: 1,
+    },
+    config: {
+      duration: 400,
+      mass: 10,
+      precision: 0.3,
+      // tension: 1200,
+    },
+  }))
 
   const [refShare, shareSprings] = useInView(
     () => ({
@@ -166,21 +117,18 @@ function HomeScreen() {
       to: {
         y: 0,
         opacity: 1,
-
-
       },
 
       config: {
         tension: 100,
-        mass: 2
+        mass: 2,
       },
-      duration: 2000
+      duration: 2000,
     }),
     // {
     //   rootMargin: '-40% 0%',
     // }
   )
-
 
   const [refs2, fromRight] = useInView(
     () => ({
@@ -191,10 +139,8 @@ function HomeScreen() {
       to: {
         x: 0,
         opacity: 1,
-
-
       },
-      duration: 2000
+      duration: 2000,
     }),
     // {
     //   rootMargin: '-40% 0%',
@@ -209,15 +155,13 @@ function HomeScreen() {
       to: {
         y: 0,
         opacity: 1,
-
-
       },
 
       config: {
         tension: 100,
-        mass: 2
+        mass: 2,
       },
-      duration: 2000
+      duration: 2000,
     }),
     // {
     //   rootMargin: '-40% 0%',
@@ -231,18 +175,12 @@ function HomeScreen() {
       {/* <ParallaxLayer speed={1}> */}
 
       <section className="flex flex-col items-center">
-        <div className="flex h-[940vw] justify-center scroll-smooth">
-          {/* <img
-            src={faceAnimation}
-            alt="Animated Face"
-            className="-mt-16 w-[65%]"
-
-
-
-          /> */}
+        <div
+          className={`h-[${window.innerHeight * 29}px] flex justify-center scroll-smooth`}
+        >
           <img
             className="fixed -z-0"
-            src={`Image Sequence/Preview${scrolled}.png`}
+            src={`Animation/${scrolled}.png`}
             alt=""
           />
 
@@ -259,7 +197,8 @@ function HomeScreen() {
           <video className='fixed h-full' src={myronFace} playsInline type="video/webm/" id='video' >
           </video>
         </div> */}
-        <animated.h1 className="-mt-16 text-center text-main-heading"
+        <animated.h1
+          className="-mt-16 text-center text-main-heading"
           ref={refSynth}
           style={SyhtnSprings}
         >
@@ -298,14 +237,17 @@ function HomeScreen() {
             <div className="mt-7">
               <AnimatedIcon iconData={myAmbitionIcon} height={80} width={90} />
 
-              <animated.h2 className="mt-4 text-content-heading font-extrabold"
+              <animated.h2
+                className="mt-4 text-content-heading font-extrabold"
                 ref={refAmbition}
                 style={ambitionSprings}
               >
                 My Ambition
               </animated.h2>
-              <animated.p className="mt-4 text-body text-secondary"
-                style={ambitionSprings}>
+              <animated.p
+                className="mt-4 text-body text-secondary"
+                style={ambitionSprings}
+              >
                 My ambition is to offer the pinnacle of perfect user centered
                 software design and development to my clients. I aim to offer
                 the best services and an outstanding experienceData to anyone
@@ -317,11 +259,15 @@ function HomeScreen() {
             </div>
             <div className="mt-7">
               <AnimatedIcon iconData={myPurposeIcon} height={80} width={90} />
-              <animated.h2 className="text-content-heading"
+              <animated.h2
+                className="text-content-heading"
                 ref={refPurpose}
                 style={purposeSprings}
-              >My Purpose</animated.h2>
-              <animated.p className="mt-4 text-body text-secondary"
+              >
+                My Purpose
+              </animated.h2>
+              <animated.p
+                className="mt-4 text-body text-secondary"
                 ref={refPurpose}
                 style={purposeSprings}
               >
@@ -375,7 +321,8 @@ function HomeScreen() {
 
           {/* Text content div  cerate it responsive for md */}
 
-          <animated.div className="pl-18 relative z-10 flex h-full flex-col items-center justify-center py-14 text-white"
+          <animated.div
+            className="pl-18 relative z-10 flex h-full flex-col items-center justify-center py-14 text-white"
             ref={refShare}
             style={shareSprings}
           >
@@ -429,7 +376,8 @@ function HomeScreen() {
                   width={115}
                 />
               </div>
-              <animated.div className="w-[25rem] items-center"
+              <animated.div
+                className="w-[25rem] items-center"
                 ref={refService}
                 style={serviceSprings}
               >
@@ -454,7 +402,8 @@ function HomeScreen() {
                   width={115}
                 />
               </div>
-              <animated.div className="service-content-wrapper flex w-[25rem] flex-col items-center"
+              <animated.div
+                className="service-content-wrapper flex w-[25rem] flex-col items-center"
                 ref={refService}
                 style={serviceSprings}
               >
@@ -578,9 +527,7 @@ function HomeScreen() {
           <img src={section9Img} className="" />
         </div>
 
-        <animated.div className="w-2/4"
-
-        >
+        <animated.div className="w-2/4">
           <h3 className="mb-1 text-clip bg-gradient bg-clip-text text-content-heading text-transparent">
             Born to serve
           </h3>

@@ -1,18 +1,18 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import NavBar from './components/NavBar'
-import HomeScreen from './screens/HomeScreen'
-import MyWorkScreen from './screens/MyWorkScreen'
-import BlogScreen from './screens/BlogScreen'
-import StoreScreen from './screens/StoreScreen'
-import AffRefScreen from './screens/AffRefScreen'
+import NavBar from './components/Navbar.jsx'
+import HomeScreen from './screens/HomeScreen.jsx'
+import MyWorkScreen from './screens/MyWorkScreen.jsx'
+import BlogScreen from './screens/BlogScreen.jsx'
+import StoreScreen from './screens/StoreScreen.jsx'
+import AffRefScreen from './screens/AffRefScreen.jsx'
 import ProductDetailScreen from './screens/ProductDetailScreen.jsx'
 import CartScreen from './screens/CartScreen.jsx'
-import AdminScreen from './screens/AdminScreen'
-import { AddNewBlog } from './screens/adminScreens/AddNewBlog'
+import AdminScreen from './screens/AdminScreen.jsx'
+import { AddNewBlog } from './screens/adminScreens/AddNewBlog.jsx'
 
 function App() {
   return (
-    <div className="min-h-screen w-full bg-primary font-arial tracking-wider text-primary md:bg-primary scroll-smooth">
+    <div className="min-h-screen w-full scroll-smooth bg-primary font-arial tracking-wider text-primary md:bg-primary">
       <div>
         <Router>
           <NavBar />
@@ -28,7 +28,6 @@ function App() {
               <Route path="/store/cart" element={<CartScreen />} />
               <Route path="/admin" element={<AdminScreen />} />
               <Route path="/addNewBlog" element={<AddNewBlog />} />
-
             </Routes>
           </div>
         </Router>
