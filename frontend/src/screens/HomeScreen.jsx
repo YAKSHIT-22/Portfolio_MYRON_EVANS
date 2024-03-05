@@ -36,74 +36,48 @@ import Carousel from '../components/HomeScreen/Carousel'
 import { useInView, animated } from '@react-spring/web'
 
 function HomeScreen() {
-  // useEffect(() => {
-  //   var FRAMES = 600;
-  //   var FPS = 60;
-  //   var video = document.getElementById('video');
-  //   console.log(video.duration)
-  //   window.addEventListener('scroll', function () {
-  //     var time = (window.scrollY / 1200) * FRAMES / FPS;
-  //     video.currentTime = time;
-  //     console.log(time);
-  //     // if(time === video.duration){
-
-  //     // }
-  //     // alert('Hizo scroll')
-  //   });
-
-  //   window.addEventListener('load', function () {
-  //     video.pause();
-  //     video.currentTime = 0;
-  //   });
-
-  // }, [])
   const [scrolled, setScroll] = useState(78)
-  // useEffect(() => {
-  //   // if (imageNumber < 801) {
-  //   window.addEventListener('scroll', scrollProgress)
-  //
-  //   return () => window.removeEventListener('scroll', scrollProgress)
-  // }, [])
+  useEffect(() => {
+    // if (imageNumber < 801) {
+    window.addEventListener('scroll', scrollProgress)
 
-  // const scrollProgress = () => {
-  //   const scrollPx = document.documentElement.scrollTop
-  //   const winHeight =
-  //     document.documentElement.scrollHeight -
-  //     document.documentElement.clientHeight
-  //   const scrollLen = Math.ceil(((scrollPx / winHeight) * 100) / 0.11) + 80
-  //   console.log(scrolled)
-  //   if (scrollLen > 610 || scrollLen < 2) {
-  //     setScroll(0)
-  //     //fix error after  the animation gets finished
-  //   } else {
-  //     const divtoHide = document.getElementById('faceContainer')
-  //     divtoHide.style.opacity = 0
-  //     divtoHide.style.transitionDuration = 100
-  //     setScroll(scrollLen)
-  //   }
-  //   console.log(scrollLen)
-  // }
+    return () => window.removeEventListener('scroll', scrollProgress)
+  }, [])
 
-  const [refSynth, SyhtnSprings] = useInView(
-    () => ({
-      from: {
-        y: 60,
-        opacity: 0,
-      },
-      to: {
-        y: 0,
-        opacity: 1,
-      },
-      config: {
-        duration: 500,
-        // mass: 7,
-        tension: 120,
-      },
-    }),
-    // {
-    //   rootMargin: '-40% 0%',
-    // }
-  )
+  const scrollProgress = () => {
+    const scrollPx = document.documentElement.scrollTop
+    const winHeight =
+      document.documentElement.scrollHeight -
+      document.documentElement.clientHeight
+    const scrollLen = Math.ceil(((scrollPx / winHeight) * 100) / 0.11) + 80
+    console.log(scrolled)
+    if (scrollLen > 610 || scrollLen < 2) {
+      setScroll(0)
+      //fix error after  the animation gets finished
+    } else {
+      const divtoHide = document.getElementById('faceContainer')
+      divtoHide.style.opacity = 0
+      divtoHide.style.transitionDuration = 100
+      setScroll(scrollLen)
+    }
+    console.log(scrollLen)
+  }
+
+  const [refSynth, SyhtnSprings] = useInView(() => ({
+    from: {
+      y: 60,
+      opacity: 0,
+    },
+    to: {
+      y: 0,
+      opacity: 1,
+    },
+    config: {
+      duration: 500,
+      // mass: 7,
+      tension: 120,
+    },
+  }))
   const [refAmbition, ambitionSprings] = useInView(
     () => ({
       from: {
@@ -123,25 +97,20 @@ function HomeScreen() {
     //   rootMargin: '-40% 0%',
     // }
   )
-  const [refPurpose, purposeSprings] = useInView(
-    () => ({
-      from: {
-        opacity: 0,
-      },
-      to: {
-        opacity: 1,
-      },
-      config: {
-        duration: 400,
-        mass: 10,
-        precision: 0.3,
-        // tension: 1200,
-      },
-    }),
-    // {
-    //   rootMargin: '-40% 0%',
-    // }
-  )
+  const [refPurpose, purposeSprings] = useInView(() => ({
+    from: {
+      opacity: 0,
+    },
+    to: {
+      opacity: 1,
+    },
+    config: {
+      duration: 400,
+      mass: 10,
+      precision: 0.3,
+      // tension: 1200,
+    },
+  }))
 
   const [refShare, shareSprings] = useInView(
     () => ({
@@ -210,50 +179,21 @@ function HomeScreen() {
       {/* <ParallaxLayer speed={1}> */}
 
       <section className="flex flex-col items-center">
-        {/*<div className="flex h-[940vw] justify-center scroll-smooth">*/}
-        {/*  <img*/}
-        {/*    className="fixed -z-0"*/}
-        {/*    src={`Image_Sequence/Preview${scrolled}.png`}*/}
-        {/*    alt=""*/}
-        {/*  />*/}
-
-        {/*  <animated.div*/}
-        {/*    className="align-center fixed flex justify-center"*/}
-        {/*    id="faceContainer"*/}
-        {/*  >*/}
-        {/*    <img src={mt2} className="z-10 mr-10 mt-[7.16rem] h-[26.62rem]" />*/}
-        {/*    <img src={mt1} className="z-10 ml-10 mt-[7.16rem] h-[26.62rem]" />*/}
-        {/*  </animated.div>*/}
-        {/*</div>*/}
-
-        <ScrollContainer>
-          <section
-            style={{
-              height: '100vh',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            <h1>Hello World!!</h1>
-          </section>
-          <SequenceSection
-            end="200%"
-            imagesPath="/Animation"
-            imagesCount={802}
-            imagesType="png"
+        <div className="flex h-[940vw] justify-center scroll-smooth">
+          <img
+            className="fixed -z-0"
+            src={`Animation/${scrolled}.png`}
+            alt=""
           />
-          <section
-            style={{
-              height: '100vh',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
+
+          <animated.div
+            className="align-center fixed flex justify-center"
+            id="faceContainer"
           >
-            <h1>Hello World!!</h1>
-          </section>
-        </ScrollContainer>
+            <img src={mt2} className="z-10 mr-10 mt-[7.16rem] h-[26.62rem]" />
+            <img src={mt1} className="z-10 ml-10 mt-[7.16rem] h-[26.62rem]" />
+          </animated.div>
+        </div>
 
         {/* <div className="h-[130rem] flex justify-center">
           <video className='fixed h-full' src={myronFace} playsInline type="video/webm/" id='video' >
