@@ -16,7 +16,7 @@ const CartScreen = () => {
       <div className={'mt-10'}>
         <div className={'mb-4'}>
           <h1 className={'text-section-heading font-medium'}>Shopping Cart</h1>
-          <h3 className={'font-publicsans mt-1 text-body font-light'}>
+          <h3 className={'mt-1 font-publicsans text-body font-light'}>
             Not ready to checkout?{' '}
             <Link
               to={'/store'}
@@ -30,14 +30,25 @@ const CartScreen = () => {
           </h3>
         </div>
 
-        {products.map((product, idx) => (
-          <CartItem
-            key={idx}
-            product={product}
-            totalQty={totalQty}
-            className={idx < products.length - 1 && 'mb-4'}
-          />
-        ))}
+        <div className={'mb-7'}>
+          {products.map((product, idx) => (
+            <CartItem
+              key={idx}
+              product={product}
+              totalQty={totalQty}
+              className={idx < products.length - 1 && 'mb-4'}
+            />
+          ))}
+        </div>
+
+        <div className={'flex items-center justify-center'}>
+          <Link
+            to={'/store/checkout/'}
+            className={'bg-gradient px-7 py-3 font-publicsans font-medium'}
+          >
+            Proceed To Checkout
+          </Link>
+        </div>
       </div>
     </div>
   )

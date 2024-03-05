@@ -17,6 +17,7 @@ const AddToCart = ({ price, qty, sizeIdx, colorIdx, product }) => {
       id: product.id,
       name: product.name,
       total: total,
+      price: price,
       quantity: quantity,
       color: {
         idx: colorIdx,

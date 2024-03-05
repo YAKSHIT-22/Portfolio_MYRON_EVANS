@@ -23,13 +23,11 @@ const CartItem = ({ product, totalQty, className }) => {
           <div className={'my-2'}>
             <p className={'font-publicsans text-cart-item-text'}>
               Size:{' '}
-              {product.size && product.size.size
-                ? product.size.size
-                : product.size}
+              {product.size && product.size.size ? product.size.size : 'Error'}
             </p>
             <div
               className={
-                'font-publicsans text-cart-item-text flex items-center'
+                'flex items-center font-publicsans text-cart-item-text'
               }
             >
               Quantity:{' '}

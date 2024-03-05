@@ -15,7 +15,8 @@ const QuantityField = ({
     return {
       id: product.id,
       name: product.name,
-      total: price,
+      total: price * quantity,
+      price: price,
       quantity: quantity,
       color: {
         idx: colorIdx,
@@ -40,7 +41,7 @@ const QuantityField = ({
       if (setCartWhenUsingButtons) {
         const newProduct = makePayload(
           product,
-          product?.total,
+          product?.price,
           productQty,
           product?.size.idx,
           product?.color.idx,
@@ -66,7 +67,7 @@ const QuantityField = ({
       if (setCartWhenUsingButtons) {
         const newProduct = makePayload(
           product,
-          product?.total,
+          product?.price,
           productQty,
           product?.size.idx,
           product?.color.idx,
@@ -85,7 +86,7 @@ const QuantityField = ({
     if (setCartWhenUsingButtons) {
       const newProduct = makePayload(
         product,
-        product?.total,
+        product?.price,
         newQuantity,
         product?.size.idx,
         product?.color.idx,
@@ -101,7 +102,7 @@ const QuantityField = ({
     if (setCartWhenUsingButtons) {
       const newProduct = makePayload(
         product,
-        product?.total,
+        product?.price,
         newQuantity,
         product?.size.idx,
         product?.color.idx,

@@ -139,7 +139,7 @@ DATABASES = {
 		'ENGINE': 'django.db.backends.postgresql',
 		'NAME': 'ecommerce_myron',
 		'USER': 'postgres',
-		'PASSWORD': 'Ku$hagra47',
+		'PASSWORD': '0347',
 		'PORT': '5432'
 	}
 }
