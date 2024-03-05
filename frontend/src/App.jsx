@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import NavBar from './components/NavBar.jsx'
+import NavBar from './components/Navbar.jsx'
 import HomeScreen from './screens/HomeScreen.jsx'
 import MyWorkScreen from './screens/MyWorkScreen.jsx'
 import BlogScreen from './screens/BlogScreen.jsx'
