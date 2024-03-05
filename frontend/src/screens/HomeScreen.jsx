@@ -3,6 +3,8 @@ import { useEffect } from 'react'
 
 import 'react-vertical-timeline-component/style.min.css'
 import { VerticalTimeline } from 'react-vertical-timeline-component'
+import { ScrollContainer, SequenceSection } from 'react-nice-scroll'
+import 'react-nice-scroll/dist/styles.css'
 
 import myPurposeIcon from '../assets/Animations/icons animation/My Purpose/LottieJSON.json'
 import myAmbitionIcon from '../assets/Animations/icons animation/My Ambition/LottieJSON.json'
@@ -28,6 +30,7 @@ import AnimatedIcon from '../components/Icons/AnimatedIcon.jsx'
 import ServiceCard from '../components/ServiceCard.jsx'
 import Carousel from '../components/HomeScreen/Carousel.jsx'
 
+import Carousel from '../components/HomeScreen/Carousel'
 import { useInView, animated } from '@react-spring/web'
 
 function HomeScreen() {
@@ -279,9 +282,9 @@ function HomeScreen() {
         </div>
 
         {/* Right Side ~ Image Side */}
-        <div className="relative ml-24 mt-52 h-96 w-1/3 border">
+        <div className="relative ml-24 mt-52 h-96 w-1/3">
           <img src={imageBg} className="absolute -right-4 -top-40" />
-          <img src={section2Img} className="absolute -right-0 -top-32 h-full" />
+          <img src={section2Img} className="absolute -bottom-1" />
           <animated.h1 className="absolute -bottom-10 right-0 bg-gradient px-6 py-2 text-[1.5rem]">
             <p>Frontend Developer</p>
             <p>and Designer</p>
