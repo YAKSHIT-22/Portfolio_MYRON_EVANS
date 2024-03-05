@@ -3,8 +3,6 @@ import { useEffect } from 'react'
 
 import 'react-vertical-timeline-component/style.min.css'
 import { VerticalTimeline } from 'react-vertical-timeline-component'
-import { ScrollContainer, SequenceSection } from 'react-nice-scroll'
-import 'react-nice-scroll/dist/styles.css'
 
 import myPurposeIcon from '../assets/Animations/icons animation/My Purpose/LottieJSON.json'
 import myAmbitionIcon from '../assets/Animations/icons animation/My Ambition/LottieJSON.json'
@@ -21,22 +19,20 @@ import section2Img from '../assets/images/Home Page/Section 2 img.png'
 import section9Img from '../assets/images/Home Page/Section 9.png'
 
 import experienceData from '../data/experience.json'
-import skillsData from '../data/skills'
-import values from '../data/services'
+import skillsData from '../data/skills.js'
+import values from '../data/services.js'
 
-import VerticalTime from '../components/HomeScreen/VerticalTime'
-import SkillsCard from '../components/HomeScreen/SkillsCard'
-import AnimatedIcon from '../components/Icons/AnimatedIcon'
-import ServiceCard from '../components/ServiceCard'
-import copy from 'react-copy-to-clipboard'
-// import face from ''
-// import { Parallax, ParallaxLayer } from '@react-spring/web'
+import VerticalTime from '../components/HomeScreen/VerticalTime.jsx'
+import SkillsCard from '../components/HomeScreen/SkillsCard.jsx'
+import AnimatedIcon from '../components/Icons/AnimatedIcon.jsx'
+import ServiceCard from '../components/ServiceCard.jsx'
+import Carousel from '../components/HomeScreen/Carousel.jsx'
 
-import Carousel from '../components/HomeScreen/Carousel'
 import { useInView, animated } from '@react-spring/web'
 
 function HomeScreen() {
   const [scrolled, setScroll] = useState(78)
+
   useEffect(() => {
     // if (imageNumber < 801) {
     window.addEventListener('scroll', scrollProgress)
@@ -179,7 +175,9 @@ function HomeScreen() {
       {/* <ParallaxLayer speed={1}> */}
 
       <section className="flex flex-col items-center">
-        <div className="flex h-[940vw] justify-center scroll-smooth">
+        <div
+          className={`h-[${window.innerHeight * 29}px] flex justify-center scroll-smooth`}
+        >
           <img
             className="fixed -z-0"
             src={`Animation/${scrolled}.png`}
@@ -281,9 +279,9 @@ function HomeScreen() {
         </div>
 
         {/* Right Side ~ Image Side */}
-        <div className="relative ml-24 mt-52 h-96 w-1/3">
+        <div className="relative ml-24 mt-52 h-96 w-1/3 border">
           <img src={imageBg} className="absolute -right-4 -top-40" />
-          <img src={section2Img} className="absolute -bottom-1" />
+          <img src={section2Img} className="absolute -right-0 -top-32 h-full" />
           <animated.h1 className="absolute -bottom-10 right-0 bg-gradient px-6 py-2 text-[1.5rem]">
             <p>Frontend Developer</p>
             <p>and Designer</p>
