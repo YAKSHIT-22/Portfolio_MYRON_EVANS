@@ -23,7 +23,9 @@ function Carousel() {
     centerPadding: 0,
     className: 'mx-9 h-[35rem]',
     dotsClass: 'slick-dots',
-    beforeChange: (_, next) => setImgIndex(next),
+    beforeChange: (_, next) => {
+      setImgIndex(next)
+    },
   }
 
   return (
