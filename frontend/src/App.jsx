@@ -5,6 +5,8 @@ import MyWorkScreen from './screens/MyWorkScreen'
 import BlogScreen from './screens/BlogScreen'
 import StoreScreen from './screens/StoreScreen'
 import AffRefScreen from './screens/AffRefScreen'
+import ProductDetailScreen from './screens/ProductDetailScreen.jsx'
+import CartScreen from './screens/CartScreen.jsx'
 import AdminScreen from './screens/AdminScreen'
 import { AddNewBlog } from './screens/adminScreens/AddNewBlog'
 
@@ -22,6 +24,8 @@ function App() {
               <Route path="/blogs" element={<BlogScreen />} />
               <Route path="/aff-ref" element={<AffRefScreen />} />
               <Route path="/store" element={<StoreScreen />} />
+              <Route path="/store/product" element={<ProductDetailScreen />} />
+              <Route path="/store/cart" element={<CartScreen />} />
               <Route path="/admin" element={<AdminScreen />} />
               <Route path="/addNewBlog" element={<AddNewBlog />} />
 
