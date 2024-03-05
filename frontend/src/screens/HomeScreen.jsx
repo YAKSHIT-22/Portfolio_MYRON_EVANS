@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 
 import 'react-vertical-timeline-component/style.min.css'
 import { VerticalTimeline } from 'react-vertical-timeline-component'
-import { ScrollContainer, SequenceSection } from 'react-nice-scroll'
+// import { ScrollContainer, SequenceSection } from 'react-nice-scroll'
 import 'react-nice-scroll/dist/styles.css'
 
 import myPurposeIcon from '../assets/Animations/icons animation/My Purpose/LottieJSON.json'
@@ -24,11 +24,11 @@ import experienceData from '../data/experience.json'
 import skillsData from '../data/skills'
 import values from '../data/services'
 
-import VerticalTime from '../components/HomeScreen/VerticalTime'
-import SkillsCard from '../components/HomeScreen/SkillsCard'
-import AnimatedIcon from '../components/Icons/AnimatedIcon'
-import ServiceCard from '../components/ServiceCard'
-import copy from 'react-copy-to-clipboard'
+import VerticalTime from '../components/HomeScreen/VerticalTime.jsx'
+import SkillsCard from '../components/HomeScreen/SkillsCard.jsx'
+import AnimatedIcon from '../components/Icons/AnimatedIcon.jsx'
+import ServiceCard from '../components/ServiceCard.jsx'
+// import copy from 'react-copy-to-clipboard'
 // import face from ''
 // import { Parallax, ParallaxLayer } from '@react-spring/web'
 
@@ -38,6 +38,7 @@ import { useInView, animated } from '@react-spring/web'
 function HomeScreen() {
   const [scrolled, setScroll] = useState(78)
   useEffect(() => {
+
     // if (imageNumber < 801) {
     window.addEventListener('scroll', scrollProgress)
 
@@ -172,6 +173,8 @@ function HomeScreen() {
     // }
   )
 
+
+
   return (
     <div>
       {/* Section 1 ~ Face Animation */}
@@ -179,7 +182,7 @@ function HomeScreen() {
       {/* <ParallaxLayer speed={1}> */}
 
       <section className="flex flex-col items-center">
-        <div className="flex h-[940vw] justify-center scroll-smooth">
+        <div className={`flex h-[${window.innerHeight * 29}px] justify-center scroll-smooth`}>
           <img
             className="fixed -z-0"
             src={`Animation/${scrolled}.png`}
@@ -612,7 +615,7 @@ function HomeScreen() {
                 <p className="py-2">Phone*</p>
 
                 <input
-                  className="h-14 w-[100%] rounded-full   border-none  bg-primary px-4 outline-none "
+                  className="h-14 w-[100%] rounded-full  border-none  bg-primary px-4 outline-none "
                   placeholder="Put Developement URL"
                 />
               </div>
@@ -626,7 +629,7 @@ function HomeScreen() {
               </div>
             </div>
             <div className="w-[90%]">
-              <p className="py-2"> Textarea </p>
+              <p className="py-2"> Tell me about your project</p>
               <textarea className="h-44 w-[100%] rounded-3xl   border-none  bg-primary px-4 outline-none " />
             </div>
           </div>
