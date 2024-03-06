@@ -32,6 +32,7 @@ import { useInView, animated } from '@react-spring/web'
 
 function HomeScreen() {
   const [scrolled, setScroll] = useState(78)
+  const [innerHeight] = useState(window.innerHeight)
 
   useEffect(() => {
     // if (imageNumber < 801) {
@@ -176,16 +177,17 @@ function HomeScreen() {
 
       <section className="flex flex-col items-center">
         <div
-          className={`h-[${window.innerHeight * 29}px] flex justify-center scroll-smooth`}
+          className={`flex justify-center scroll-smooth`}
+          style={{ height: innerHeight * 30 }}
         >
           <img
-            className="fixed -z-0"
+            className="fixed top-12 -z-0 h-full"
             src={`Animation/${scrolled}.png`}
             alt=""
           />
 
           <animated.div
-            className="align-center fixed flex justify-center"
+            className="align-center fixed flex hidden justify-center"
             id="faceContainer"
           >
             <img src={mt2} className="z-10 mr-10 mt-[7.16rem] h-[26.62rem]" />
@@ -216,7 +218,7 @@ function HomeScreen() {
       {/* <ParallaxLayer speed={0.5}> */}
 
       {/* Section 2 ~ What Drives Me*/}
-      <section className="mt-24 w-full md:flex md:flex-wrap md:items-center md:justify-evenly md:px-10">
+      <section className="mt-24 w-full border md:flex md:flex-row md:flex-wrap md:items-start md:justify-evenly">
         {/* Left Side ~ Text Side */}
         <div className="w-1/2">
           <animated.div>
@@ -279,19 +281,18 @@ function HomeScreen() {
         </div>
 
         {/* Right Side ~ Image Side */}
-        <div className="relative ml-24 mt-52 h-96 w-1/3">
-          <img src={imageBg} className="absolute -right-4 -top-40" />
-          <img src={section2Img} className="absolute -bottom-1" />
+        <div className="relative ml-24 mt-24 h-96 max-h-96 w-1/3 ">
+          <img src={imageBg} className="absolute right-0 top-0" />
+          <img src={section2Img} className="absolute right-4 top-7 h-full" />
           <animated.h1 className="absolute -bottom-10 right-0 bg-gradient px-6 py-2 text-[1.5rem]">
-            <p>Frontend Developer</p>
-            <p>and Designer</p>
+            <p>Designer</p>
           </animated.h1>
         </div>
       </section>
       {/* </ParallaxLayer> */}
 
       {/* Section 3 ~ Vertical Timeline*/}
-      <section className="mt-24 md:px-10">
+      <section className="mt-24">
         <div className="mt7">
           <VerticalTimeline>
             {experienceData &&
@@ -311,7 +312,7 @@ function HomeScreen() {
       </section>
 
       {/* Section 4 ~ Share Div */}
-      <section className="mt-24 md:px-10">
+      <section className="mt-24">
         <div className="relative mt-7 flex w-full items-center justify-center">
           {/* Background image div */}
           <div
@@ -350,7 +351,7 @@ function HomeScreen() {
       </section>
 
       {/* Section 5 ~ Services */}
-      <section className="mt-28 md:flex md:flex-col md:items-center md:justify-center md:px-10">
+      <section className="mt-28 md:flex md:flex-col md:items-center md:justify-center">
         <div className="heading-container flex w-[54rem] flex-col items-center">
           <h1 className="text-section-heading">
             My <p className="inline bg-gradient px-2 ">Services</p>
@@ -423,7 +424,7 @@ function HomeScreen() {
       </section>
 
       {/* Section 6 ~ Skills */}
-      <section className="mt-20 md:px-10">
+      <section className="mt-20">
         <div className="flex flex-col items-center justify-center">
           <h1 className="text-section-heading">
             My <span className="bg-gradient px-3">Skills</span>
@@ -497,7 +498,7 @@ function HomeScreen() {
       </section>
 
       {/* Section 8 ~ Carousel*/}
-      <section className="mt-24 md:px-10">
+      <section className="mt-24">
         <div>
           <h3 className="bg-gradient bg-clip-text text-center text-content-heading text-transparent">
             Client Testimonials
@@ -569,7 +570,7 @@ function HomeScreen() {
           Let’s touch base and discuss how I can make a lasting positive impact
           on your company
         </p>
-        <div className="parent-get-in-touch-container flex flex-row items-center justify-center text-center">
+        <div className="parent-get-in-touch-container flex flex-col items-center justify-center pb-12 text-center md:flex-row">
           <div className="w-80% mx-20 flex flex-col">
             <div className="flex  flex-col text-left">
               <div className="text-left">
@@ -586,7 +587,10 @@ function HomeScreen() {
               </div>
             </div>
           </div>
-          <div className="flex w-1/2 flex-col gap-5 text-left ">
+          <div
+            id={'get-in-touch'}
+            className="flex w-1/2 flex-col gap-5 text-left "
+          >
             <div className="flex gap-10">
               <div className="w-[40%]">
                 <p className="py-2">Full Name*</p>

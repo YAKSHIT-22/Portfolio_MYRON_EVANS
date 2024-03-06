@@ -35,8 +35,6 @@ function AnimatedIcon({ iconData, height, width }) {
       {isVisible && (
         <Player
           autoplay
-          hover={true}
-          onMouseEnter
           keepLastFrame
           mode="bounce"
           src={iconData}

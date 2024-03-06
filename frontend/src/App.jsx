@@ -17,7 +17,7 @@ function App() {
         <Router>
           <NavBar />
 
-          <div className="font-medium md:pt-6">
+          <div className="max-w-5xl font-medium md:mx-auto md:pt-6">
             <Routes>
               <Route path="/" element={<HomeScreen />} exact />
               <Route path="/my-work" element={<MyWorkScreen />} />
