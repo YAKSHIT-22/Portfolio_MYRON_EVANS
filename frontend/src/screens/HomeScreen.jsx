@@ -32,6 +32,7 @@ import { useInView, animated } from '@react-spring/web'
 
 function HomeScreen() {
   const [scrolled, setScroll] = useState(78)
+  const [innerHeight] = useState(window.innerHeight)
 
   useEffect(() => {
     // if (imageNumber < 801) {
@@ -176,7 +177,8 @@ function HomeScreen() {
 
       <section className="flex flex-col items-center">
         <div
-          className={`h-[${window.innerHeight * 29}px] flex justify-center scroll-smooth`}
+          className={`flex justify-center scroll-smooth`}
+          style={{ height: innerHeight * 29 }}
         >
           <img
             className="fixed -z-0"
