@@ -178,16 +178,16 @@ function HomeScreen() {
       <section className="flex flex-col items-center">
         <div
           className={`flex justify-center scroll-smooth`}
-          style={{ height: innerHeight * 30 }}
+          style={{ height:innerHeight===624? innerHeight * 19:innerHeight * 29 }}
         >
           <img
-            className="fixed top-12 -z-0 h-full"
+            className="fixed -z-0"
             src={`Animation/${scrolled}.png`}
             alt=""
           />
 
           <animated.div
-            className="align-center fixed flex hidden justify-center"
+            className="align-center fixed flex justify-center"
             id="faceContainer"
           >
             <img src={mt2} className="z-10 mr-10 mt-[7.16rem] h-[26.62rem]" />
@@ -218,7 +218,7 @@ function HomeScreen() {
       {/* <ParallaxLayer speed={0.5}> */}
 
       {/* Section 2 ~ What Drives Me*/}
-      <section className="mt-24 w-full border md:flex md:flex-row md:flex-wrap md:items-start md:justify-evenly">
+      <section className="mt-24 w-full md:flex md:flex-wrap md:items-center md:justify-evenly md:px-10">
         {/* Left Side ~ Text Side */}
         <div className="w-1/2">
           <animated.div>
