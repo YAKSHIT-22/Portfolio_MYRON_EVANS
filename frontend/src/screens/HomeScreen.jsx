@@ -178,7 +178,7 @@ function HomeScreen() {
       <section className="flex flex-col items-center">
         <div
           className={`flex justify-center scroll-smooth`}
-          style={{ height: innerHeight * 29 }}
+          style={{ height:innerHeight===624? innerHeight * 19:innerHeight * 29 }}
         >
           <img
             className="fixed -z-0"
