@@ -12,26 +12,24 @@ import { AddNewBlog } from './screens/adminScreens/AddNewBlog.jsx'
 
 function App() {
   return (
-    <div className="min-h-screen w-full scroll-smooth bg-primary font-arial tracking-wider text-primary md:bg-primary">
-      <div>
-        <Router>
-          <NavBar />
+    <div className="min-h-screen w-full max-w-full overflow-x-clip scroll-smooth bg-sm-primary font-arial tracking-wider text-primary md:bg-primary">
+      <Router>
+        <NavBar />
 
-          <div className="max-w-5xl font-medium md:mx-auto md:pt-6">
-            <Routes>
-              <Route path="/" element={<HomeScreen />} exact />
-              <Route path="/my-work" element={<MyWorkScreen />} />
-              <Route path="/blogs" element={<BlogScreen />} />
-              <Route path="/aff-ref" element={<AffRefScreen />} />
-              <Route path="/store" element={<StoreScreen />} />
-              <Route path="/store/product" element={<ProductDetailScreen />} />
-              <Route path="/store/cart" element={<CartScreen />} />
-              <Route path="/admin" element={<AdminScreen />} />
-              <Route path="/addNewBlog" element={<AddNewBlog />} />
-            </Routes>
-          </div>
-        </Router>
-      </div>
+        <div className="w-full font-medium md:px-10 md:pt-6">
+          <Routes>
+            <Route path="/" element={<HomeScreen />} exact />
+            <Route path="/my-work" element={<MyWorkScreen />} />
+            <Route path="/blogs" element={<BlogScreen />} />
+            <Route path="/aff-ref" element={<AffRefScreen />} />
+            <Route path="/store" element={<StoreScreen />} />
+            <Route path="/store/product" element={<ProductDetailScreen />} />
+            <Route path="/store/cart" element={<CartScreen />} />
+            <Route path="/admin" element={<AdminScreen />} />
+            <Route path="/addNewBlog" element={<AddNewBlog />} />
+          </Routes>
+        </div>
+      </Router>
     </div>
   )
 }

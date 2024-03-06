@@ -53,7 +53,7 @@ function HomeScreen() {
       //fix error after  the animation gets finished
     } else {
       const divtoHide = document.getElementById('faceContainer')
-      divtoHide.style.opacity = 0
+      divtoHide.style.display = 'none'
       divtoHide.style.transitionDuration = 100
       setScroll(scrollLen)
     }
@@ -170,28 +170,30 @@ function HomeScreen() {
   )
 
   return (
-    <div>
+    <>
       {/* Section 1 ~ Face Animation */}
       {/* <Parallax> */}
       {/* <ParallaxLayer speed={1}> */}
 
-      <section className="flex flex-col items-center">
+      <section className="flex w-full flex-col items-center">
         <div
-          className={`flex justify-center scroll-smooth`}
-          style={{ height:innerHeight===624? innerHeight * 19:innerHeight * 29 }}
+          className={`flex w-full justify-center scroll-smooth`}
+          style={{
+            height: innerHeight >= 624 ? innerHeight * 19 : innerHeight * 28.3,
+          }}
         >
           <img
-            className="fixed -z-0"
+            className="fixed top-12 -z-0 h-full"
             src={`Animation/${scrolled}.png`}
             alt=""
           />
 
           <animated.div
-            className="align-center fixed flex justify-center"
+            className="align-center fixed flex h-full w-full justify-center"
             id="faceContainer"
           >
-            <img src={mt2} className="z-10 mr-10 mt-[7.16rem] h-[26.62rem]" />
-            <img src={mt1} className="z-10 ml-10 mt-[7.16rem] h-[26.62rem]" />
+            <img src={mt2} className="z-10 mr-10 h-full w-full" />
+            <img src={mt1} className="z-10 ml-10 h-full w-full" />
           </animated.div>
         </div>
 
@@ -218,7 +220,7 @@ function HomeScreen() {
       {/* <ParallaxLayer speed={0.5}> */}
 
       {/* Section 2 ~ What Drives Me*/}
-      <section className="mt-24 w-full md:flex md:flex-wrap md:items-center md:justify-evenly md:px-10">
+      <section className="mt-24 w-full md:flex md:flex-wrap md:items-start md:justify-evenly md:px-10">
         {/* Left Side ~ Text Side */}
         <div className="w-1/2">
           <animated.div>
@@ -281,7 +283,7 @@ function HomeScreen() {
         </div>
 
         {/* Right Side ~ Image Side */}
-        <div className="relative ml-24 mt-24 h-96 max-h-96 w-1/3 ">
+        <div className="relative ml-24 mt-12 h-96 max-h-96 w-1/3 ">
           <img src={imageBg} className="absolute right-0 top-0" />
           <img src={section2Img} className="absolute right-4 top-7 h-full" />
           <animated.h1 className="absolute -bottom-10 right-0 bg-gradient px-6 py-2 text-[1.5rem]">
@@ -476,13 +478,13 @@ function HomeScreen() {
 
       {/* Section 7 ~ Core Values */}
       <section className="mt-28 flex w-[100%] flex-col bg-[#201F1F] md:flex-col md:items-center md:justify-center">
-        <div className="flex w-[90%] flex-col items-center px-20 py-24 text-center">
+        <div className="flex w-full flex-col items-center px-12 py-24 text-center">
           <h1 className="text-section-heading">
             The Core Values That Drives
             <br /> <span className="inlnie bg-gradient px-2">Everything</span> I
             do
           </h1>
-          <div className="values-containers flex w-[100%] flex-row flex-wrap  justify-around py-16">
+          <div className="values-containers flex w-full flex-wrap py-16 md:flex-row md:justify-evenly">
             {values.values &&
               values.values.map((vals) => (
                 <ServiceCard
@@ -491,6 +493,7 @@ function HomeScreen() {
                   title={vals.title}
                   desc={vals.desc}
                   icon={vals.icon}
+                  // className={idx === 1 || idx === 4 ? 'mx-1' : 'mx-0'}
                 />
               ))}
           </div>
@@ -634,7 +637,7 @@ function HomeScreen() {
           </div>
         </div>
       </section>
-    </div>
+    </>
   )
 }
 

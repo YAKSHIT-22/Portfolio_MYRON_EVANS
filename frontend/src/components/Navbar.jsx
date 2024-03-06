@@ -67,7 +67,10 @@ function NavBar() {
 
       {/* Mobile Menu Button */}
       <div className="flex w-1/3 items-center justify-end md:hidden">
-        <button className="flex items-center justify-center focus:outline-none">
+        <button
+          className="flex items-center justify-center focus:outline-none"
+          onClick={() => setShowNav(!showNav)}
+        >
           <svg
             className="h-6 w-6 text-gray-500"
             fill="none"
