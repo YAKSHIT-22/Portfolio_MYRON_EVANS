@@ -33,10 +33,11 @@ import { useInView, animated, useSpring } from '@react-spring/web'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import locomotiveScroll from 'locomotive-scroll'
+
 gsap.registerPlugin(ScrollTrigger)
 
 function HomeScreen() {
-  const [scrolled, setScroll] = useState(81)
+  const [scrolled, setScroll] = useState(30)
   const [innerHeight] = useState(window.innerHeight)
   const canvasRef = useRef(null)
   const containerRef = useRef(null)
@@ -83,7 +84,7 @@ function HomeScreen() {
       pinType: container.style.transform ? 'transform' : 'fixed',
     })
 
-    ScrollTrigger.addEventListener('refresh', () => locoScroll.update())
+    locoScroll.update()
     ScrollTrigger.refresh()
     for (let i = 1; i <= frameCount; i++) {
       const img = new Image()
@@ -91,7 +92,7 @@ function HomeScreen() {
       images.push(img)
     }
 
-    images[81].onload = render
+    images[30].onload = render
 
     function render() {
       scaleImage(images[imageSeq.frame], context)
@@ -117,6 +118,7 @@ function HomeScreen() {
         img.height * ratio,
       )
     }
+
     gsap.to(imageSeq, {
       frame: frameCount - 1,
       snap: 'frame',
@@ -144,12 +146,6 @@ function HomeScreen() {
     window.addEventListener('resize', handleResize)
 
     return () => window.removeEventListener('resize', handleResize)
-  }, [scrolled])
-
-  useEffect(() => {
-    window.addEventListener('scroll', scrollProgress)
-
-    return () => window.removeEventListener('scroll', scrollProgress)
   }, [scrolled])
 
   const scrollProgress = () => {
@@ -182,6 +178,12 @@ function HomeScreen() {
     }
   }
 
+  useEffect(() => {
+    window.addEventListener('scroll', scrollProgress)
+
+    return () => window.removeEventListener('scroll', scrollProgress)
+  }, [scrolled])
+
   const [refSynth, SyhtnSprings] = useInView(() => ({
     from: {
       y: 60,
@@ -197,39 +199,49 @@ function HomeScreen() {
       tension: 120,
     },
   }))
+
   const [refTextSpring, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.5,
+  })
+
+  const [refTextSpring1, inView1] = useInView({
     triggerOnce: true,
     threshold: 0.5,
   })
 
   const textSprings = useSpring({
     opacity: inView ? 1 : 0,
-    transform: inView ? 'translateX(100%)' : 'translateX(0%)',
+    transform: inView ? 'translateX(100%)' : 'translateX(0)',
+    config: { duration: 2000 },
+  })
+  const textSprings1 = useSpring({
+    opacity: inView1 ? 1 : 0,
+    transform: inView1 ? 'translateX(100%)' : 'translateX(0)',
     config: { duration: 2000 },
   })
 
-  const interpolatedOpacity = textSprings.transform.interpolate(
+  const interpolatedOpacity = textSprings.transform.to(
     (translateX) => 1 - Math.abs(parseFloat(translateX)) / 100,
   )
-  const [refAmbition, ambitionSprings] = useInView(
-    () => ({
-      from: {
-        opacity: 0,
-      },
-      to: {
-        opacity: 1,
-      },
-      config: {
-        duration: 400,
-        mass: 10,
-        precision: 0.3,
-        // tension: 1200,
-      },
-    }),
-    // {
-    //   rootMargin: '-40% 0%',
-    // }
+
+  const interpolatedOpacity1 = textSprings1.transform.to(
+    (translateX) => 1 - Math.abs(parseFloat(translateX)) / 100,
   )
+  const [refAmbition, ambitionSprings] = useInView(() => ({
+    from: {
+      opacity: 0,
+    },
+    to: {
+      opacity: 1,
+    },
+    config: {
+      duration: 400,
+      mass: 10,
+      precision: 0.3,
+      // tension: 1200,
+    },
+  }))
   const [refPurpose, purposeSprings] = useInView(() => ({
     from: {
       opacity: 0,
@@ -245,44 +257,34 @@ function HomeScreen() {
     },
   }))
 
-  const [refShare, shareSprings] = useInView(
-    () => ({
-      from: {
-        y: -40,
-        opacity: 0,
-      },
-      to: {
-        y: 0,
-        opacity: 1,
-      },
+  const [refShare, shareSprings] = useInView(() => ({
+    from: {
+      y: -40,
+      opacity: 0,
+    },
+    to: {
+      y: 0,
+      opacity: 1,
+    },
 
-      config: {
-        tension: 100,
-        mass: 2,
-      },
-      duration: 2000,
-    }),
-    // {
-    //   rootMargin: '-40% 0%',
-    // }
-  )
+    config: {
+      tension: 100,
+      mass: 2,
+    },
+    duration: 2000,
+  }))
 
-  const [refs2, fromRight] = useInView(
-    () => ({
-      from: {
-        x: 150,
-        opacity: 0,
-      },
-      to: {
-        x: 0,
-        opacity: 1,
-      },
-      duration: 2000,
-    }),
-    // {
-    //   rootMargin: '-40% 0%',
-    // }
-  )
+  const [refs2, fromRight] = useInView(() => ({
+    from: {
+      x: 150,
+      opacity: 0,
+    },
+    to: {
+      x: 0,
+      opacity: 1,
+    },
+    duration: 2000,
+  }))
   const [refService, serviceSprings] = useInView(
     () => ({
       from: {
@@ -313,20 +315,23 @@ function HomeScreen() {
 
       <section className="flex w-full flex-col items-center">
         <div
-          className={`flex justify-center scroll-smooth`}
-          style={{ height: innerHeight * 5 }}
+          className={`relative flex justify-center scroll-smooth`}
+          style={{ height: innerHeight * 8 }}
         >
           <img
             ref={containerRef}
             style={{ transform: 'none !important' }}
-            className="fixed -z-0 opacity-0 will-change-transform"
+            className="fixed bottom-0 -z-0 h-full opacity-0 will-change-transform"
             src={`Animation/${scrolled}.png`}
             alt=""
           />
-          <canvas className="fixed !transform-none" ref={canvasRef}></canvas>
+          <canvas
+            className="fixed top-12 h-full !transform-none"
+            ref={canvasRef}
+          ></canvas>
 
           <animated.div
-            className="align-center fixed flex h-full w-full justify-center"
+            className="align-center fixed mt-9 flex h-[375px] w-[800px] justify-center"
             id="faceContainer"
           >
             <img src={mt2} className="z-10 mr-10 h-full w-full" />
@@ -334,10 +339,6 @@ function HomeScreen() {
           </animated.div>
         </div>
 
-        {/* <div className="h-[130rem] flex justify-center">
-          <video className='fixed h-full' src={myronFace} playsInline type="video/webm/" id='video' >
-          </video>
-        </div> */}
         <animated.h1
           className="-mt-16 text-center text-main-heading"
           ref={refSynth}
@@ -581,10 +582,10 @@ function HomeScreen() {
           <div className="relative flex items-center justify-center">
             {' '}
             <animated.div
-              ref={refTextSpring}
+              ref={refTextSpring1}
               style={{
-                opacity: interpolatedOpacity,
-                transform: textSprings.transform,
+                opacity: interpolatedOpacity1,
+                transform: textSprings1.transform,
               }}
               className="absolute bottom-0 left-0 right-0 top-0 h-full w-full bg-[#2c2b2b]"
             ></animated.div>

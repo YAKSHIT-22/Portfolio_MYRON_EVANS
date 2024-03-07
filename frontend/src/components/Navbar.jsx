@@ -88,7 +88,9 @@ function NavBar() {
       </div>
 
       {/* Mobile Menu (hidden initially) */}
-      <div className="h-screen w-full md:hidden">
+      <div
+        className={`${showNav ? 'block' : 'hidden'} h-screen w-full md:hidden`}
+      >
         {links.map((link) => (
           <Link
             to={link.to}
