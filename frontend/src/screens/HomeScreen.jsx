@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 
 import 'react-vertical-timeline-component/style.min.css'
 import { VerticalTimeline } from 'react-vertical-timeline-component'
@@ -28,18 +28,125 @@ import AnimatedIcon from '../components/Icons/AnimatedIcon.jsx'
 import ServiceCard from '../components/ServiceCard.jsx'
 import Carousel from '../components/HomeScreen/Carousel.jsx'
 
-import { useInView, animated } from '@react-spring/web'
+import { useInView, animated, useSpring } from '@react-spring/web'
+
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import locomotiveScroll from 'locomotive-scroll'
+
+gsap.registerPlugin(ScrollTrigger)
 
 function HomeScreen() {
-  const [scrolled, setScroll] = useState(78)
+  const [scrolled, setScroll] = useState(30)
   const [innerHeight] = useState(window.innerHeight)
+  const canvasRef = useRef(null)
+  const containerRef = useRef(null)
+
+  const images = []
+  const imageSeq = {
+    frame: scrolled,
+  }
+  const frameCount = 802
+  const files = (i) => `/Animation/${i}.png`
 
   useEffect(() => {
-    // if (imageNumber < 801) {
-    window.addEventListener('scroll', scrollProgress)
+    const canvas = canvasRef.current
+    const container = containerRef.current
 
-    return () => window.removeEventListener('scroll', scrollProgress)
-  }, [])
+    const { width, height } = container.getBoundingClientRect()
+
+    canvas.width = width
+    canvas.height = height
+
+    const context = canvas.getContext('2d')
+
+    const locoScroll = new locomotiveScroll({
+      el: canvas,
+      smooth: true,
+    })
+
+    locoScroll.on('scroll', ScrollTrigger.update)
+
+    ScrollTrigger.scrollerProxy(canvas, {
+      scrollTop(value) {
+        return arguments.length
+          ? locoScroll.scrollTo(value, 0, 0)
+          : locoScroll.scroll.instance.scroll.y
+      },
+      getBoundingClientRect() {
+        return {
+          top: 0,
+          left: 0,
+          width: window.innerWidth,
+          height: window.innerHeight,
+        }
+      },
+      pinType: container.style.transform ? 'transform' : 'fixed',
+    })
+
+    locoScroll.update()
+    ScrollTrigger.refresh()
+    for (let i = 1; i <= frameCount; i++) {
+      const img = new Image()
+      img.src = files(i)
+      images.push(img)
+    }
+
+    images[30].onload = render
+
+    function render() {
+      scaleImage(images[imageSeq.frame], context)
+    }
+
+    function scaleImage(img, ctx) {
+      const canvas = ctx.canvas
+      const hRatio = canvas.width / img.width
+      const vRatio = canvas.height / img.height
+      const ratio = Math.max(hRatio, vRatio)
+      const centerShift_x = (canvas.width - img.width * ratio) / 2
+      const centerShift_y = (canvas.height - img.height * ratio) / 2
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+      ctx.drawImage(
+        img,
+        0,
+        0,
+        img.width,
+        img.height,
+        centerShift_x,
+        centerShift_y,
+        img.width * ratio,
+        img.height * ratio,
+      )
+    }
+
+    gsap.to(imageSeq, {
+      frame: frameCount - 1,
+      snap: 'frame',
+      ease: 'none',
+      scrollTrigger: {
+        scrub: 0.5,
+        trigger: container,
+        start: 'top top',
+        end: '600% top',
+        scroller: locoScroll.scrollContainer,
+      },
+      onUpdate: render,
+    })
+  }, [containerRef.current])
+
+  useEffect(() => {
+    const handleResize = () => {
+      const canvas = canvasRef.current
+      const container = containerRef.current
+      const { width, height } = container.getBoundingClientRect()
+      canvas.width = width
+      canvas.height = height
+    }
+
+    window.addEventListener('resize', handleResize)
+
+    return () => window.removeEventListener('resize', handleResize)
+  }, [scrolled])
 
   const scrollProgress = () => {
     const scrollPx = document.documentElement.scrollTop
@@ -47,18 +154,35 @@ function HomeScreen() {
       document.documentElement.scrollHeight -
       document.documentElement.clientHeight
     const scrollLen = Math.ceil(((scrollPx / winHeight) * 100) / 0.11) + 80
-    console.log(scrolled)
-    if (scrollLen > 610 || scrollLen < 2) {
+
+    if (scrollLen > 310) {
       setScroll(0)
-      //fix error after  the animation gets finished
+      const divtoHide = document.getElementById('faceContainer')
+      divtoHide.style.opacity = 0
+      divtoHide.style.transition = 'opacity 0.3s ease-in-out'
+      canvasRef.current.style.opacity = 0
+      canvasRef.current.style.transition = 'opacity 0.3s ease-in-out'
+    } else if (scrollLen < 2) {
+      const divtoHide = document.getElementById('faceContainer')
+      divtoHide.style.opacity = 1
+      divtoHide.style.transition = 'opacity 0.3s ease-in-out'
+      canvasRef.current.style.opacity = 0
+      canvasRef.current.style.transition = 'opacity 0.3s ease-in-out'
     } else {
       const divtoHide = document.getElementById('faceContainer')
-      divtoHide.style.display = 'none'
-      divtoHide.style.transitionDuration = 100
+      divtoHide.style.opacity = 0
+      divtoHide.style.transition = 'opacity 0.3s ease-in-out'
+      canvasRef.current.style.opacity = 1
+      canvasRef.current.style.transition = 'opacity 0.3s ease-in-out'
       setScroll(scrollLen)
     }
-    console.log(scrollLen)
   }
+
+  useEffect(() => {
+    window.addEventListener('scroll', scrollProgress)
+
+    return () => window.removeEventListener('scroll', scrollProgress)
+  }, [scrolled])
 
   const [refSynth, SyhtnSprings] = useInView(() => ({
     from: {
@@ -75,25 +199,49 @@ function HomeScreen() {
       tension: 120,
     },
   }))
-  const [refAmbition, ambitionSprings] = useInView(
-    () => ({
-      from: {
-        opacity: 0,
-      },
-      to: {
-        opacity: 1,
-      },
-      config: {
-        duration: 400,
-        mass: 10,
-        precision: 0.3,
-        // tension: 1200,
-      },
-    }),
-    // {
-    //   rootMargin: '-40% 0%',
-    // }
+
+  const [refTextSpring, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.5,
+  })
+
+  const [refTextSpring1, inView1] = useInView({
+    triggerOnce: true,
+    threshold: 0.5,
+  })
+
+  const textSprings = useSpring({
+    opacity: inView ? 1 : 0,
+    transform: inView ? 'translateX(100%)' : 'translateX(0)',
+    config: { duration: 2000 },
+  })
+  const textSprings1 = useSpring({
+    opacity: inView1 ? 1 : 0,
+    transform: inView1 ? 'translateX(100%)' : 'translateX(0)',
+    config: { duration: 2000 },
+  })
+
+  const interpolatedOpacity = textSprings.transform.to(
+    (translateX) => 1 - Math.abs(parseFloat(translateX)) / 100,
   )
+
+  const interpolatedOpacity1 = textSprings1.transform.to(
+    (translateX) => 1 - Math.abs(parseFloat(translateX)) / 100,
+  )
+  const [refAmbition, ambitionSprings] = useInView(() => ({
+    from: {
+      opacity: 0,
+    },
+    to: {
+      opacity: 1,
+    },
+    config: {
+      duration: 400,
+      mass: 10,
+      precision: 0.3,
+      // tension: 1200,
+    },
+  }))
   const [refPurpose, purposeSprings] = useInView(() => ({
     from: {
       opacity: 0,
@@ -109,44 +257,34 @@ function HomeScreen() {
     },
   }))
 
-  const [refShare, shareSprings] = useInView(
-    () => ({
-      from: {
-        y: -40,
-        opacity: 0,
-      },
-      to: {
-        y: 0,
-        opacity: 1,
-      },
+  const [refShare, shareSprings] = useInView(() => ({
+    from: {
+      y: -40,
+      opacity: 0,
+    },
+    to: {
+      y: 0,
+      opacity: 1,
+    },
 
-      config: {
-        tension: 100,
-        mass: 2,
-      },
-      duration: 2000,
-    }),
-    // {
-    //   rootMargin: '-40% 0%',
-    // }
-  )
+    config: {
+      tension: 100,
+      mass: 2,
+    },
+    duration: 2000,
+  }))
 
-  const [refs2, fromRight] = useInView(
-    () => ({
-      from: {
-        x: 150,
-        opacity: 0,
-      },
-      to: {
-        x: 0,
-        opacity: 1,
-      },
-      duration: 2000,
-    }),
-    // {
-    //   rootMargin: '-40% 0%',
-    // }
-  )
+  const [refs2, fromRight] = useInView(() => ({
+    from: {
+      x: 150,
+      opacity: 0,
+    },
+    to: {
+      x: 0,
+      opacity: 1,
+    },
+    duration: 2000,
+  }))
   const [refService, serviceSprings] = useInView(
     () => ({
       from: {
@@ -177,19 +315,23 @@ function HomeScreen() {
 
       <section className="flex w-full flex-col items-center">
         <div
-          className={`flex w-full justify-center scroll-smooth`}
-          style={{
-            height: innerHeight >= 624 ? innerHeight * 19 : innerHeight * 28.3,
-          }}
+          className={`relative flex justify-center scroll-smooth`}
+          style={{ height: innerHeight * 8 }}
         >
           <img
-            className="fixed top-12 -z-0 h-full"
+            ref={containerRef}
+            style={{ transform: 'none !important' }}
+            className="fixed bottom-0 -z-0 h-full opacity-0 will-change-transform"
             src={`Animation/${scrolled}.png`}
             alt=""
           />
+          <canvas
+            className="fixed top-12 h-full !transform-none"
+            ref={canvasRef}
+          ></canvas>
 
           <animated.div
-            className="align-center fixed flex h-full w-full justify-center"
+            className="align-center fixed mt-9 flex h-[375px] w-[800px] justify-center"
             id="faceContainer"
           >
             <img src={mt2} className="z-10 mr-10 h-full w-full" />
@@ -197,10 +339,6 @@ function HomeScreen() {
           </animated.div>
         </div>
 
-        {/* <div className="h-[130rem] flex justify-center">
-          <video className='fixed h-full' src={myronFace} playsInline type="video/webm/" id='video' >
-          </video>
-        </div> */}
         <animated.h1
           className="-mt-16 text-center text-main-heading"
           ref={refSynth}
@@ -355,9 +493,22 @@ function HomeScreen() {
       {/* Section 5 ~ Services */}
       <section className="mt-28 md:flex md:flex-col md:items-center md:justify-center">
         <div className="heading-container flex w-[54rem] flex-col items-center">
-          <h1 className="text-section-heading">
-            My <p className="inline bg-gradient px-2 ">Services</p>
-          </h1>
+          <div className="relative flex items-center justify-center">
+            {' '}
+            <animated.div
+              ref={refTextSpring}
+              style={{
+                opacity: interpolatedOpacity,
+                transform: textSprings.transform,
+              }}
+              className="absolute bottom-0 left-0 right-0 top-0 h-full w-full bg-[#2c2b2b]"
+            ></animated.div>
+            <h1 className="flex gap-2 text-section-heading">
+              {' '}
+              <span> My</span>
+              <p className="inline bg-gradient px-2 ">Services</p>
+            </h1>
+          </div>
           <div className="pt-4 text-center text-body text-secondary">
             <p className="font-[300]">
               Throughout the years I have fostered skills that help me create
@@ -428,9 +579,20 @@ function HomeScreen() {
       {/* Section 6 ~ Skills */}
       <section className="mt-20">
         <div className="flex flex-col items-center justify-center">
-          <h1 className="text-section-heading">
-            My <span className="bg-gradient px-3">Skills</span>
-          </h1>
+          <div className="relative flex items-center justify-center">
+            {' '}
+            <animated.div
+              ref={refTextSpring1}
+              style={{
+                opacity: interpolatedOpacity1,
+                transform: textSprings1.transform,
+              }}
+              className="absolute bottom-0 left-0 right-0 top-0 h-full w-full bg-[#2c2b2b]"
+            ></animated.div>
+            <h1 className="text-section-heading">
+              My <span className="bg-gradient px-3">Skills</span>
+            </h1>
+          </div>
           <div className="mt-2 text-center text-body text-secondary">
             <p>
               Throughout the years I have fostered skills that help me create
