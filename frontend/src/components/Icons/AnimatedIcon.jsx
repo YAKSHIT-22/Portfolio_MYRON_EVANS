@@ -1,8 +1,7 @@
 import { Player } from '@lottiefiles/react-lottie-player'
-import PropTypes from 'prop-types'
 import { useEffect, useRef, useState } from 'react'
 
-function AnimatedIcon({ iconData, height, width }) {
+function AnimatedIcon({ iconData, className }) {
   const [isVisible, setIsVisible] = useState(false)
   const viewportRef = useRef(null)
 
@@ -36,9 +35,10 @@ function AnimatedIcon({ iconData, height, width }) {
         <Player
           autoplay
           keepLastFrame
+          className={className}
           mode="bounce"
           src={iconData}
-          style={{ height, width, margin: 0, cursor: 'unset' }}
+          style={{ margin: 0, cursor: 'unset' }}
         />
       )}
     </div>
@@ -46,9 +46,3 @@ function AnimatedIcon({ iconData, height, width }) {
 }
 
 export default AnimatedIcon
-
-AnimatedIcon.propTypes = {
-  iconData: PropTypes.object.isRequired,
-  height: PropTypes.number,
-  width: PropTypes.number,
-}

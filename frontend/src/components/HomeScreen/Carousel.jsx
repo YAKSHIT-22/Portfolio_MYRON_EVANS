@@ -37,7 +37,7 @@ function Carousel() {
             className={`slide ${imgIndex === idx ? 'activeSlide shadow-xl' : 'shadow-lg'} mb-2 mt-12 h-fit bg-sm-primary`}
           >
             <div className="mt-8 flex flex-col items-center pb-3">
-              <div className="activeSlideImage mb-3 h-44 w-40 rounded-xl p-1">
+              <div className="activeSlideImage mb-3 h-36 w-32 rounded-xl p-1">
                 <img
                   src={testimonial.image}
                   alt={testimonial.name}
@@ -52,8 +52,13 @@ function Carousel() {
                   <h5 className="-mb-2">{testimonial.position}</h5>
                   <h6>{testimonial.company}</h6>
                 </div>
-                <div className="mt-7 px-10 text-center text-body text-secondary">
+                <div className="mt-7 px-10 text-center text-[12px] text-secondary">
                   <p>{testimonial.testimony}</p>
+                  <p className={'mt-1'}>
+                    Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut
+                    odit aut fugit sed thisnquia consequuntur magni dolores eos
+                    qui ratione voluptatem sequi nesciunt.{' '}
+                  </p>
                 </div>
               </div>
             </div>
