@@ -5,8 +5,6 @@ import { outsideBlog } from '../redux/actions/myblogActions.js'
 import { animated, useSpring } from '@react-spring/web'
 
 function MyWorkScreen() {
-  const disp = useDispatch()
-  const [position, setPosition] = useState(0)
   const [ReadM, useReadM] = useState({ img: '', title: '', desc: '' })
   const blogselector = useSelector((state) => state)
   // const classToHide = (blogselector.blog.insideBlog) ? 'hidden' : 'flex';
@@ -61,9 +59,7 @@ function MyWorkScreen() {
         <animated.div
           className={`relative -top-40 flex`}
           style={ButtonToshow}
-          onClick={() => {
-            disp(outsideBlog())
-          }}
+        
         >
           Back Button
         </animated.div>
