@@ -21,8 +21,7 @@ function App() {
       <Router>
         <NavBar />
 
-
-        <div className="w-full font-medium md:px-10 md:pt-6">
+        <div className="w-full font-medium md:pt-6">
           <Routes>
             <Route path="/" element={<HomeScreen />} exact />
             <Route path="/my-work" element={<MyWorkScreen />} />
@@ -40,7 +39,6 @@ function App() {
           </Routes>
         </div>
       </Router>
-
     </div>
   )
 }

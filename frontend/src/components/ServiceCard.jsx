@@ -1,5 +1,6 @@
 import AnimatedIcon from './Icons/AnimatedIcon'
 import { animated, useInView } from '@react-spring/web'
+import { useRef, useState } from 'react'
 
 const ServiceCard = ({ title, icon, desc, className }) => {
   const [refTits, titSprings] = useInView(() => ({
@@ -20,11 +21,9 @@ const ServiceCard = ({ title, icon, desc, className }) => {
   }))
   const [refDet, detSprings] = useInView(() => ({
     from: {
-      // y: -40,
       opacity: 0,
     },
     to: {
-      // y: 0,
       opacity: 1,
     },
 
@@ -35,13 +34,25 @@ const ServiceCard = ({ title, icon, desc, className }) => {
     },
   }))
 
+  const parentRef = useRef(null)
+  const [hover, setHover] = useState(false)
+
   return (
     <div
-      className={`mt-12 flex w-1/2  flex-col items-center rounded-xl bg-primary text-center shadow-lg  transition-all hover:scale-105 md:h-[30rem] md:w-[30%] ${className}`}
+      ref={parentRef}
+      className={`mt-12 flex w-1/2  flex-col items-center rounded-xl bg-primary text-center shadow-lg  transition-all hover:scale-105 md:w-[30%] lg:h-[34rem] ${className}`}
+      onMouseEnter={() => setHover(true)}
+      onMouseOut={() => setHover(false)}
     >
       <div className="mb-6 mt-9 flex h-full w-full flex-col items-center text-center">
-        <div className="icon-container flex h-28 w-28 items-center justify-center rounded-xl  bg-sm-primary py-5">
-          <AnimatedIcon iconData={icon} width={72} height={75} />
+        <div className="icon-container flex h-28 w-28 items-center justify-center rounded-xl bg-sm-primary py-5">
+          <AnimatedIcon
+            name={name}
+            iconData={icon}
+            width={72}
+            height={75}
+            hover={hover}
+          />
         </div>
 
         <animated.h1

@@ -1,22 +1,27 @@
 import { Link } from 'react-router-dom'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
+
+import { useInView, animated, useSpring } from '@react-spring/web'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import locomotiveScroll from 'locomotive-scroll'
 
 import 'react-vertical-timeline-component/style.min.css'
 import { VerticalTimeline } from 'react-vertical-timeline-component'
 
 import myPurposeIcon from '../assets/Animations/icons animation/My Purpose/LottieJSON.json'
 import myAmbitionIcon from '../assets/Animations/icons animation/My Ambition/LottieJSON.json'
-import glassIcon from '../assets/Animations/icons animation/Glass icon/GlassV03_02/Glass_icon_V03_02.json'
+import glassIcon from '../assets/Animations/icons animation/Glass icon/Glass_icon_V03_02.json'
 import softwareDesignIcon from '../assets/Animations/icons animation/Software Design/LottieJSON.json'
 import softwareDeveloperIcon from '../assets/Animations/icons animation/Software Development/LottieJSON.json'
 
 import mt1 from '../assets/Animations/Face Animation/myron transparent bg 1.gif'
 import mt2 from '../assets/Animations/Face Animation/myron transparent bg 1_2.gif'
 
-import { useState } from 'react'
 import imageBg from '../assets/svgs/img-bg.svg'
 import section2Img from '../assets/images/Home Page/Section 2 img.png'
 import section9Img from '../assets/images/Home Page/Section 9.png'
+import heroImg from '../assets/images/Home Page/hero_img.png'
 
 import experienceData from '../data/experience.json'
 import skillsData from '../data/skills.js'
@@ -27,12 +32,6 @@ import SkillsCard from '../components/HomeScreen/SkillsCard.jsx'
 import AnimatedIcon from '../components/Icons/AnimatedIcon.jsx'
 import ServiceCard from '../components/ServiceCard.jsx'
 import Carousel from '../components/HomeScreen/Carousel.jsx'
-
-import { useInView, animated, useSpring } from '@react-spring/web'
-
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import locomotiveScroll from 'locomotive-scroll'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -139,6 +138,7 @@ function HomeScreen() {
       const canvas = canvasRef.current
       const container = containerRef.current
       const { width, height } = container.getBoundingClientRect()
+      console.log(width, height)
       canvas.width = width
       canvas.height = height
     }
@@ -159,19 +159,25 @@ function HomeScreen() {
       setScroll(0)
       const divtoHide = document.getElementById('faceContainer')
       divtoHide.style.opacity = 0
+      divtoHide.style.display = 'none'
       divtoHide.style.transition = 'opacity 0.3s ease-in-out'
       canvasRef.current.style.opacity = 0
+      canvasRef.current.style.display = 'none'
       canvasRef.current.style.transition = 'opacity 0.3s ease-in-out'
-    } else if (scrollLen < 2) {
+    } else if (scrollLen <= 30) {
       const divtoHide = document.getElementById('faceContainer')
+      divtoHide.style.display = 'block'
       divtoHide.style.opacity = 1
       divtoHide.style.transition = 'opacity 0.3s ease-in-out'
+      canvasRef.current.style.display = 'block'
       canvasRef.current.style.opacity = 0
       canvasRef.current.style.transition = 'opacity 0.3s ease-in-out'
     } else {
       const divtoHide = document.getElementById('faceContainer')
       divtoHide.style.opacity = 0
+      divtoHide.style.display = 'none'
       divtoHide.style.transition = 'opacity 0.3s ease-in-out'
+      canvasRef.current.style.display = 'block'
       canvasRef.current.style.opacity = 1
       canvasRef.current.style.transition = 'opacity 0.3s ease-in-out'
       setScroll(scrollLen)
@@ -195,7 +201,6 @@ function HomeScreen() {
     },
     config: {
       duration: 500,
-      // mass: 7,
       tension: 120,
     },
   }))
@@ -239,7 +244,6 @@ function HomeScreen() {
       duration: 400,
       mass: 10,
       precision: 0.3,
-      // tension: 1200,
     },
   }))
   const [refPurpose, purposeSprings] = useInView(() => ({
@@ -253,7 +257,6 @@ function HomeScreen() {
       duration: 400,
       mass: 10,
       precision: 0.3,
-      // tension: 1200,
     },
   }))
 
@@ -285,38 +288,32 @@ function HomeScreen() {
     },
     duration: 2000,
   }))
-  const [refService, serviceSprings] = useInView(
-    () => ({
-      from: {
-        y: -80,
-        opacity: 0,
-      },
-      to: {
-        y: 0,
-        opacity: 1,
-      },
+  const [refService, serviceSprings] = useInView(() => ({
+    from: {
+      y: -80,
+      opacity: 0,
+    },
+    to: {
+      y: 0,
+      opacity: 1,
+    },
 
-      config: {
-        tension: 100,
-        mass: 2,
-      },
-      duration: 2000,
-    }),
-    // {
-    //   rootMargin: '-40% 0%',
-    // }
-  )
+    config: {
+      tension: 100,
+      mass: 2,
+    },
+    duration: 2000,
+  }))
 
   return (
     <>
       {/* Section 1 ~ Face Animation */}
-      {/* <Parallax> */}
-      {/* <ParallaxLayer speed={1}> */}
-
-      <section className="flex w-full flex-col items-center">
+      <section className="flex w-full flex-col items-center md:px-10">
         <div
-          className={`relative flex justify-center scroll-smooth`}
-          style={{ height: innerHeight * 8 }}
+          className={`relative hidden justify-center scroll-smooth md:flex`}
+          style={{
+            height: innerHeight <= 585 ? innerHeight * 8 : innerHeight * 5.5,
+          }}
         >
           <img
             ref={containerRef}
@@ -331,7 +328,11 @@ function HomeScreen() {
           ></canvas>
 
           <animated.div
-            className="align-center fixed mt-9 flex h-[375px] w-[800px] justify-center"
+            className="align-center fixed mt-9 flex justify-center border"
+            style={{
+              height: innerHeight - 210,
+              width: window.innerWidth - 400,
+            }}
             id="faceContainer"
           >
             <img src={mt2} className="z-10 mr-10 h-full w-full" />
@@ -339,8 +340,12 @@ function HomeScreen() {
           </animated.div>
         </div>
 
+        <div className={'mb-12 mt-16 size-72 md:hidden'}>
+          <img src={heroImg} className={'h-full w-full'} />
+        </div>
+
         <animated.h1
-          className="-mt-16 text-center text-main-heading"
+          className="text-center text-content-heading md:text-main-heading"
           ref={refSynth}
           style={SyhtnSprings}
         >
@@ -354,19 +359,17 @@ function HomeScreen() {
           Explore My Work
         </Link>
       </section>
-      {/* </ParallaxLayer> */}
-      {/* <ParallaxLayer speed={0.5}> */}
 
       {/* Section 2 ~ What Drives Me*/}
-      <section className="mt-24 w-full md:flex md:flex-wrap md:items-start md:justify-evenly md:px-10">
+      <section className="mt-24 flex w-full flex-col items-center px-8 md:flex-row md:flex-wrap md:items-start md:justify-evenly md:px-10">
         {/* Left Side ~ Text Side */}
-        <div className="w-1/2">
+        <div className="md:w-1/2">
           <animated.div>
-            <animated.h3 className="bg-gradient bg-clip-text text-content-heading font-bold text-transparent">
+            <animated.h3 className="bg-gradient bg-clip-text text-center text-body font-bold text-transparent md:text-start md:text-content-heading">
               What drives me
             </animated.h3>
             <animated.h2
-              className="text-section-heading font-extrabold"
+              className="text-center text-content-heading font-extrabold md:text-start md:text-section-heading"
               style={fromRight}
               ref={refs2}
             >
@@ -377,15 +380,20 @@ function HomeScreen() {
 
           <div className="w-full max-w-[40rem]">
             <div className="mt-7">
-              <AnimatedIcon iconData={myAmbitionIcon} height={80} width={90} />
+              <div className={'flex flex-col items-center md:items-start'}>
+                <AnimatedIcon
+                  iconData={myAmbitionIcon}
+                  className={'h-20 w-24'}
+                />
 
-              <animated.h2
-                className="mt-4 text-content-heading font-extrabold"
-                ref={refAmbition}
-                style={ambitionSprings}
-              >
-                My Ambition
-              </animated.h2>
+                <animated.h2
+                  className="mt-4 text-content-heading font-extrabold"
+                  ref={refAmbition}
+                  style={ambitionSprings}
+                >
+                  My Ambition
+                </animated.h2>
+              </div>
               <animated.p
                 className="mt-4 text-body text-secondary"
                 style={ambitionSprings}
@@ -400,14 +408,19 @@ function HomeScreen() {
               </animated.p>
             </div>
             <div className="mt-7">
-              <AnimatedIcon iconData={myPurposeIcon} height={80} width={90} />
-              <animated.h2
-                className="text-content-heading"
-                ref={refPurpose}
-                style={purposeSprings}
-              >
-                My Purpose
-              </animated.h2>
+              <div className={'flex flex-col items-center md:items-start'}>
+                <AnimatedIcon
+                  iconData={myPurposeIcon}
+                  className={'h-20 w-24'}
+                />
+                <animated.h2
+                  className="text-content-heading"
+                  ref={refPurpose}
+                  style={purposeSprings}
+                >
+                  My Purpose
+                </animated.h2>
+              </div>
               <animated.p
                 className="mt-4 text-body text-secondary"
                 ref={refPurpose}
@@ -421,19 +434,20 @@ function HomeScreen() {
         </div>
 
         {/* Right Side ~ Image Side */}
-        <div className="relative ml-24 mt-12 h-96 max-h-96 w-1/3 ">
+        <div className="relative mt-12 h-96 max-h-96 w-full md:ml-24 md:w-1/3 ">
           <img src={imageBg} className="absolute right-0 top-0" />
-          <img src={section2Img} className="absolute right-4 top-7 h-full" />
+          <img src={section2Img} className="absolute right-6 top-7 h-full" />
           <animated.h1 className="absolute -bottom-10 right-0 bg-gradient px-6 py-2 text-[1.5rem]">
-            <p>Designer</p>
+            <p>Frontend Developer &amp;</p>
+            <p>Design Enthusiast</p>
           </animated.h1>
         </div>
       </section>
       {/* </ParallaxLayer> */}
 
       {/* Section 3 ~ Vertical Timeline*/}
-      <section className="mt-24">
-        <div className="mt7">
+      <section className="mt-24  md:px-10">
+        <div className="mt-7">
           <VerticalTimeline>
             {experienceData &&
               experienceData.map((n) => (
@@ -452,7 +466,7 @@ function HomeScreen() {
       </section>
 
       {/* Section 4 ~ Share Div */}
-      <section className="mt-24">
+      <section className="mt-24  md:px-10">
         <div className="relative mt-7 flex w-full items-center justify-center">
           {/* Background image div */}
           <div
@@ -491,7 +505,7 @@ function HomeScreen() {
       </section>
 
       {/* Section 5 ~ Services */}
-      <section className="mt-28 md:flex md:flex-col md:items-center md:justify-center">
+      <section className="mt-24 md:flex md:flex-col md:items-center md:justify-center md:px-10">
         <div className="heading-container flex w-[54rem] flex-col items-center">
           <div className="relative flex items-center justify-center">
             {' '}
@@ -523,11 +537,10 @@ function HomeScreen() {
         <div className="item-center flex w-full justify-evenly">
           <div className="mx-8 my-16 h-fit w-1/2 bg-sm-primary shadow-2xl">
             <div className="my-9 flex flex-col items-center pb-[6.7rem]">
-              <div className="my-10 rounded-xl bg-secondary p-1">
+              <div className="my-10 rounded-xl bg-primary p-2">
                 <AnimatedIcon
                   iconData={softwareDesignIcon}
-                  height={98}
-                  width={115}
+                  className={'h-24 w-28'}
                 />
               </div>
               <animated.div
@@ -549,11 +562,10 @@ function HomeScreen() {
           </div>
           <div className="mx-8 my-16 h-fit w-1/2 bg-sm-primary shadow-2xl">
             <div className="my-9 flex flex-col items-center pb-20">
-              <div className="icon-holder-software -top-40 my-10 rounded-xl bg-secondary p-1">
+              <div className="icon-holder-software -top-40 my-10 rounded-xl bg-primary p-2">
                 <AnimatedIcon
                   iconData={softwareDeveloperIcon}
-                  height={98}
-                  width={115}
+                  className={'h-24 w-28'}
                 />
               </div>
               <animated.div
@@ -577,7 +589,7 @@ function HomeScreen() {
       </section>
 
       {/* Section 6 ~ Skills */}
-      <section className="mt-20">
+      <section className="mt-24 md:px-10">
         <div className="flex flex-col items-center justify-center">
           <div className="relative flex items-center justify-center">
             {' '}
@@ -639,7 +651,7 @@ function HomeScreen() {
       </section>
 
       {/* Section 7 ~ Core Values */}
-      <section className="mt-28 flex w-[100%] flex-col bg-[#201F1F] md:flex-col md:items-center md:justify-center">
+      <section className="mt-24 flex w-[100%] flex-col bg-[#201F1F] md:flex-col md:items-center md:justify-center md:px-10">
         <div className="flex w-full flex-col items-center px-12 py-24 text-center">
           <h1 className="text-section-heading">
             The Core Values That Drives
@@ -655,7 +667,6 @@ function HomeScreen() {
                   title={vals.title}
                   desc={vals.desc}
                   icon={vals.icon}
-                  // className={idx === 1 || idx === 4 ? 'mx-1' : 'mx-0'}
                 />
               ))}
           </div>
@@ -663,7 +674,7 @@ function HomeScreen() {
       </section>
 
       {/* Section 8 ~ Carousel*/}
-      <section className="mt-24">
+      <section className="mt-24 md:px-10">
         <div>
           <h3 className="bg-gradient bg-clip-text text-center text-content-heading text-transparent">
             Client Testimonials
@@ -688,47 +699,47 @@ function HomeScreen() {
       </section>
 
       {/* Section 9 ~ Explore My Works */}
-      <section className="mt-24 flex flex-col items-start justify-evenly bg-sm-primary pb-12 pt-24 md:flex-row">
-        <div>
-          <img src={section9Img} className="" />
+      <section className="mt-24 flex flex-col items-start justify-evenly bg-sm-primary pb-12 pt-12 md:flex-row md:px-10">
+        <div className={'relative h-96 w-1/3 max-w-72'}>
+          <img src={imageBg} className={''} />
+          <img
+            src={section9Img}
+            className="absolute left-7 top-7 h-full w-full"
+          />
         </div>
 
         <animated.div className="w-2/4">
           <h3 className="mb-1 text-clip bg-gradient bg-clip-text text-content-heading text-transparent">
             Born to serve
           </h3>
-          <h2 className="mb-16 text-section-heading leading-[53px]">
+          <h2 className="mb-7 text-section-heading leading-[53px]">
             <p className="inline-block">The perfect addition to</p>
             <br />
             <p className="inline-block">any team</p>
           </h2>
 
-          <div className="mb-10 text-body text-secondary">
-            <p>
+          <div className="max-w-1/3 mb-4 text-body text-secondary">
+            <p className={'w-full'}>
               I want to thank you for spending time on my portfolio site, I
-              truly
+              truly hope it is clear to you now that I am the right fit for your
+              company. Cheers to the success of your business!{' '}
             </p>
-
-            <p>
-              hope it is clear to you now that I am the right fit for your
-              company.
-            </p>
-            <p>Cheers to the success of your business! </p>
           </div>
 
-          <Link
-            to="/my-work"
-            className="rounded-full bg-gradient px-3 py-3 font-rubik font-medium"
-          >
-            Explore My Works
-          </Link>
-
-          <AnimatedIcon iconData={glassIcon} height={300} width={300} />
+          <div className={'flex items-center justify-evenly'}>
+            <AnimatedIcon iconData={glassIcon} className={'size-36'} />
+            <Link
+              to="/my-work"
+              className="rounded-full bg-gradient px-3 py-3 font-rubik font-light transition-all hover:font-medium hover:shadow-custom hover:shadow-golden"
+            >
+              Explore My Works
+            </Link>
+          </div>
         </animated.div>
       </section>
 
       {/* Section 10 ~ Get in Touch */}
-      <section className="bg-secondary pt-24">
+      <section className="bg-secondary pt-24 md:px-10">
         <h1 className="m-2 text-center text-section-heading">Get In Touch</h1>
 
         <p className="mb-20 text-wrap text-center text-body">
