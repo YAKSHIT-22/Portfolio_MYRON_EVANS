@@ -446,8 +446,27 @@ function HomeScreen() {
       {/* </ParallaxLayer> */}
 
       {/* Section 3 ~ Vertical Timeline*/}
-      <section className="mt-24  md:px-10">
-        <div className="mt-7">
+      <section className="mt-48 md:mt-24 md:px-10">
+        <div className={'w-full'}>
+          <h1
+            className={
+              'text-center text-content-heading md:text-section-heading'
+            }
+          >
+            Educational and Professional{' '}
+            <span className={'bg-gradient px-2'}>Timeline Story</span>
+          </h1>
+          <p
+            className={
+              'mx-auto mt-2 text-center text-body text-secondary md:max-w-3xl'
+            }
+          >
+            I have been writing code for longer than I have been designing, but
+            here is a visual representation of my educational and professional
+            story. I hit a few road blocks, but with perseverance, I made it.{' '}
+          </p>
+        </div>
+        <div className="mt-32">
           <VerticalTimeline>
             {experienceData &&
               experienceData.map((n) => (
@@ -470,21 +489,24 @@ function HomeScreen() {
         <div className="relative mt-7 flex w-full items-center justify-center">
           {/* Background image div */}
           <div
-            className="absolute inset-0 left-auto right-auto h-[35rem] w-5/6 rounded-3xl bg-cover bg-center bg-no-repeat opacity-40 duration-500 ease-in-out hover:opacity-20"
-            style={{ backgroundImage: "url('/Section4.jpeg')" }}
+            className="absolute inset-0 left-auto right-auto h-[36ren] w-5/6 rounded-3xl bg-cover bg-center bg-no-repeat opacity-40 duration-500 ease-in-out hover:opacity-20 md:h-[35rem] md:max-h-[35rem]"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/Section4.jpeg')",
+            }}
           ></div>
 
           {/* Text content div  cerate it responsive for md */}
 
           <animated.div
-            className="pl-18 relative z-10 flex h-full flex-col items-center justify-center py-14 text-white"
+            className="relative z-10 flex h-full flex-col items-center justify-center px-16 py-14 text-white"
             ref={refShare}
             style={shareSprings}
           >
-            <h1 className="w-[42rem] text-center text-section-heading">
+            <h1 className="w-full max-w-2xl text-center text-content-heading md:text-section-heading">
               Share my website and story with someone it can help
             </h1>
-            <span className="mt-16 w-[42rem] text-body">
+            <span className="mt-10 w-full max-w-2xl text-[14px] text-secondary md:text-body">
               We all have struggles and failures in life, please share my
               website with anyone you believe my story can help. If you are
               inspired by my story and would like to support me, please contact
@@ -506,81 +528,74 @@ function HomeScreen() {
 
       {/* Section 5 ~ Services */}
       <section className="mt-24 md:flex md:flex-col md:items-center md:justify-center md:px-10">
-        <div className="heading-container flex w-[54rem] flex-col items-center">
-          <div className="relative flex items-center justify-center">
-            {' '}
-            <animated.div
-              ref={refTextSpring}
-              style={{
-                opacity: interpolatedOpacity,
-                transform: textSprings.transform,
-              }}
-              className="absolute bottom-0 left-0 right-0 top-0 h-full w-full bg-[#2c2b2b]"
-            ></animated.div>
-            <h1 className="flex gap-2 text-section-heading">
-              {' '}
-              <span> My</span>
-              <p className="inline bg-gradient px-2 ">Services</p>
-            </h1>
-          </div>
-          <div className="pt-4 text-center text-body text-secondary">
-            <p className="font-[300]">
-              Throughout the years I have fostered skills that help me create
-              interesting and unique{' '}
-            </p>
-            <p className="font-[300]">
-              projects. Check them out and see if I have a skill that could
-              benefit you and your customers.
-            </p>
-          </div>
+        <div className="relative flex items-center justify-center">
+          <animated.div
+            ref={refTextSpring}
+            style={{
+              opacity: interpolatedOpacity.opacity,
+              transform: textSprings.transform,
+            }}
+            className="absolute bottom-0 left-0 right-0 top-0 h-full w-full bg-sm-primary md:bg-primary"
+          ></animated.div>
+          <h1 className="text-content-heading md:text-section-heading">
+            <span className={'mr-1'}>My</span>
+            <p className="inline bg-gradient px-2 ">Services</p>
+          </h1>
         </div>
-        <div className="item-center flex w-full justify-evenly">
-          <div className="mx-8 my-16 h-fit w-1/2 bg-sm-primary shadow-2xl">
+        <p className="max-w-3xl px-6 pt-4 text-center text-[14px] font-[300] text-secondary md:px-0">
+          Throughout the years I have fostered skills that help me create
+          interesting and unique projects. Check them out and see if I have a
+          skill that could benefit you and your customers.
+        </p>
+        <div className="item-center flex w-full flex-col items-center px-6 md:flex-row md:justify-evenly md:px-0">
+          <div className="mb-4 mt-8 h-fit w-full bg-primary shadow-2xl md:mx-8 md:my-16 md:w-1/2 md:bg-sm-primary">
             <div className="my-9 flex flex-col items-center pb-[6.7rem]">
-              <div className="my-10 rounded-xl bg-primary p-2">
+              <div className="my-10 rounded-xl bg-sm-primary p-2 md:bg-primary">
                 <AnimatedIcon
                   iconData={softwareDesignIcon}
                   className={'h-24 w-28'}
                 />
               </div>
               <animated.div
-                className="w-[25rem] items-center"
+                className="w-full"
                 ref={refService}
                 style={serviceSprings}
               >
                 <h1 className="my-9 text-center text-content-heading">
                   Software Design
                 </h1>
-                <div className="text-center text-body text-secondary">
-                  <p>UX/UI, UX Research, Wireframes, Design</p>
-                  <p>System Creation, Design Mockups, Design</p>
-                  <p>Prototypes, Animations Using Figma</p>
-                </div>
+                <p
+                  className={
+                    'mx-auto max-w-sm px-3 text-center text-body text-secondary md:px-0'
+                  }
+                >
+                  UX/UI, UX Research, Wireframes, Design System Creation, Design
+                  Mockups, Design Prototypes, Animations Using Figma
+                </p>
               </animated.div>
             </div>
             <div className="w-100 h-2 bg-gradient"></div>
           </div>
-          <div className="mx-8 my-16 h-fit w-1/2 bg-sm-primary shadow-2xl">
-            <div className="my-9 flex flex-col items-center pb-20">
-              <div className="icon-holder-software -top-40 my-10 rounded-xl bg-primary p-2">
+          <div className="mb-8 mt-4 h-fit w-full bg-primary shadow-2xl md:mx-8 md:my-16 md:w-1/2 md:bg-sm-primary">
+            <div className="my-9 flex flex-col items-center pb-[6.7rem]">
+              <div className="icon-holder-software -top-40 my-10 rounded-xl bg-sm-primary p-2 md:bg-primary">
                 <AnimatedIcon
                   iconData={softwareDeveloperIcon}
                   className={'h-24 w-28'}
                 />
               </div>
               <animated.div
-                className="service-content-wrapper flex w-[25rem] flex-col items-center"
+                className="service-content-wrapper flex w-full flex-col items-center"
                 ref={refService}
                 style={serviceSprings}
               >
                 <h1 className="my-9 text-center text-content-heading">
                   Software Development
                 </h1>
-                <div className="text-center text-body text-secondary">
-                  <p>Cross Platform Apps, Apps for iOS,</p>
-                  <p>Android and Web, Full Stack Development,</p>
-                  <p>Mobile App Development, Web App Development.</p>
-                </div>
+                <p className="mx-auto max-w-sm px-3 text-center text-body text-secondary md:px-0">
+                  Cross Platform Apps, Apps for iOS, Android and Web, Full Stack
+                  Development, Mobile App Development, Web App Development.
+                </p>
               </animated.div>
             </div>
             <div className="w-100 h-2 bg-gradient"></div>
@@ -592,34 +607,32 @@ function HomeScreen() {
       <section className="mt-24 md:px-10">
         <div className="flex flex-col items-center justify-center">
           <div className="relative flex items-center justify-center">
-            {' '}
             <animated.div
               ref={refTextSpring1}
               style={{
                 opacity: interpolatedOpacity1,
                 transform: textSprings1.transform,
               }}
-              className="absolute bottom-0 left-0 right-0 top-0 h-full w-full bg-[#2c2b2b]"
+              className="absolute bottom-0 left-0 right-0 top-0 h-full w-full bg-sm-primary md:bg-primary"
             ></animated.div>
-            <h1 className="text-section-heading">
+            <h1 className="text-content-heading md:text-section-heading">
               My <span className="bg-gradient px-3">Skills</span>
             </h1>
           </div>
-          <div className="mt-2 text-center text-body text-secondary">
-            <p>
-              Throughout the years I have fostered skills that help me create
-              interesting and unique
-            </p>
-            <p>
-              projects. Check them out and see if I have a skill that could
-              benefit you and your customers.
-            </p>
-          </div>
-          <div className="mt-16 flex w-full flex-col items-start justify-start ">
+          <p
+            className={
+              'mt-2 max-w-3xl px-6 text-center text-[14px] text-secondary md:px-0 md:text-body'
+            }
+          >
+            Throughout the years I have fostered skills that help me create
+            interesting and unique projects. Check them out and see if I have a
+            skill that could benefit you and your customers.
+          </p>
+          <div className="mt-16 flex w-full flex-col items-center justify-start md:items-start ">
             <h3 className="text-content-heading font-bold">
               Full Stack Developer with:
             </h3>
-            <div className="mt-4 flex w-full flex-wrap items-center justify-start">
+            <div className="mt-4 flex w-full flex-col items-center justify-start gap-5 px-4 md:flex-row md:flex-wrap md:gap-0">
               {skillsData.fsdSkills.map((skill) => (
                 <SkillsCard
                   key={skill.id}
@@ -632,9 +645,9 @@ function HomeScreen() {
               ))}
             </div>
           </div>
-          <div className="mt-16 flex w-full flex-col items-start justify-start ">
+          <div className="mt-16 flex w-full flex-col items-center justify-start md:items-start ">
             <h3 className="text-content-heading font-bold">As a Designer:</h3>
-            <div className="mt-4 flex w-full flex-wrap items-center justify-start">
+            <div className="mt-4 flex w-full flex-col items-center justify-start gap-5 px-4 md:flex-row md:flex-wrap md:gap-0">
               {skillsData.designSkills.map((skill) => (
                 <SkillsCard
                   key={skill.id}
