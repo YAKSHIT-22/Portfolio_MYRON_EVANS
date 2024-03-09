@@ -21,6 +21,7 @@ import mt2 from '../assets/Animations/Face Animation/myron transparent bg 1_2.gi
 import imageBg from '../assets/svgs/img-bg.svg'
 import section2Img from '../assets/images/Home Page/Section 2 img.png'
 import section9Img from '../assets/images/Home Page/Section 9.png'
+import heroImg from '../assets/images/Home Page/hero_img.png'
 
 import experienceData from '../data/experience.json'
 import skillsData from '../data/skills.js'
@@ -137,6 +138,7 @@ function HomeScreen() {
       const canvas = canvasRef.current
       const container = containerRef.current
       const { width, height } = container.getBoundingClientRect()
+      console.log(width, height)
       canvas.width = width
       canvas.height = height
     }
@@ -199,7 +201,6 @@ function HomeScreen() {
     },
     config: {
       duration: 500,
-      // mass: 7,
       tension: 120,
     },
   }))
@@ -287,38 +288,32 @@ function HomeScreen() {
     },
     duration: 2000,
   }))
-  const [refService, serviceSprings] = useInView(
-    () => ({
-      from: {
-        y: -80,
-        opacity: 0,
-      },
-      to: {
-        y: 0,
-        opacity: 1,
-      },
+  const [refService, serviceSprings] = useInView(() => ({
+    from: {
+      y: -80,
+      opacity: 0,
+    },
+    to: {
+      y: 0,
+      opacity: 1,
+    },
 
-      config: {
-        tension: 100,
-        mass: 2,
-      },
-      duration: 2000,
-    }),
-    // {
-    //   rootMargin: '-40% 0%',
-    // }
-  )
+    config: {
+      tension: 100,
+      mass: 2,
+    },
+    duration: 2000,
+  }))
 
   return (
     <>
       {/* Section 1 ~ Face Animation */}
-      {/* <Parallax> */}
-      {/* <ParallaxLayer speed={1}> */}
-
       <section className="flex w-full flex-col items-center md:px-10">
         <div
-          className={`relative flex justify-center scroll-smooth`}
-          style={{ height: innerHeight * 8 }}
+          className={`relative hidden justify-center scroll-smooth md:flex`}
+          style={{
+            height: innerHeight <= 585 ? innerHeight * 8 : innerHeight * 5.5,
+          }}
         >
           <img
             ref={containerRef}
@@ -333,7 +328,11 @@ function HomeScreen() {
           ></canvas>
 
           <animated.div
-            className="align-center fixed mt-9 flex h-[375px] w-[800px] justify-center"
+            className="align-center fixed mt-9 flex justify-center border"
+            style={{
+              height: innerHeight - 210,
+              width: window.innerWidth - 400,
+            }}
             id="faceContainer"
           >
             <img src={mt2} className="z-10 mr-10 h-full w-full" />
@@ -341,8 +340,12 @@ function HomeScreen() {
           </animated.div>
         </div>
 
+        <div className={'mb-12 mt-16 size-72 md:hidden'}>
+          <img src={heroImg} className={'h-full w-full'} />
+        </div>
+
         <animated.h1
-          className="-mt-16 text-center text-main-heading"
+          className="text-center text-content-heading md:text-main-heading"
           ref={refSynth}
           style={SyhtnSprings}
         >
@@ -356,19 +359,17 @@ function HomeScreen() {
           Explore My Work
         </Link>
       </section>
-      {/* </ParallaxLayer> */}
-      {/* <ParallaxLayer speed={0.5}> */}
 
       {/* Section 2 ~ What Drives Me*/}
-      <section className="mt-24 w-full md:flex md:flex-wrap md:items-start md:justify-evenly md:px-10">
+      <section className="mt-24 flex w-full flex-col items-center px-8 md:flex-row md:flex-wrap md:items-start md:justify-evenly md:px-10">
         {/* Left Side ~ Text Side */}
-        <div className="w-1/2">
+        <div className="md:w-1/2">
           <animated.div>
-            <animated.h3 className="bg-gradient bg-clip-text text-content-heading font-bold text-transparent">
+            <animated.h3 className="bg-gradient bg-clip-text text-center text-body font-bold text-transparent md:text-start md:text-content-heading">
               What drives me
             </animated.h3>
             <animated.h2
-              className="text-section-heading font-extrabold"
+              className="text-center text-content-heading font-extrabold md:text-start md:text-section-heading"
               style={fromRight}
               ref={refs2}
             >
@@ -379,15 +380,20 @@ function HomeScreen() {
 
           <div className="w-full max-w-[40rem]">
             <div className="mt-7">
-              <AnimatedIcon iconData={myAmbitionIcon} height={80} width={90} />
+              <div className={'flex flex-col items-center md:items-start'}>
+                <AnimatedIcon
+                  iconData={myAmbitionIcon}
+                  className={'h-20 w-24'}
+                />
 
-              <animated.h2
-                className="mt-4 text-content-heading font-extrabold"
-                ref={refAmbition}
-                style={ambitionSprings}
-              >
-                My Ambition
-              </animated.h2>
+                <animated.h2
+                  className="mt-4 text-content-heading font-extrabold"
+                  ref={refAmbition}
+                  style={ambitionSprings}
+                >
+                  My Ambition
+                </animated.h2>
+              </div>
               <animated.p
                 className="mt-4 text-body text-secondary"
                 style={ambitionSprings}
@@ -402,14 +408,19 @@ function HomeScreen() {
               </animated.p>
             </div>
             <div className="mt-7">
-              <AnimatedIcon iconData={myPurposeIcon} height={80} width={90} />
-              <animated.h2
-                className="text-content-heading"
-                ref={refPurpose}
-                style={purposeSprings}
-              >
-                My Purpose
-              </animated.h2>
+              <div className={'flex flex-col items-center md:items-start'}>
+                <AnimatedIcon
+                  iconData={myPurposeIcon}
+                  className={'h-20 w-24'}
+                />
+                <animated.h2
+                  className="text-content-heading"
+                  ref={refPurpose}
+                  style={purposeSprings}
+                >
+                  My Purpose
+                </animated.h2>
+              </div>
               <animated.p
                 className="mt-4 text-body text-secondary"
                 ref={refPurpose}
@@ -423,11 +434,12 @@ function HomeScreen() {
         </div>
 
         {/* Right Side ~ Image Side */}
-        <div className="relative ml-24 mt-12 h-96 max-h-96 w-1/3 ">
+        <div className="relative mt-12 h-96 max-h-96 w-full md:ml-24 md:w-1/3 ">
           <img src={imageBg} className="absolute right-0 top-0" />
-          <img src={section2Img} className="absolute right-4 top-7 h-full" />
+          <img src={section2Img} className="absolute right-6 top-7 h-full" />
           <animated.h1 className="absolute -bottom-10 right-0 bg-gradient px-6 py-2 text-[1.5rem]">
-            <p>Designer</p>
+            <p>Frontend Developer &amp;</p>
+            <p>Design Enthusiast</p>
           </animated.h1>
         </div>
       </section>
@@ -435,7 +447,7 @@ function HomeScreen() {
 
       {/* Section 3 ~ Vertical Timeline*/}
       <section className="mt-24  md:px-10">
-        <div className="mt7">
+        <div className="mt-7">
           <VerticalTimeline>
             {experienceData &&
               experienceData.map((n) => (
@@ -528,8 +540,7 @@ function HomeScreen() {
               <div className="my-10 rounded-xl bg-primary p-2">
                 <AnimatedIcon
                   iconData={softwareDesignIcon}
-                  height={98}
-                  width={115}
+                  className={'h-24 w-28'}
                 />
               </div>
               <animated.div
@@ -554,8 +565,7 @@ function HomeScreen() {
               <div className="icon-holder-software -top-40 my-10 rounded-xl bg-primary p-2">
                 <AnimatedIcon
                   iconData={softwareDeveloperIcon}
-                  height={98}
-                  width={115}
+                  className={'h-24 w-28'}
                 />
               </div>
               <animated.div
