@@ -9,6 +9,11 @@ import ProductDetailScreen from './screens/ProductDetailScreen.jsx'
 import CartScreen from './screens/CartScreen.jsx'
 import AdminScreen from './screens/AdminScreen.jsx'
 import { AddNewBlog } from './screens/adminScreens/AddNewBlog.jsx'
+import BentoGrid1 from './components/GridComps/BentoGrid1.jsx'
+import BentoGrid2 from './components/GridComps/BentoGrid2.jsx'
+import BentoGrid3 from './components/GridComps/BentoGrid3.jsx'
+import BentoGrid4 from './components/GridComps/BentoGrid4.jsx'
+
 
 function App() {
   return (
@@ -28,6 +33,10 @@ function App() {
             <Route path="/store/cart" element={<CartScreen />} />
             <Route path="/admin" element={<AdminScreen />} />
             <Route path="/addNewBlog" element={<AddNewBlog />} />
+
+            {/* <Route path='/demo' element={<BentoGrid4 />} /> */}
+
+
           </Routes>
         </div>
       </Router>

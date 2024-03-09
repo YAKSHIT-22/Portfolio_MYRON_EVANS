@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 import { ColorPicker, useColor } from "react-color-palette";
 import BoxIcon from '../../components/Icons/BoxIcon';
@@ -7,7 +7,6 @@ import TopRight from "../../assets/svgs/TopRight.svg";
 import "../../../node_modules/react-color-palette/dist/css/rcp.css"
 import upload from "../../assets/svgs/upload.svg";
 
-import { cn } from "../../utils/cn.jsx";
 import { BentoGrid, BentoGridItem } from "../../components/ui/bento-grid.jsx";
 import {
     IconArrowWaveRightUp,
@@ -19,6 +18,11 @@ import {
     IconTableColumn,
 } from "@tabler/icons-react";
 import { data } from 'autoprefixer';
+import BentoGrid1 from '../../components/GridComps/BentoGrid1.jsx';
+import BentoGrid2 from '../../components/GridComps/BentoGrid2.jsx';
+import BentoGrid3 from '../../components/GridComps/BentoGrid3.jsx';
+import BentoGrid4 from '../../components/GridComps/BentoGrid4.jsx';
+
 
 
 const Skeleton = () => (
@@ -185,7 +189,7 @@ export const AddNewBlog = () => {
                                 {Hexcodes.map((codes, i) => (
                                     <div key={i} className={` relative z-1 aspect-square w-24 m-2 rounded-sm`} onClick={(e) => {
                                         e.preventDefault()
-                                        
+
                                         console.log(e.target.style.backgroundColor)
 
                                     }} style={{ 'backgroundColor': codes }} >
@@ -243,97 +247,13 @@ export const AddNewBlog = () => {
             <div className='bg-secondary my-5 p-2' >
 
                 <p> Choose your Box Template</p>
-                <div className='flex my-4'>
-
-                    <BentoGrid className="max-w-4xl mx-auto w-1/6">
-                        {items.map((item, i) => (
-
-                            <BentoGridItem
-                                key={i}
-                                title={item.title}
-                                description={item.description}
-                                header={i}
-                                icon={item.icon}
-                                className={i === 3 || i === 4 ? "md:row-span-2" : ""}
-                            />
-
-
-                        ))}
-                    </BentoGrid>
-                    <BentoGrid className="max-w-4xl mx-auto w-1/6">
-                        {items.map((item, i) => (
-
-                            <BentoGridItem
-                                key={i}
-                                title={item.title}
-                                description={item.description}
-                                header={i}
-                                icon={item.icon}
-                                className={
-                                    (() => {
-                                        if (i === 3 || i === 4) {
-                                            return "row-span-2"
-                                        } else if (i === 8) {
-                                            return "row-span-2 col-span-2"
-                                        }
-                                        else if (i == 9) {
-                                            return "row-span-2"
-                                        }
-                                        else {
-                                            return "aspect-square"
-                                        }
-                                    })()
-                                }
-                            />
-
-
-                        ))}
-                    </BentoGrid>
-                    <BentoGrid className="max-w-4xl mx-auto w-1/6">
-                        {items.map((item, i) => (
-
-                            <BentoGridItem
-                                key={i}
-                                title={item.title}
-                                description={item.description}
-                                header={i}
-                                icon={item.icon}
-                                className={i === 3 || i === 6 ? "md:col-span-2" : "aspect-square"}
-                            />
-
-
-                        ))}
-                    </BentoGrid>
-                    <BentoGrid className="max-w-4xl mx-auto w-1/6">
-                        {items.map((item, i) => (
-
-                            <BentoGridItem
-                                key={i}
-                                title={item.title}
-                                description={item.description}
-                                header={i}
-                                icon={item.icon}
-                                className={i === 3 || i === 6 ? "md:col-span-2" : ""}
-                            />
-
-
-                        ))}
-                    </BentoGrid>
-                    <BentoGrid className="max-w-4xl mx-auto w-1/6">
-                        {items.map((item, i) => (
-
-                            <BentoGridItem
-                                key={i}
-                                title={item.title}
-                                description={item.description}
-                                header={i}
-                                icon={item.icon}
-                                className={i === 3 || i === 6 ? "md:col-span-2 " : " "}
-                            />
-
-
-                        ))}
-                    </BentoGrid>
+                <div className='flex my-4 flex-wrap gap-3'>
+                    <div className='w-1/4'>
+                        <BentoGrid1 />
+                    </div>
+                    <BentoGrid2 />
+                    <BentoGrid3 />
+                    <BentoGrid4 />
                 </div>
                 {/* Get the text and all the title and store it in json object on Change according to Box Number add valudation on BOX number*/}
                 <div className='flex justify-between pr-7 pl-4'>
