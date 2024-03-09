@@ -1,12 +1,6 @@
 import { PropTypes } from 'prop-types'
 import BoxIcon from '../components/Icons/BoxIcon'
-import blockS from '../assets/svgs/blockS.svg'
-import direction from '../assets/svgs/direction.svg'
-import { redirect } from 'react-router-dom'
-
-
-// import { cn } from "../utils/cn";
-import React from "react";
+import blockS from '../assets/svgs/blockS.svg';
 import { FrontBentoGrid, FrontBentoGridItem } from "../components/ui/Front-bento-grid";
 import {
   IconArrowWaveRightUp,
@@ -17,51 +11,106 @@ import {
   IconSignature,
   IconTableColumn,
 } from "@tabler/icons-react";
+import BentoGrid1 from '../components/GridComps/BentoGrid1';
+import FrontBentoGrid1 from '../components/FrontGridComps/FrontBentoGrid1';
+import FrontBentoGrid2 from '../components/FrontGridComps/FrontBentoGrid2';
+import FrontBentoGrid3 from '../components/FrontGridComps/FrontBentoGrid3';
+import FrontBentoGrid4 from '../components/FrontGridComps/FrontBentoGrid4';
 
 
 const Skeleton = () => (
   <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-200 dark:from-neutral-900 dark:to-neutral-800 to-neutral-100"></div>
 );
 const items = [
+
+
   {
-    title: "The Dawn of Innovation",
-    description: "Explore the birth of groundbreaking ideas and inventions.",
-    icon: <IconClipboardCopy className="h-4 w-4 text-neutral-500" />,
+    id: 1,
+    title: "First Title",
+    desc: "First Description",
+    imageUrl: "url('https://example.com/image1.jpg')",
+    borderColor: "#ff0000"
   },
+
   {
-    title: "The Digital Revolution",
-    description: "Dive into the transformative power of technology.",
-    icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
+    id: 2,
+    title: "Second Title",
+    desc: "Second Description",
+    imageUrl: "url('https://example.com/image2.jpg')",
+    borderColor: "#0000ff"
   },
+
   {
-    title: "The Art of Design",
-    description: "Discover the beauty of thoughtful and functional design.",
-    icon: <IconSignature className="h-4 w-4 text-neutral-500" />,
+    id: 3,
+    title: "Third Title",
+    desc: "Third Description",
+    imageUrl: "url('https://example.com/image3.jpg')",
+    borderColor: "#00ff00"
   },
+
   {
-    title: "The Power of Communication",
-    description:
-      "Understand the impact of effective communication in our lives.",
-    header: <Skeleton />,
-    icon: <IconTableColumn className="h-4 w-4 text-neutral-500" />,
+    id: 4,
+    title: "Fourth Title",
+    desc: "Fourth Description",
+    imageUrl: "url('https://example.com/image4.jpg')",
+    borderColor: "#ffff00"
   },
+
   {
-    title: "The Pursuit of Knowledge",
-    description: "Join the quest for understanding and enlightenment.",
-    header: <Skeleton />,
-    icon: <IconArrowWaveRightUp className="h-4 w-4 text-neutral-500" />,
+    id: 5,
+    title: "Fifth Title",
+    desc: "Fifth Description",
+    imageUrl: "url('https://example.com/image5.jpg')",
+    borderColor: "#800080"
   },
+
   {
-    title: "The Joy of Creation",
-    description: "Experience the thrill of bringing ideas to life.",
-    header: <Skeleton />,
-    icon: <IconBoxAlignTopLeft className="h-4 w-4 text-neutral-500" />,
-  },
+    id: 6,
+    title: "Sixth Title",
+    desc: "Sixth Description",
+    imageUrl: "url('https://example.com/image6.jpg')",
+    borderColor: "#ffa500"
+  }
+  ,
   {
-    title: "The Spirit of Adventure",
-    description: "Embark on exciting journeys and thrilling discoveries.",
-    icon: <IconBoxAlignRightFilled className="h-4 w-4 text-neutral-500" />,
-  },
+    id: 7,
+    title: "",
+    desc: "",
+    imageUrl: "",
+    borderColor: ""
+  }
+  ,
+  {
+    id: 8,
+    title: "",
+    desc: "",
+    imageUrl: "",
+    borderColor: ""
+  }
+  ,
+  {
+    id: 9,
+    title: "",
+    desc: "",
+    imageUrl: "",
+    borderColor: ""
+  }
+  ,
+  {
+    id: 10,
+    title: "",
+    desc: "",
+    imageUrl: "",
+    borderColor: ""
+  }
+  ,
+  {
+    id: 11,
+    title: "",
+    desc: "",
+    imageUrl: "",
+    borderColor: ""
+  }
 ];
 
 
@@ -134,18 +183,7 @@ function BlogScreen({ img, title, desc }) {
       </div>
     </div>
     <div className='Bento-blog-container mt-10'>
-      <FrontBentoGrid className="max-w-[90rem] mx-auto">
-        {items.map((item, i) => (
-          <FrontBentoGridItem
-            key={i}
-            title={item.title}
-            description={item.description}
-
-            icon={item.icon}
-            className={i === 3 || i === 6 ? "md:col-span-2" : ""}
-          />
-        ))}
-      </FrontBentoGrid>
+      <FrontBentoGrid4 />
 
     </div>
   </section>

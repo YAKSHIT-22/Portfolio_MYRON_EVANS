@@ -1,10 +1,8 @@
-import { useDispatch, useSelector } from 'react-redux'
-import { insideBlog } from '../redux/actions/myblogActions'
+import {  useSelector } from 'react-redux'
 import { useSpring, useInView, animated } from '@react-spring/web'
 import { useState } from 'react'
 
 const ProjectBlog = ({ img, desc, title }) => {
-  const disp = useDispatch()
   const [position, setPosition] = useState(0)
 
   const blogselector = useSelector((state) => state)

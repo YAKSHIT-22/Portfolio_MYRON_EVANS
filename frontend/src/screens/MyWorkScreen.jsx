@@ -1,7 +1,7 @@
-import { useDispatch, useSelector } from 'react-redux'
+import {  useSelector } from 'react-redux'
 import ProjectBlog from '../components/ProjectBlog.jsx'
 import { useState } from 'react'
-import { outsideBlog } from '../redux/actions/myblogActions.js'
+
 import { animated, useSpring } from '@react-spring/web'
 
 function MyWorkScreen() {
