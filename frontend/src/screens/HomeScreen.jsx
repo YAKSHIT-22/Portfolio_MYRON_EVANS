@@ -328,10 +328,10 @@ function HomeScreen() {
           ></canvas>
 
           <animated.div
-            className="align-center fixed mt-9 flex justify-center border"
+            className="align-center fixed mt-9 flex justify-center"
             style={{
               height: innerHeight - 210,
-              width: window.innerWidth - 400,
+              width: window.innerWidth - 480,
             }}
             id="faceContainer"
           >
@@ -361,15 +361,15 @@ function HomeScreen() {
       </section>
 
       {/* Section 2 ~ What Drives Me*/}
-      <section className="mt-24 flex w-full flex-col items-center px-8 md:flex-row md:flex-wrap md:items-start md:justify-evenly md:px-10">
+      <section className="mt-24 flex w-full flex-col items-center px-6 md:flex-row md:flex-wrap md:items-start md:justify-evenly md:px-10">
         {/* Left Side ~ Text Side */}
         <div className="md:w-1/2">
           <animated.div>
-            <animated.h3 className="bg-gradient bg-clip-text text-center text-body font-bold text-transparent md:text-start md:text-content-heading">
+            <animated.h3 className="bg-gradient bg-clip-text text-left text-body font-bold text-transparent md:text-content-heading">
               What drives me
             </animated.h3>
             <animated.h2
-              className="text-center text-content-heading font-extrabold md:text-start md:text-section-heading"
+              className="text-left text-content-heading font-extrabold md:text-section-heading"
               style={fromRight}
               ref={refs2}
             >
@@ -435,9 +435,12 @@ function HomeScreen() {
 
         {/* Right Side ~ Image Side */}
         <div className="relative mt-12 h-96 max-h-96 w-full md:ml-24 md:w-1/3 ">
-          <img src={imageBg} className="absolute right-0 top-0" />
-          <img src={section2Img} className="absolute right-6 top-7 h-full" />
-          <animated.h1 className="absolute -bottom-10 right-0 bg-gradient px-6 py-2 text-[1.5rem]">
+          <img src={imageBg} className="absolute right-5 top-0 md:right-0" />
+          <img
+            src={section2Img}
+            className="absolute right-[2.25rem] top-7 h-full md:right-6"
+          />
+          <animated.h1 className="absolute -bottom-16 right-6 bg-gradient px-6 py-2 text-[17px] md:-bottom-12 md:-right-4 md:text-[24px]">
             <p>Frontend Developer &amp;</p>
             <p>Design Enthusiast</p>
           </animated.h1>
@@ -446,7 +449,7 @@ function HomeScreen() {
       {/* </ParallaxLayer> */}
 
       {/* Section 3 ~ Vertical Timeline*/}
-      <section className="mt-48 md:mt-24 md:px-10">
+      <section className="mt-48 px-6 md:mt-24 md:px-10">
         <div className={'w-full'}>
           <h1
             className={
@@ -454,11 +457,13 @@ function HomeScreen() {
             }
           >
             Educational and Professional{' '}
-            <span className={'bg-gradient px-2'}>Timeline Story</span>
+            <span className={'mx-auto block w-fit bg-gradient px-2 md:inline'}>
+              Timeline Story
+            </span>
           </h1>
           <p
             className={
-              'mx-auto mt-2 text-center text-body text-secondary md:max-w-3xl'
+              'mx-auto mt-4 text-center text-body text-secondary md:max-w-3xl'
             }
           >
             I have been writing code for longer than I have been designing, but
@@ -474,8 +479,7 @@ function HomeScreen() {
                   key={n.id}
                   id={n.id}
                   date={n.date}
-                  title1={n.title1}
-                  title2={n.title2}
+                  title={n.title1 + ' ' + n.title2}
                   subtitle={n.subtitle}
                   description={n.description}
                 />
@@ -485,11 +489,11 @@ function HomeScreen() {
       </section>
 
       {/* Section 4 ~ Share Div */}
-      <section className="mt-24  md:px-10">
-        <div className="relative mt-7 flex w-full items-center justify-center">
+      <section className="mt-24 px-6 md:px-10">
+        <div className="relative mt-7 flex w-full items-center justify-center ">
           {/* Background image div */}
           <div
-            className="absolute inset-0 left-auto right-auto h-[36ren] w-5/6 rounded-3xl bg-cover bg-center bg-no-repeat opacity-40 duration-500 ease-in-out hover:opacity-20 md:h-[35rem] md:max-h-[35rem]"
+            className="absolute inset-0 left-auto right-auto w-full rounded-3xl bg-cover bg-center bg-no-repeat opacity-40 duration-500 ease-in-out hover:opacity-20 md:h-[35rem] md:max-h-[35rem] md:w-5/6"
             style={{
               backgroundImage:
                 "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/Section4.jpeg')",
@@ -499,14 +503,14 @@ function HomeScreen() {
           {/* Text content div  cerate it responsive for md */}
 
           <animated.div
-            className="relative z-10 flex h-full flex-col items-center justify-center px-16 py-14 text-white"
+            className="relative z-10 flex h-full flex-col items-center justify-center py-14 text-white"
             ref={refShare}
             style={shareSprings}
           >
-            <h1 className="w-full max-w-2xl text-center text-content-heading md:text-section-heading">
+            <h1 className="w-full max-w-2xl px-8 text-center text-content-heading md:px-0 md:text-section-heading">
               Share my website and story with someone it can help
             </h1>
-            <span className="mt-10 w-full max-w-2xl text-[14px] text-secondary md:text-body">
+            <span className="mt-10 w-full max-w-2xl px-8 text-[14px] text-secondary md:px-0 md:text-body">
               We all have struggles and failures in life, please share my
               website with anyone you believe my story can help. If you are
               inspired by my story and would like to support me, please contact
@@ -664,14 +668,13 @@ function HomeScreen() {
       </section>
 
       {/* Section 7 ~ Core Values */}
-      <section className="mt-24 flex w-[100%] flex-col bg-[#201F1F] md:flex-col md:items-center md:justify-center md:px-10">
-        <div className="flex w-full flex-col items-center px-12 py-24 text-center">
-          <h1 className="text-section-heading">
-            The Core Values That Drives
-            <br /> <span className="inlnie bg-gradient px-2">Everything</span> I
-            do
+      <section className="mt-24 flex w-full flex-col bg-secondary px-4 md:flex-col md:items-center md:justify-center md:px-10">
+        <div className="flex w-full flex-col items-center pb-7 pt-24 text-center md:px-12 md:py-24">
+          <h1 className="w-full max-w-3xl text-center text-content-heading md:text-section-heading">
+            The Core Values that drive{'  '}
+            <span className="inline bg-gradient px-2">Everything</span> I do
           </h1>
-          <div className="values-containers flex w-full flex-wrap py-16 md:flex-row md:justify-evenly">
+          <div className="flex w-full flex-col items-center gap-5 pb-6 pt-16 md:flex-row md:flex-wrap md:justify-evenly md:gap-0 md:py-16">
             {values.values &&
               values.values.map((vals) => (
                 <ServiceCard
@@ -689,46 +692,42 @@ function HomeScreen() {
       {/* Section 8 ~ Carousel*/}
       <section className="mt-24 md:px-10">
         <div>
-          <h3 className="bg-gradient bg-clip-text text-center text-content-heading text-transparent">
+          <h3 className="hidden bg-gradient bg-clip-text px-6 text-left text-body text-transparent md:block md:px-0 md:text-center md:text-content-heading">
             Client Testimonials
           </h3>
-          <div className="text-center text-section-heading">
-            <h2>
-              Check out the <span className="bg-gradient px-3">Feedback</span>
-            </h2>
-            <h2>From people I&apos;ve worked with</h2>
-          </div>
-          <div className="text-center text-secondary">
-            <p className="font-arial text-body">
-              I work very hard to please my client here is just a few of the
-              nice things
-            </p>
-            <p className="font-arial text-body ">
-              people say about me and my work.
-            </p>
-          </div>
+          <h2 className="mx-auto mt-1 w-full max-w-2xl text-left text-center text-[24px] text-content-heading md:text-center md:text-section-heading">
+            Check out the{' '}
+            <span className="inline bg-gradient px-3">Feedback</span> From
+            people I&apos;ve worked with
+          </h2>
+          <p className="mx-auto mt-4 w-full max-w-2xl px-6 text-center text-body text-secondary md:px-0">
+            I work very hard to please my client here is just a few of the nice
+            things people say about me and my work.
+          </p>
         </div>
-        <Carousel />
+        <div className={'px-1'}>
+          <Carousel />
+        </div>
       </section>
 
       {/* Section 9 ~ Explore My Works */}
-      <section className="mt-24 flex flex-col items-start justify-evenly bg-sm-primary pb-12 pt-12 md:flex-row md:px-10">
-        <div className={'relative h-96 w-1/3 max-w-72'}>
-          <img src={imageBg} className={''} />
+      <section className="mt-24 flex flex-col-reverse items-start justify-evenly bg-primary px-6 py-12 md:flex-row md:bg-sm-primary md:px-10">
+        <div
+          className={'relative mb-6 mt-4 h-96 w-full max-w-72 md:mt-0 md:w-1/3'}
+        >
+          <img src={imageBg} className={'absolute left-3 md:static'} />
           <img
             src={section9Img}
-            className="absolute left-7 top-7 h-full w-full"
+            className="absolute left-10 top-7 h-full w-full md:left-7"
           />
         </div>
 
-        <animated.div className="w-2/4">
-          <h3 className="mb-1 text-clip bg-gradient bg-clip-text text-content-heading text-transparent">
+        <animated.div className="w-full md:w-2/4">
+          <h3 className="mb-1 text-clip bg-gradient bg-clip-text text-body text-transparent md:text-content-heading">
             Born to serve
           </h3>
-          <h2 className="mb-7 text-section-heading leading-[53px]">
-            <p className="inline-block">The perfect addition to</p>
-            <br />
-            <p className="inline-block">any team</p>
+          <h2 className="mb-7 text-content-heading md:text-section-heading">
+            <p className="inline-block">The perfect addition to any team</p>
           </h2>
 
           <div className="max-w-1/3 mb-4 text-body text-secondary">
