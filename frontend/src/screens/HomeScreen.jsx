@@ -321,7 +321,7 @@ function HomeScreen() {
     duration: 2000,
   }))
 
-
+1
   return (
     <>
       {/* Section 1 ~ Face Animation */}
