@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 import userIcon from '../assets/icons/userIcon.svg'
 import homeSvg from '../assets/icons/home.svg'
@@ -11,6 +11,8 @@ import myStoreSvg from '../assets/icons/my_store.svg'
 
 function NavBar() {
   const [showNav, setShowNav] = useState(false)
+  const location = useLocation()
+  const path = location.pathname
 
   const links = [
     {
@@ -55,12 +57,12 @@ function NavBar() {
       </div>
 
       {/* Links Div */}
-      <div className="hidden w-full lg:flex lg:w-3/6 lg:flex-wrap lg:items-center lg:justify-evenly">
+      <div className="hidden w-full md:flex md:w-3/6 md:flex-wrap md:items-center md:justify-evenly">
         {links.map((link) => (
           <Link
             to={link.to}
             key={link.id}
-            className="px-2 py-1 font-inter font-medium tracking-normal transition-all hover:text-secondary lg:px-0"
+            className="px-2 py-1 font-inter font-medium tracking-normal transition-all hover:text-secondary md:px-0"
           >
             {link.title}
           </Link>
@@ -68,7 +70,7 @@ function NavBar() {
       </div>
 
       {/* Button Div */}
-      <div className="hidden w-1/6 items-center justify-center font-medium lg:flex">
+      <div className="hidden w-1/6 items-center justify-center font-medium md:flex">
         <a
           href={'#get-in-touch'}
           className="h-fit rounded-md bg-gradient px-4 py-2 text-secondary transition-all hover:text-primary hover:shadow-custom hover:shadow-golden"
@@ -78,7 +80,7 @@ function NavBar() {
       </div>
 
       {/* Mobile Menu Button */}
-      <div className="flex w-1/3 items-center justify-end lg:hidden">
+      <div className="flex w-1/3 items-center justify-end md:hidden">
         <button
           className="flex items-center justify-center focus:outline-none"
           onClick={() => setShowNav(!showNav)}
@@ -101,25 +103,25 @@ function NavBar() {
 
       {/* Mobile Menu (hidden initially) */}
       <div
-        className={`${showNav ? 'block' : 'hidden'} mt-5 h-screen w-full overflow-hidden lg:hidden`}
+        className={`${showNav ? 'block' : 'hidden'} mt-10 h-screen w-full overflow-hidden md:hidden`}
       >
         {links.map((link) => (
           <Link
             to={link.to}
             key={link.id}
             onClick={() => setShowNav(false)}
-            className="mb-4 flex items-center px-4 py-2 font-inter font-medium tracking-normal transition-all hover:text-secondary"
+            className={`mb-2 flex items-center rounded-xl px-4 py-4 font-inter font-medium tracking-normal transition-all hover:bg-sm-primary hover:text-secondary ${link.to === path ? 'bg-sm-primary text-secondary' : ''}`}
           >
             <img src={link.icon} alt={'icon'} className={'w-7'} />
             <h1 className={'ml-3'}>{link.title}</h1>
           </Link>
         ))}
 
-        <div className={'mx-4 mt-5 border-t-2 border-t-golden'}>
+        <div className={'mx-4 mt-8 border-t-2 border-t-golden'}>
           <a
             href={'#get-in-touch'}
             onClick={() => setShowNav(false)}
-            className="mt-5 inline-block h-fit w-full rounded-md bg-gradient px-4 py-2 text-center text-primary transition-all hover:text-primary hover:shadow-custom hover:shadow-golden"
+            className="mt-10 inline-block h-fit w-full rounded-md bg-gradient px-4 py-2 text-center text-primary transition-all hover:text-primary hover:shadow-custom hover:shadow-golden"
           >
             Get in Touch
           </a>

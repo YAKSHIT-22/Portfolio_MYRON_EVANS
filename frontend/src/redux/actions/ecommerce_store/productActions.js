@@ -26,7 +26,6 @@ export const getAllProducts = (type) => async (dispatch) => {
 
     dispatch({ type: GET_ALL_PRODUCTS_SUCCESS, payload: data })
   } catch (e) {
-    console.log(e)
     dispatch({
       type: GET_ALL_PRODUCTS_ERROR,
       error: e.response.data.detail ? e.response.data.detail : e.response.data,

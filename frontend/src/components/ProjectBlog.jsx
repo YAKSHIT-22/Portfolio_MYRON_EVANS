@@ -1,4 +1,4 @@
-import {  useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useSpring, useInView, animated } from '@react-spring/web'
 import { useState } from 'react'
 
@@ -39,7 +39,6 @@ const ProjectBlog = ({ img, desc, title }) => {
           // el can be null - see https://reactjs.org/docs/refs-and-the-dom.html#caveats-with-callback-refs
           if (!el) return
 
-          console.log(el.getBoundingClientRect().top)
           setPosition(el.getBoundingClientRect().top)
         }}
       >
