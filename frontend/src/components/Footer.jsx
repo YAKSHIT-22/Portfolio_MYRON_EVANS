@@ -5,15 +5,15 @@ const Footer = () => {
   return (
     <footer
       className={
-        'flex flex-col items-center justify-center border-t-2 border-golden pb-12 md:pt-0'
+        'flex flex-col items-center justify-center border-t-2 border-golden pb-5 md:pt-0'
       }
     >
       <img
         src={userIcon}
         alt={'Myron Evans'}
-        className={'size-52 md:size-72'}
+        className={'size-20 md:size-24'}
       />
-      <p className={'-mt-10 font-inter font-[14px] md:-mt-16'}>
+      <p className={'-mt-4 font-inter text-[10px] md:-mt-6'}>
         Copyright © {currentYear}
       </p>
     </footer>
