@@ -304,6 +304,23 @@ function HomeScreen() {
     },
     duration: 2000,
   }))
+  const [refService2, serviceSprings2] = useInView(() => ({
+    from: {
+      y: -80,
+      opacity: 0,
+    },
+    to: {
+      y: 0,
+      opacity: 1,
+    },
+
+    config: {
+      tension: 100,
+      mass: 2,
+    },
+    duration: 2000,
+  }))
+
 
   return (
     <>
@@ -590,8 +607,8 @@ function HomeScreen() {
               </div>
               <animated.div
                 className="service-content-wrapper flex w-full flex-col items-center"
-                ref={refService}
-                style={serviceSprings}
+                ref={refService2}
+                style={serviceSprings2}
               >
                 <h1 className="my-9 text-center text-content-heading">
                   Software Development
