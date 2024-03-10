@@ -40,36 +40,34 @@ const ServiceCard = ({ title, icon, desc, className }) => {
   return (
     <div
       ref={parentRef}
-      className={`mt-12 flex w-1/2  flex-col items-center rounded-xl bg-primary text-center shadow-lg  transition-all hover:scale-105 md:w-[30%] lg:h-[34rem] ${className}`}
+      className={`flex w-full flex-col items-center rounded-xl bg-primary pb-6 pt-9 text-center shadow-lg transition-all md:mt-12 md:h-[34rem] md:w-[30%] md:hover:scale-105 ${className}`}
       onMouseEnter={() => setHover(true)}
       onMouseOut={() => setHover(false)}
     >
-      <div className="mb-6 mt-9 flex h-full w-full flex-col items-center text-center">
-        <div className="icon-container flex h-28 w-28 items-center justify-center rounded-xl bg-sm-primary py-5">
-          <AnimatedIcon
-            name={name}
-            iconData={icon}
-            width={72}
-            height={75}
-            hover={hover}
-          />
-        </div>
-
-        <animated.h1
-          className="py-7 text-center text-content-heading"
-          ref={refTits}
-          style={titSprings}
-        >
-          {title}
-        </animated.h1>
-        <animated.p
-          className="h-fit overflow-visible px-6 text-body"
-          style={detSprings}
-          ref={refDet}
-        >
-          {desc}
-        </animated.p>
+      <div className="icon-container flex h-28 w-28 items-center justify-center rounded-xl bg-sm-primary py-5">
+        <AnimatedIcon
+          name={name}
+          iconData={icon}
+          width={72}
+          height={75}
+          hover={hover}
+        />
       </div>
+
+      <animated.h1
+        className="py-7 text-center text-content-heading"
+        ref={refTits}
+        style={titSprings}
+      >
+        {title}
+      </animated.h1>
+      <animated.p
+        className="h-fit overflow-visible px-6 text-body text-secondary"
+        style={detSprings}
+        ref={refDet}
+      >
+        {desc}
+      </animated.p>
     </div>
   )
 }

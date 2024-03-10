@@ -13,7 +13,7 @@ import BentoGrid1 from './components/GridComps/BentoGrid1.jsx'
 import BentoGrid2 from './components/GridComps/BentoGrid2.jsx'
 import BentoGrid3 from './components/GridComps/BentoGrid3.jsx'
 import BentoGrid4 from './components/GridComps/BentoGrid4.jsx'
-
+import Footer from './components/Footer.jsx'
 
 function App() {
   return (
@@ -34,10 +34,10 @@ function App() {
             <Route path="/addNewBlog" element={<AddNewBlog />} />
 
             {/* <Route path='/demo' element={<BentoGrid4 />} /> */}
-
-
           </Routes>
         </div>
+
+        <Footer />
       </Router>
     </div>
   )

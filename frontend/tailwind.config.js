@@ -29,6 +29,7 @@ export default {
         inter: ['Inter', 'sans-serif'],
         mulish: ['Mulish', 'sans-serif'],
         publicsans: ['Public Sans', 'sans-serif'],
+        nunito: ['Nunito', 'sans-serif'],
       },
       borderColor: {
         golden: '#C9B18D',
