@@ -62,7 +62,7 @@ function NavBar() {
           <Link
             to={link.to}
             key={link.id}
-            className="px-2 py-1 font-inter font-medium tracking-normal transition-all hover:text-secondary md:px-0"
+            className={`px-2 py-0 font-inter font-medium tracking-normal transition-all hover:bg-gradient hover:bg-clip-text hover:text-transparent md:px-0 ${link.to === path && 'border-b border-golden bg-gradient bg-clip-text text-transparent'}`}
           >
             {link.title}
           </Link>
