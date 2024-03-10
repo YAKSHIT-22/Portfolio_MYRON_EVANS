@@ -38,5 +38,13 @@
     "title2": "Purdue University",
     "subtitle": "The failure, GPA: 2.09",
     "description": "I had part of my tuition covered and the other part I worked to pay, but because I missed my family, surrounded myself with some of the wrong people, made the wrong decisions, and my last semester where I forgot to withdraw, my GPA fell tremendously so I lost my scholarship and my employment at the same time, I could not stay. I was sad and disappointed for a while, as I wanted that degree very much, in my mind I blamed myself for everything, the failure hurt more than anything I had experienced up to this point, I stopped writing code, and even struggled with my mental health for some time because of the experience I had there, but I had to find another way."
+  },
+ {
+    "id": 6,
+    "date": "January 2018",
+    "title1": "Enrolled In",
+    "title2": "Community College Again",
+    "subtitle": "Started from scratch.",
+    "description": "Had to start from scratch since the general education requirements were different from Purdue’s and not all of my credits would transfer from an out-of-state college. I worked many different retail customer service jobs, while also learning the more about fundamentals of Software Engineering, and volunteered at food banks, found a love for serving others and re-ignited my passion for writing code and solving problems, I also gained interest in UX/UI Design. "
   }
 ]

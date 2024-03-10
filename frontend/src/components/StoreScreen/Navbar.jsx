@@ -6,7 +6,9 @@ import { useDispatch } from 'react-redux'
 const Navbar = () => {
   const dispatch = useDispatch()
 
-  const [activeNavbarItem, setActiveNavbarItem] = useState(1)
+  const [activeNavbarItem, setActiveNavbarItem] = useState(
+    parseInt(localStorage.getItem('active_navbar_item')) || 0,
+  )
 
   useEffect(() => {
     dispatch(getAllProducts(activeNavbarItem))
@@ -21,7 +23,11 @@ const Navbar = () => {
   ]
 
   return (
-    <nav className={'flex flex-wrap items-center bg-sm-primary py-3'}>
+    <nav
+      className={
+        'flex flex-col bg-sm-primary py-3 md:flex-row md:flex-wrap md:items-center'
+      }
+    >
       <div
         className={
           'flex w-2/3 flex-wrap items-center border-b-2 border-b-golden border-opacity-25 bg-sm-primary md:ml-20'
@@ -32,7 +38,10 @@ const Navbar = () => {
             key={idx}
             id={'navbar-item'}
             className={`${idx === activeNavbarItem && 'active'} hover:active cursor-pointer text-body`}
-            onClick={() => setActiveNavbarItem(idx)}
+            onClick={() => {
+              setActiveNavbarItem(idx)
+              localStorage.setItem('active_navbar_item', idx)
+            }}
           >
             <p className={'px-8 py-2 font-medium'}>{item}</p>
           </div>

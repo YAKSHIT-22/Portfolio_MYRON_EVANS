@@ -5,10 +5,10 @@ export default {
     extend: {
       gridTemplateColumns: {
         // Simple 16 column grid
-        '16': 'repeat(16, minmax(0, 1fr))',
+        16: 'repeat(16, minmax(0, 1fr))',
 
         // Complex site-specific column configuration
-        'layout': '200px minmax(900px, 1fr) 200px',
+        layout: '200px minmax(900px, 1fr) 200px',
       },
       backgroundColor: {
         primary: '#2C2B2B',
@@ -29,6 +29,7 @@ export default {
         inter: ['Inter', 'sans-serif'],
         mulish: ['Mulish', 'sans-serif'],
         publicsans: ['Public Sans', 'sans-serif'],
+        nunito: ['Nunito', 'sans-serif'],
       },
       borderColor: {
         golden: '#C9B18D',
@@ -40,8 +41,8 @@ export default {
         custom: '0 0 12px -2px --tw-shadow-color',
       },
       fontSize: {
-        'main-heading': ['3.875rem', 'auto'],
-        'section-heading': ['2.875rem', 'auto'],
+        'main-heading': ['3.875rem', '71.75px'],
+        'section-heading': ['2.875rem', '53.23px'],
         'content-heading': ['1.625rem', '2rem'],
         'box-heading': ['1.25rem', '1rem'],
         body: ['1rem', '1.75rem'],

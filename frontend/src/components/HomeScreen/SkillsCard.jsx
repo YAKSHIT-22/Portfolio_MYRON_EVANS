@@ -1,7 +1,8 @@
 import { PropTypes } from 'prop-types'
-// import { } from 
+// import { } from
 
 import { useInView, animated } from '@react-spring/web'
+
 const SkillsCard = ({ id, title, icon, percent, altText }) => {
   const level =
     percent >= 90
@@ -12,29 +13,25 @@ const SkillsCard = ({ id, title, icon, percent, altText }) => {
   const [props, springs] = useInView(
     () => ({
       from: {
-        width: "0%",
-
+        width: '0%',
       },
       to: {
         width: `${percent}%`,
-
       },
       config: {
         delay: '0.7s',
         durations: 7000,
         friction: 80,
-
-      }
+      },
     }),
     // {
     //   rootMargin: '-40% 0%',
     // }
   )
 
-
   return (
     <div
-      className={`${id % 2 && 'mr-4'} ${id > 2 && 'mt-4'} w-[49%] rounded-2xl bg-[#333333] px-5 py-5`}
+      className={`${id % 2 && 'md:mr-4'} ${id > 2 && 'md:mt-4'} w-full rounded-2xl bg-primary px-5 py-5 md:w-[49%] md:bg-sm-primary`}
     >
       <div className="h-12">
         <div className="block w-fit text-body text-white">{title}</div>
@@ -50,7 +47,7 @@ const SkillsCard = ({ id, title, icon, percent, altText }) => {
               style={springs}
             ></animated.div>
           </div>
-          <animated.div className="font-mulish pl-2 text-button font-medium dark:text-white">
+          <animated.div className="pl-2 font-mulish text-button font-medium dark:text-white">
             {percent}%
           </animated.div>
         </div>

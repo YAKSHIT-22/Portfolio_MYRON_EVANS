@@ -9,6 +9,7 @@ import '../../assets/css/Home Screen/Carousel.css'
 
 function Carousel() {
   const [imgIndex, setImgIndex] = useState(0)
+  const innerWidth = window.innerWidth
 
   const settings = {
     accessibility: true,
@@ -18,10 +19,10 @@ function Carousel() {
     lazyLoad: true,
     autoplay: true,
     speed: 400,
-    slidesToShow: 3,
+    slidesToShow: innerWidth < 768 ? 1 : 3,
     centerMode: true,
     centerPadding: 0,
-    className: 'mx-9 h-[35rem]',
+    className: 'mx-7 px-1 md:h-[35rem]',
     dotsClass: 'slick-dots',
     beforeChange: (_, next) => {
       setImgIndex(next)
@@ -29,15 +30,15 @@ function Carousel() {
   }
 
   return (
-    <div className="App min-h-screen">
+    <div className="App md:min-h-screen">
       <Slider {...settings} variableWidth variableHeight>
         {testimonials.map((testimonial, idx) => (
           <div
             key={testimonial.id}
-            className={`slide ${imgIndex === idx ? 'activeSlide shadow-xl' : 'shadow-lg'} mb-2 mt-12 h-fit bg-sm-primary`}
+            className={`slide ${imgIndex === idx ? 'activeSlide shadow-xl' : 'shadow-lg'} mb-2 mt-12 h-fit bg-primary md:bg-sm-primary`}
           >
             <div className="mt-8 flex flex-col items-center pb-3">
-              <div className="activeSlideImage mb-3 h-44 w-40 rounded-xl p-1">
+              <div className="activeSlideImage mb-3 h-36 w-32 rounded-xl p-1">
                 <img
                   src={testimonial.image}
                   alt={testimonial.name}
@@ -52,8 +53,13 @@ function Carousel() {
                   <h5 className="-mb-2">{testimonial.position}</h5>
                   <h6>{testimonial.company}</h6>
                 </div>
-                <div className="mt-7 px-10 text-center text-body text-secondary">
+                <div className="mt-7 px-16 text-center text-[12px] text-secondary md:px-10">
                   <p>{testimonial.testimony}</p>
+                  <p className={'mt-2'}>
+                    Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut
+                    odit aut fugit sed thisnquia consequuntur magni dolores eos
+                    qui ratione voluptatem sequi nesciunt.{' '}
+                  </p>
                 </div>
               </div>
             </div>

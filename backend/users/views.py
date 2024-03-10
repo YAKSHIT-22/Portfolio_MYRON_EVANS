@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from django.db import transaction
 from rest_framework import status
 from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
@@ -34,3 +34,19 @@ class Signup(GenericAPIView):
 		except Exception as e:
 			response = {'message': str(e)}
 			return Response(response, status=status.HTTP_400_BAD_REQUEST)
+
+class Transaction(GenericAPIView):
+	serializer_class = UserSerializer
+	def post(self, req, *args,**kwargs):
+		user = req.user
+		data = req.data
+		# data.price / data.ammount can be neg or positive
+		with transaction.Atomic:
+			user.wallet = user.wallet+data.ammount
+		
+
+				
+	
+
+
+	
