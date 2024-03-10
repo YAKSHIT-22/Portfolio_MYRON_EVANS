@@ -12,13 +12,18 @@ import { VerticalTimeline } from 'react-vertical-timeline-component'
 import myPurposeIcon from '../assets/Animations/icons animation/My Purpose/LottieJSON.json'
 import myAmbitionIcon from '../assets/Animations/icons animation/My Ambition/LottieJSON.json'
 import glassIcon from '../assets/Animations/icons animation/Glass icon/Glass_icon_V03_02.json'
+
 import softwareDesignIcon from '../assets/Animations/icons animation/Software Design/LottieJSON.json'
 import softwareDeveloperIcon from '../assets/Animations/icons animation/Software Development/LottieJSON.json'
-
 import mt1 from '../assets/Animations/Face Animation/myron transparent bg 1.gif'
 import mt2 from '../assets/Animations/Face Animation/myron transparent bg 1_2.gif'
 
 import imageBg from '../assets/svgs/img-bg.svg'
+
+import instagramIcon from '../assets/icons/instagram.svg'
+import twitterIcon from '../assets/icons/x.svg'
+import linkedinIcon from '../assets/icons/linkedin.svg'
+
 import section2Img from '../assets/images/Home Page/Section 2 img.png'
 import section9Img from '../assets/images/Home Page/Section 9.png'
 import heroImg from '../assets/images/Home Page/hero_img.png'
@@ -59,6 +64,7 @@ function HomeScreen() {
 
     const context = canvas.getContext('2d')
 
+    // noinspection JSPotentiallyInvalidConstructorUsage
     const locoScroll = new locomotiveScroll({
       el: canvas,
       smooth: true,
@@ -131,6 +137,7 @@ function HomeScreen() {
       },
       onUpdate: render,
     })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [containerRef.current])
 
   useEffect(() => {
@@ -320,7 +327,6 @@ function HomeScreen() {
     },
     duration: 2000,
   }))
-
 
   return (
     <>
@@ -768,75 +774,125 @@ function HomeScreen() {
       </section>
 
       {/* Section 10 ~ Get in Touch */}
-      <section className="bg-secondary pt-24 md:px-10">
-        <h1 className="m-2 text-center text-section-heading">Get In Touch</h1>
+      <section className="bg-secondary px-6 pt-12 md:px-10 md:pt-24">
+        <div className={'hidden md:block'}>
+          <h1 className="m-2 text-center text-content-heading md:text-section-heading">
+            Get In Touch
+          </h1>
 
-        <p className="mb-20 text-wrap text-center text-body">
-          Let’s touch base and discuss how I can make a lasting positive impact
-          on your company
-        </p>
-        <div className="parent-get-in-touch-container flex flex-col items-center justify-center pb-12 text-center md:flex-row">
-          <div className="w-80% mx-20 flex flex-col">
-            <div className="flex  flex-col text-left">
-              <div className="text-left">
-                <h1 className="text-section-heading">
-                  Let’s <span className="bg-gradient px-2">Talk</span>
-                  <br />
-                  About Your Project
-                </h1>
-              </div>
-              <div className="text-body">
-                Start a conversation
-                <br />
-                by filling the form to the right.
+          <p className="mb-20 text-wrap text-center text-body text-secondary">
+            Let’s touch base and discuss how I can make a lasting positive
+            impact on your company
+          </p>
+        </div>
+        <div className="flex flex-col items-center justify-center pb-12 md:flex-row">
+          <div className="mx-20 flex h-full w-full flex-col items-start justify-start md:w-1/2">
+            <div className={'border-b-2 border-[#cecece] pb-10'}>
+              <h1 className="text-center text-content-heading md:text-left md:text-section-heading">
+                Let’s <span className="bg-gradient px-2">Talk</span>
+              </h1>
+              <p className="mt-2 max-w-[22rem] text-body">
+                Send me an email or start a conversation by filling the form
+                below.
+              </p>
+            </div>
+            <div className={'mt-10 w-full'}>
+              <h2 className={'text-content-heading'}>Follow me:</h2>
+              <div className="mt-4 flex w-full items-center justify-start gap-12">
+                <a
+                  href={'https://www.instagram.com/'}
+                  rel={'noreferrer'}
+                  target={'_blank'}
+                >
+                  <img
+                    src={instagramIcon}
+                    className={'size-8 hover:text-black'}
+                  />
+                </a>
+                <a
+                  href={'https://twitter.com/'}
+                  rel={'noreferrer'}
+                  target={'_blank'}
+                >
+                  <img src={twitterIcon} className={'size-8'} />
+                </a>
+                <a
+                  href={'https://www.linkedin.com/'}
+                  rel={'noreferrer'}
+                  target={'_blank'}
+                >
+                  <img src={linkedinIcon} className={'size-8'} />
+                </a>
               </div>
             </div>
           </div>
-          <div
+          <form
             id={'get-in-touch'}
-            className="flex w-1/2 flex-col gap-5 text-left "
+            className="mt-16 flex w-full flex-col gap-5 text-left md:mt-0 md:w-1/2 md:gap-8"
           >
-            <div className="flex gap-10">
-              <div className="w-[40%]">
-                <p className="py-2">Full Name*</p>
-
+            <div className="flex flex-col items-center gap-5 md:flex-row md:gap-10">
+              <div className="w-full md:max-w-[275px]">
+                <label htmlFor={'full_name'}>Full Name *</label>
                 <input
-                  className="h-14 w-[100%] rounded-full   border-none  bg-primary px-4 outline-none "
+                  id={'full_name'}
+                  type={'text'}
+                  required={true}
+                  className="font-nunito mt-2 h-14 w-full rounded-full border-none bg-sm-primary px-4 text-body outline-none "
                   placeholder="John David"
                 />
               </div>
-              <div className=" w-[40%]">
-                <p className="py-2">email*</p>
-
+              <div className=" w-full md:max-w-[275px]">
+                <label htmlFor={'email'}>Email *</label>
                 <input
-                  className="h-14 w-[100%] rounded-full   border-none  bg-primary px-4 outline-none "
+                  id={'email'}
+                  type={'email'}
+                  required={true}
+                  className="font-nunito mt-2 h-14 w-full rounded-full border-none bg-sm-primary px-4 text-body outline-none "
                   placeholder="example@yourmail.com"
                 />
               </div>
             </div>
-            <div className="flex gap-10">
-              <div className="w-[40%]">
-                <p className="py-2">Phone*</p>
-
+            <div className="flex flex-col items-center gap-5 md:flex-row md:gap-10">
+              <div className="w-full md:max-w-[275px]">
+                <label htmlFor={'phone_number'}>Phone *</label>
                 <input
-                  className="h-14 w-[100%] rounded-full   border-none  bg-primary px-4 outline-none "
-                  placeholder="Put Developement URL"
+                  id={'phone_number'}
+                  type={'tel'}
+                  required={true}
+                  className="font-nunito mt-2 h-14 w-full rounded-full border-none bg-sm-primary px-4 text-body outline-none "
+                  placeholder="(000) 123 456"
                 />
               </div>
-              <div className="w-[40%]">
-                <p className="py-2">Subject</p>
-
+              <div className="w-full md:max-w-[275px]">
+                <label htmlFor={'subject'}>Subject *</label>
                 <input
-                  className="h-14 w-[100%] rounded-full   border-none  bg-primary px-4 outline-none "
-                  placeholder="Put Developement URL"
+                  id={'subject'}
+                  type={'text'}
+                  required={true}
+                  className="font-nunito mt-2 h-14 w-full rounded-full border-none bg-sm-primary px-4 text-body outline-none "
+                  placeholder="ex. Project"
                 />
               </div>
             </div>
-            <div className="w-[90%]">
-              <p className="py-2"> Textarea </p>
-              <textarea className="h-44 w-[100%] rounded-3xl   border-none  bg-primary px-4 outline-none " />
+            <div className="w-full md:w-[90%]">
+              <label htmlFor={'message'}>Tell me about your project *</label>
+              <textarea
+                id={'message'}
+                required={true}
+                placeholder={
+                  'Hello there! I would like to talk about how to...'
+                }
+                className="font-nunito mt-2 h-44 w-full rounded-3xl border-none bg-sm-primary px-4 py-4 text-body outline-none"
+              />
             </div>
-          </div>
+
+            <button
+              type={'submit'}
+              className="mx-auto max-w-fit rounded-full bg-gradient px-9 py-5 font-rubik text-button font-medium uppercase tracking-widest md:mx-0"
+            >
+              Send Message
+            </button>
+          </form>
         </div>
       </section>
     </>
