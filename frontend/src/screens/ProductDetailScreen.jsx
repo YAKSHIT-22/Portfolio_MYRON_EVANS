@@ -6,6 +6,8 @@ import { useLocation } from 'react-router-dom'
 import ImageGallery from '../components/StoreScreen/ImageGallery.jsx'
 import AddToCart from '../components/StoreScreen/AddToCart.jsx'
 import Header from '../components/StoreScreen/Header.jsx'
+import Loading from '../components/ui/Loading.jsx'
+import Message from '../components/ui/Message.jsx'
 
 const ProductDetailScreen = () => {
   const location = useLocation()
@@ -28,13 +30,9 @@ const ProductDetailScreen = () => {
   return (
     <div className={'mx-20 pb-10'}>
       {loading ? (
-        <div
-          className={'flex h-screen items-center justify-center text-center'}
-        >
-          Loading...
-        </div>
+        <Loading className={'size-12'} />
       ) : error ? (
-        <div className={'h-screen text-center'}>{error}</div>
+        <Message message={error} severity={'error'} />
       ) : (
         data && (
           <>

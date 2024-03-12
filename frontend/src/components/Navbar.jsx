@@ -8,6 +8,7 @@ import myWorkSvg from '../assets/icons/my_work.svg'
 import bentoBlogSvg from '../assets/icons/bento_blog.svg'
 import affRefSvg from '../assets/icons/aff_ref.svg'
 import myStoreSvg from '../assets/icons/my_store.svg'
+import hamburgerSvg from '../assets/svgs/hamburger.svg'
 
 function NavBar() {
   const [showNav, setShowNav] = useState(false)
@@ -85,19 +86,7 @@ function NavBar() {
           className="flex items-center justify-center focus:outline-none"
           onClick={() => setShowNav(!showNav)}
         >
-          <svg
-            className="h-6 w-6 text-gray-500"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
+          <img src={hamburgerSvg} />
         </button>
       </div>
 
