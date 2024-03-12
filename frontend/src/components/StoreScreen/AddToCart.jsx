@@ -44,13 +44,18 @@ const AddToCart = ({ price, qty, sizeIdx, colorIdx, product }) => {
     <div className={'flex flex-col md:flex-row'}>
       <button
         className={
-          'mr-5 w-4/5 bg-gradient py-4 font-arial text-button font-bold text-white'
+          'mr-5 w-4/5 min-w-[343px] max-w-[343px] bg-gradient py-4 text-center font-arial text-button font-bold text-white'
         }
         onClick={addToCartHandler}
       >
         Add to Cart - ${total}
       </button>
-      <QuantityField qty={qty} setQuantity={setQuantity} quantity={quantity} />
+      <QuantityField
+        qty={qty}
+        setQuantity={setQuantity}
+        className={'min-w-[84px] max-w-[84px]'}
+        quantity={quantity}
+      />
     </div>
   )
 }

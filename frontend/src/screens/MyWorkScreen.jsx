@@ -1,25 +1,15 @@
-import {  useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import ProjectBlog from '../components/ProjectBlog.jsx'
 import { useState } from 'react'
 
 import { animated, useSpring } from '@react-spring/web'
 
 function MyWorkScreen() {
-  const [ReadM, useReadM] = useState({ img: '', title: '', desc: '' })
+  const [activeTab, setActiveTab] = useState(
+    parseInt(localStorage.getItem('work_activeTab')) || 0,
+  )
   const blogselector = useSelector((state) => state)
-  // const classToHide = (blogselector.blog.insideBlog) ? 'hidden' : 'flex';
-  // const classToshow = (blogselector.blog.insideBlog) ? 'flex' : 'hidden';
 
-  const ButtonToshow = useSpring({
-    from: {
-      opacity: 0,
-      // top: "-10px",
-    },
-    to: {
-      opacity: blogselector.blog.insideBlog ? 1 : 0,
-      // top: "-10px",
-    },
-  })
   const propsToHide = useSpring({
     from: {
       opacity: 1,
@@ -30,44 +20,55 @@ function MyWorkScreen() {
   })
 
   return (
-    <div>
+    <div className={'px-6 pb-20 pt-12 md:px-16 md:pb-36'}>
       <animated.div
         className={`flex w-full flex-col items-center text-center `}
         style={propsToHide}
       >
-        <h1 className="text-section-heading"> My Case Studies</h1>
-        <p className="my-5">
+        <h1 className="text-content-heading md:text-section-heading">
+          My Case Studies
+        </h1>
+        <p className="my-5 text-cart-item-text md:text-body">
           Here are a few of the project I have worked on that I feel are the
           best examples of my work.
         </p>
       </animated.div>
 
-      <div className="work-conteiner flex flex-col items-center align-middle">
+      <div className="work-conteiner ">
         <animated.div
           className={`flex w-full items-center justify-center bg-[#383636]`}
           style={propsToHide}
         >
-          <div className=" flex py-2">
-            <div className="border-b-2 border-[#8D611D] px-4 py-[0.7rem] text-center">
-              Devlopment Projects
-            </div>
-            <div className="border-b-2 border-[#8D611D] px-4 py-[0.7rem] text-center">
+          <div className="flex h-full items-center md:h-fit md:py-2">
+            <button
+              onClick={() => {
+                setActiveTab(0)
+                localStorage.setItem('work_activeTab', 0)
+              }}
+              disabled={activeTab === 0}
+              className={`h-full w-52 border-b-2 px-4 py-[0.7rem] text-center text-body ${activeTab === 0 ? 'border-[#8D611D] bg-primary' : 'border-[#8D611D]/50 bg-primary/40'}`}
+            >
               Design Projects
-            </div>
+            </button>
+            <button
+              onClick={() => {
+                setActiveTab(1)
+                localStorage.setItem('work_activeTab', 1)
+              }}
+              disabled={activeTab === 1}
+              className={`w-52 border-b-2 px-4 py-[0.7rem] text-center text-body ${activeTab === 1 ? 'border-[#8D611D] bg-primary' : 'border-[#8D611D]/50 bg-primary/40'}`}
+            >
+              Dev Projects
+            </button>
           </div>
         </animated.div>
-        <animated.div
-          className={`relative -top-40 flex`}
-          style={ButtonToshow}
-        
-        >
-          Back Button
-        </animated.div>
-        <ProjectBlog
-          img={'ph1.jpeg'}
-          desc="A barbershop management app. Shop management, barber management,  client management.  "
-          title="Barbershop"
-        />
+        <div className={''}>
+          <ProjectBlog
+            img={'ph1.jpeg'}
+            desc="A barbershop management app. Shop management, barber management, client management."
+            title="Barbershop"
+          />
+        </div>
       </div>
     </div>
   )
