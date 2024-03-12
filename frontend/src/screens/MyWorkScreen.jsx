@@ -32,7 +32,7 @@ function MyWorkScreen() {
   return (
     <div>
       <animated.div
-        className={`flex w-full flex-col items-center text-center`}
+        className={`flex w-full flex-col items-center text-center `}
         style={propsToHide}
       >
         <h1 className="text-section-heading"> My Case Studies</h1>

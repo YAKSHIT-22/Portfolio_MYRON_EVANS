@@ -1,4 +1,4 @@
-import {  useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useSpring, useInView, animated } from '@react-spring/web'
 import { useState } from 'react'
 
@@ -31,7 +31,7 @@ const ProjectBlog = ({ img, desc, title }) => {
   }))
 
   return (
-    <div className={'w-full'}>
+    <div className={'w-full flex justify-center my-10'}>
       <animated.div
         className={`relative mt-12 flex max-w-full flex-col-reverse rounded-[2rem] bg-no-repeat md:w-[72rem]`}
         style={props}
