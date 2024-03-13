@@ -6,7 +6,14 @@ import { useDispatch } from 'react-redux'
 import { addToCart } from '../../redux/actions/ecommerce_store/productActions.js'
 import QuantityField from './QuantityField.jsx'
 
-const AddToCart = ({ price, qty, sizeIdx, colorIdx, product }) => {
+const AddToCart = ({
+  price,
+  showQtyElement,
+  qty,
+  sizeIdx,
+  colorIdx,
+  product,
+}) => {
   const [quantity, setQuantity] = useState(1)
   const [total, setTotal] = useState(quantity * price)
 
@@ -21,9 +28,9 @@ const AddToCart = ({ price, qty, sizeIdx, colorIdx, product }) => {
       quantity: quantity,
       color: {
         idx: colorIdx,
-        name: product.variants[sizeIdx].color[colorIdx].name,
+        name: product.variants[sizeIdx]?.color[colorIdx]?.name,
       },
-      size: { idx: sizeIdx, size: product.variants[sizeIdx].size },
+      size: { idx: sizeIdx, size: product?.variants[sizeIdx]?.size },
       image: product.variants[sizeIdx].color[colorIdx]?.images[0]?.image,
     }
 
@@ -43,9 +50,7 @@ const AddToCart = ({ price, qty, sizeIdx, colorIdx, product }) => {
   return (
     <div className={'flex flex-col md:flex-row'}>
       <button
-        className={
-          'mr-5 w-4/5 min-w-[343px] max-w-[343px] bg-gradient py-4 text-center font-arial text-button font-bold text-white'
-        }
+        className={`mx-auto w-full min-w-[343px] max-w-[343px] bg-gradient py-4 text-center font-arial text-button font-bold text-white md:mx-0 md:mr-5 md:w-4/5`}
         onClick={addToCartHandler}
       >
         Add to Cart - ${total}

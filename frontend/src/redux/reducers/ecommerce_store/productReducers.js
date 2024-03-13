@@ -45,10 +45,12 @@ export const cart = (state = { products: [] }, action) => {
     )
   }
 
+  let item, existItem
+
   switch (action.type) {
     case ADD_TO_CART:
-      const item = action.payload
-      const existItem = state.products.find((x) => checkEquality(x, item))
+      item = action.payload
+      existItem = state.products.find((x) => checkEquality(x, item))
 
       // If item exists then, update the quantity
       if (existItem) {
@@ -62,7 +64,15 @@ export const cart = (state = { products: [] }, action) => {
       return { products: [...state.products, item] }
 
     case REMOVE_FROM_CART:
-      return { products: action.payload }
+      item = action.payload
+      existItem = state.products.filter((x) => checkEquality(x, item))
+
+      if (existItem) {
+        return {
+          products: state.products.filter((x) => !checkEquality(x, item)),
+        }
+      }
+      return { products: [...state.products] }
     default:
       return state
   }

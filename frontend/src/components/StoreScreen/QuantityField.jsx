@@ -7,6 +7,7 @@ const QuantityField = ({
   quantity,
   className,
   product,
+  hidden,
   setCartWhenUsingButtons,
 }) => {
   const dispatch = useDispatch()
@@ -113,7 +114,7 @@ const QuantityField = ({
 
   return (
     <div
-      className={`flex w-1/5 items-center justify-between border border-white ${className}`}
+      className={`${hidden === false ? 'flex' : 'hidden'} w-1/5 border border-white md:flex md:items-center md:justify-between ${className}`}
     >
       <button
         type="button"

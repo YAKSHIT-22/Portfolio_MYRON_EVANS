@@ -1,16 +1,28 @@
 import { DEV_BACKEND_URL } from '../../redux/constants/backend_url.js'
 import QuantityField from './QuantityField.jsx'
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { removeFromCart } from '../../redux/actions/ecommerce_store/productActions.js'
 
 const CartItem = ({ product, totalQty, className }) => {
   const [quantity, setQuantity] = useState(product.quantity)
 
+  const dispatch = useDispatch()
+
+  function handleRemoveItem(product) {
+    dispatch(removeFromCart(product))
+  }
+
   return (
     <div
-      className={`flex h-48 items-center justify-between bg-sm-primary px-3 py-3 lg:max-h-[142px] ${className}`}
+      className={`flex h-48 max-h-[143px] items-center justify-between bg-sm-primary px-3 py-3 ${className}`}
     >
       <div className={'flex h-full items-start'}>
-        <div className={'mr-3 h-full max-w-[120px] bg-golden md:w-48'}>
+        <div
+          className={
+            'mr-3 h-full max-h-[133px] bg-golden md:w-full md:max-w-[120px]'
+          }
+        >
           <img
             src={`${DEV_BACKEND_URL}${product.image}`}
             className={'h-full w-full'}
@@ -37,7 +49,8 @@ const CartItem = ({ product, totalQty, className }) => {
                 qty={parseInt(totalQty)}
                 setCartWhenUsingButtons
                 product={product}
-                className={'ml-2 w-1/4 border-none'}
+                hidden={false}
+                className={'ml-2 w-2/4 border-none md:w-1/3'}
               />
             </div>
           </div>
@@ -47,7 +60,12 @@ const CartItem = ({ product, totalQty, className }) => {
         </div>
       </div>
       <div className={'flex h-full items-end justify-center'}>
-        <button className={'underline hover:font-medium'}>Remove</button>
+        <button
+          className={'underline hover:font-medium'}
+          onClick={() => handleRemoveItem(product)}
+        >
+          Remove
+        </button>
       </div>
     </div>
   )
