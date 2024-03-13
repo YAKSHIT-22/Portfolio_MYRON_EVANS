@@ -94,6 +94,9 @@ const ProjectBlog = ({ img, desc, title }) => {
               className="w-fit rounded-full bg-[#B79766] text-[14px] transition-all hover:bg-gradient hover:shadow-custom hover:shadow-golden md:px-10 md:text-body"
             >
               <span className={'hidden py-3 md:inline-block md:px-10'}>
+              
+              </span>
+              
         <div
           className={`${classDisplay} flex-col items-start gap-4 rounded-[2rem] bg-gradient-to-t from-black to-[rgb(0,0,0,0)] p-7 pt-2 md:p-10`}
         >
