@@ -727,8 +727,10 @@ function HomeScreen() {
             things people say about me and my work.
           </p>
         </div>
-        <div className={'px-1'}>
-          <Carousel />
+        <div className="flex justify-center">
+          <div className={'px-1 max-w-[82rem] flex justify-center'}>
+            <Carousel />
+          </div>
         </div>
       </section>
 
