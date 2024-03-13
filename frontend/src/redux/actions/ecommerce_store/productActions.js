@@ -28,7 +28,10 @@ export const getAllProducts = (type) => async (dispatch) => {
   } catch (e) {
     dispatch({
       type: GET_ALL_PRODUCTS_ERROR,
-      error: e.response.data.detail ? e.response.data.detail : e.response.data,
+      error:
+        e.response && e.response.data.detail
+          ? e.response.data.detail
+          : e.message,
     })
   }
 }

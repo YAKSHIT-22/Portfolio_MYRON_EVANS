@@ -16,7 +16,6 @@ function App() {
   return (
     <div className="min-h-screen w-full max-w-full overflow-x-clip scroll-smooth bg-sm-primary font-arial tracking-wider text-primary md:bg-primary">
       <NavBar />
-      <NavBar />
 
       <div className="w-full font-medium md:pt-6">
         <Routes>
@@ -29,11 +28,9 @@ function App() {
           <Route path="/store/cart" element={<CartScreen />} />
           <Route path="/addNewBlog" element={<AddNewBlog />} />
           <Route path="/demo" element={<AddNewProduct />} />
-
         </Routes>
       </div>
 
-      <Footer />
       <Footer />
     </div>
   )
