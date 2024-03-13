@@ -1,20 +1,9 @@
 import { VerticalTimelineElement } from 'react-vertical-timeline-component'
 import 'react-vertical-timeline-component/style.min.css'
-import { useInView, animated, useSpring } from '@react-spring/web'
 
 import LineIcon from '../Icons/LineIcon.jsx'
 
 const VerticalTime = ({ date, title, subtitle, description, id }) => {
-
-  const [refTextSpring, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.2,
-  })
-
-  const textSprings = useSpring({
-    opacity: inView ? 1 : 0,
-    config: { duration: 800 },
-  })
   const innerWidth = window.innerWidth
   return (
     <VerticalTimelineElement
@@ -29,11 +18,11 @@ const VerticalTime = ({ date, title, subtitle, description, id }) => {
       iconStyle={{
         border: '0px',
         boxShadow: 'none',
-        // width: '34px',
-        transform: `${id % 2 === 0 && window.innerWidth >= 768 ? '' : window.innerWidth < 768 ? '' : ''}`,
+        width: '34px',
+        transform: `${id % 2 === 0 && window.innerWidth >= 768 ? 'rotate(180deg) translateX(-1.44rem)' : window.innerWidth < 768 ? 'translateX(1.04rem)' : ''}`,
       }}
       // fix the paddinGs for responsive design margin and svg --remove padding
-      icon={<LineIcon i={id} />}
+      icon={<LineIcon />}
       position={id % 2 ? 'left' : 'right'}
     >
       <div className="items-left relative mb-1 space-x-2"></div>
@@ -43,14 +32,12 @@ const VerticalTime = ({ date, title, subtitle, description, id }) => {
       <h4 className="vertical-timeline-element-title mt-3 min-w-80 bg-gradient bg-clip-text text-content-heading text-transparent">
         <p
           className={'w-[90%]'}
-          ref={refTextSpring}
           style={{
             marginTop: 0,
             fontWeight: 800,
             paddingRight: innerWidth >= 768 ? '0' : '1.7rem',
             fontSize: '26px',
             lineHeight: '32px',
-            ...textSprings
             // width: '100%',
           }}
         >

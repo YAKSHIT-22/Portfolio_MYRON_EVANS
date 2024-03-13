@@ -11,7 +11,6 @@ import AdminScreen from './screens/AdminScreen.jsx'
 import { AddNewBlog } from './screens/adminScreens/AddNewBlog.jsx'
 import Footer from './components/Footer.jsx'
 import AddNewProduct from './screens/adminScreens/AddNewProduct.jsx'
-import AdminLoginScreen from './screens/adminScreens/adminLoginScreen.jsx'
 
 function App() {
   return (
@@ -30,7 +29,7 @@ function App() {
           <Route path="/store/cart" element={<CartScreen />} />
           <Route path="/addNewBlog" element={<AddNewBlog />} />
           <Route path="/demo" element={<AddNewProduct />} />
-          <Route path='/adminlogin' element = {<AdminLoginScreen/>} />
+
         </Routes>
       </div>
 
