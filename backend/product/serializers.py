@@ -38,7 +38,6 @@ class ProductSizeSerializer(serializers.ModelSerializer):
 			colors = ProductColorSerializer(colors_data, many=True).data
 			return colors
 		except Exception as e:
-			print(e)
 			return []
 
 	class Meta:
@@ -59,7 +58,6 @@ class ProductSerializer(serializers.ModelSerializer):
 	def get_variants(instance):
 		try:
 			variants_data = instance.productsize_set.all()
-			print("variants data: " + str(variants_data))
 			return ProductSizeSerializer(variants_data, many=True).data
 		except Exception as e:
 			print(e)

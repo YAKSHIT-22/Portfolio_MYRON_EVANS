@@ -1,4 +1,4 @@
-import userIcon from '../assets/icons/userIcon.svg'
+import footerSvg from '../assets/svgs/footer.svg'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
@@ -9,11 +9,11 @@ const Footer = () => {
       }
     >
       <img
-        src={userIcon}
+        src={footerSvg}
         alt={'Myron Evans'}
         className={'size-20 md:size-24'}
       />
-      <p className={'-mt-4 font-inter text-[10px] md:-mt-6'}>
+      <p className={'-mt-4 font-inter text-[8px] md:-mt-6'}>
         Copyright © {currentYear}
       </p>
     </footer>

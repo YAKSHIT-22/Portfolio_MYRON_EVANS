@@ -145,7 +145,6 @@ function HomeScreen() {
       const canvas = canvasRef.current
       const container = containerRef.current
       const { width, height } = container.getBoundingClientRect()
-      console.log(width, height)
       canvas.width = width
       canvas.height = height
     }
@@ -837,7 +836,7 @@ function HomeScreen() {
                   id={'full_name'}
                   type={'text'}
                   required={true}
-                  className="font-nunito mt-2 h-14 w-full rounded-full border-none bg-sm-primary px-4 text-body outline-none "
+                  className="mt-2 h-14 w-full rounded-full border-none bg-sm-primary px-4 font-nunito text-body outline-none "
                   placeholder="John David"
                 />
               </div>
@@ -847,7 +846,7 @@ function HomeScreen() {
                   id={'email'}
                   type={'email'}
                   required={true}
-                  className="font-nunito mt-2 h-14 w-full rounded-full border-none bg-sm-primary px-4 text-body outline-none "
+                  className="mt-2 h-14 w-full rounded-full border-none bg-sm-primary px-4 font-nunito text-body outline-none "
                   placeholder="example@yourmail.com"
                 />
               </div>
@@ -859,7 +858,7 @@ function HomeScreen() {
                   id={'phone_number'}
                   type={'tel'}
                   required={true}
-                  className="font-nunito mt-2 h-14 w-full rounded-full border-none bg-sm-primary px-4 text-body outline-none "
+                  className="mt-2 h-14 w-full rounded-full border-none bg-sm-primary px-4 font-nunito text-body outline-none "
                   placeholder="(000) 123 456"
                 />
               </div>
@@ -869,7 +868,7 @@ function HomeScreen() {
                   id={'subject'}
                   type={'text'}
                   required={true}
-                  className="font-nunito mt-2 h-14 w-full rounded-full border-none bg-sm-primary px-4 text-body outline-none "
+                  className="mt-2 h-14 w-full rounded-full border-none bg-sm-primary px-4 font-nunito text-body outline-none "
                   placeholder="ex. Project"
                 />
               </div>
@@ -882,7 +881,7 @@ function HomeScreen() {
                 placeholder={
                   'Hello there! I would like to talk about how to...'
                 }
-                className="font-nunito mt-2 h-44 w-full rounded-3xl border-none bg-sm-primary px-4 py-4 text-body outline-none"
+                className="mt-2 h-44 w-full rounded-3xl border-none bg-sm-primary px-4 py-4 font-nunito text-body outline-none"
               />
             </div>
 

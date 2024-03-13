@@ -8,7 +8,6 @@ const CartScreen = () => {
 
   const location = useLocation()
   const { totalQty } = location.state
-  console.log(totalQty)
 
   return (
     <div className={'mx-20 pb-10'}>

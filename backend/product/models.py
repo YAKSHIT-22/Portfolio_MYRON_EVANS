@@ -1,6 +1,19 @@
 from django.db import models
+from django.db.models import Case, When, Value
 
 from provider.models import Provider
+
+
+class ProductSizeManager(models.Manager):
+	def get_queryset(self):
+		size_order = Case(
+			When(size='S', then=Value(1)),
+			When(size='M', then=Value(2)),
+			When(size='L', then=Value(3)),
+			When(size='XL', then=Value(4)),
+			default=Value(5),  # Handles unexpected sizes
+		)
+		return super().get_queryset().order_by(size_order)
 
 
 class Product(models.Model):
@@ -26,9 +39,11 @@ class ProductSize(models.Model):
 	size = models.CharField(max_length=100, null=True, blank=True)
 	product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True, blank=True)
 
+	objects = ProductSizeManager()
+
 	def __str__(self):
 		return self.size
-	
+
 	class Meta:
 		unique_together = ('size', 'product')
 
