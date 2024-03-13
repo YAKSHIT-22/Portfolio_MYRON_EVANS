@@ -49,3 +49,17 @@ a span {
 .vertical-timeline::before {
   border-radius: 2rem;
 }
+
+
+*::-webkit-scrollbar {
+  width: 7px;
+  @apply bg-primary
+}
+
+*::-webkit-scrollbar-track {
+  @apply bg-primary rounded-3xl
+}
+
+*::-webkit-scrollbar-thumb {
+  @apply bg-secondary rounded-3xl hover:bg-sm-primary
+}

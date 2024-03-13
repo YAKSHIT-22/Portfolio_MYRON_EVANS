@@ -1,0 +1,12 @@
+#image_gallery::-webkit-scrollbar {
+  height: 10px;
+  padding-top: 50px;
+}
+
+#image_gallery::-webkit-scrollbar-track {
+  @apply bg-sm-primary rounded-3xl
+}
+
+#image_gallery::-webkit-scrollbar-thumb {
+  @apply bg-secondary rounded-3xl
+}

@@ -3,13 +3,14 @@ import ProductCard from '../components/StoreScreen/ProductCard.jsx'
 import { useSelector } from 'react-redux'
 import Loading from '../components/ui/Loading.jsx'
 import Message from '../components/ui/Message.jsx'
+import ProductCardSm from '../components/StoreScreen/ProductCardSM.jsx'
 
 function StoreScreen() {
   const { loading, error, data } = useSelector((state) => state.products)
   const innerWidth = window.innerWidth
 
   return (
-    <div className={'min-h-screen pt-16 md:pt-16'}>
+    <div className={'min-h-screen pt-6 md:pt-16'}>
       <h1 className={'text-center text-section-heading md:text-main-heading'}>
         My Store
       </h1>
@@ -29,7 +30,7 @@ function StoreScreen() {
 
       <div
         className={
-          'mx-auto flex max-w-6xl flex-wrap items-center justify-start gap-20 py-16 pl-7'
+          'mx-auto flex max-w-6xl flex-col items-center justify-start gap-5 px-3 py-6 md:flex-row md:flex-wrap md:gap-20 md:py-16 md:pl-7'
         }
       >
         {loading ? (
@@ -42,11 +43,9 @@ function StoreScreen() {
           data &&
           data.map((product) =>
             innerWidth >= 768 ? (
-              <>
-                <ProductCard key={product.id} data={product} />
-              </>
+              <ProductCard key={product.id} data={product} />
             ) : (
-              <></>
+              <ProductCardSm key={product.id} data={product} />
             ),
           )
         )}

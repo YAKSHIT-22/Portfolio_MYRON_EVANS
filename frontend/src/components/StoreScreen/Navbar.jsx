@@ -54,7 +54,7 @@ const Navbar = () => {
         </div>
         <div
           className={
-            'mt-0 hidden w-full max-w-32 cursor-pointer items-center justify-center rounded-lg bg-secondary py-4 md:mr-20 md:flex'
+            'mt-0 hidden w-full max-w-28 cursor-pointer items-center justify-center rounded-lg bg-secondary py-2 transition-all hover:bg-secondary/80 md:mr-20 md:flex'
           }
         >
           <span className={'mr-2 text-body'}>Filter</span>
@@ -69,7 +69,7 @@ const Navbar = () => {
       >
         <div
           className={
-            'flex w-full max-w-32 cursor-pointer items-center justify-center rounded-lg bg-secondary py-4'
+            'flex w-full max-w-28 cursor-pointer items-center justify-center rounded-lg bg-secondary py-2'
           }
         >
           <span className={'mr-2 text-body'}>Filter</span>

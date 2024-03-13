@@ -33,7 +33,7 @@ const ProductCard = ({ data }) => {
           state={{ id: data.id }}
           to={'product/'}
           className={
-            'flex w-full items-center justify-center bg-sm-primary py-4 text-center text-content-heading text-secondary transition-all hover:bg-gradient hover:text-primary'
+            'flex w-full items-center justify-center bg-sm-primary py-4 text-center text-xl text-secondary transition-all hover:bg-gradient hover:text-primary'
           }
         >
           <span className={'mr-2 inline-block font-inter font-[400]'}>
