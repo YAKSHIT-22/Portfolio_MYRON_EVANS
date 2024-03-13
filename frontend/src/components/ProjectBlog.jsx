@@ -1,12 +1,12 @@
 import { useSelector } from 'react-redux'
 import { useSpring, useInView, animated } from '@react-spring/web'
-
+import  {useState} from 'react'
 import figmaIcon from '../assets/icons/figma.svg'
 import eyeIcon from '../assets/icons/eye.svg'
 import downloadIcon from '../assets/icons/download.svg'
 
 const ProjectBlog = ({ img, desc, title }) => {
-  const [, setPosition] = useState(0)
+  const [position, setPosition] = useState(0)
   const innerWidth = window.innerWidth
 
   const blogselector = useSelector((state) => state)

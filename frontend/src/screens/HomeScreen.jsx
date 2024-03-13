@@ -41,7 +41,7 @@ import Carousel from '../components/HomeScreen/Carousel.jsx'
 gsap.registerPlugin(ScrollTrigger)
 
 function HomeScreen() {
-  const [scrolled, setScroll] = useState(30)
+  const [scrolled, setScroll] = useState(25)
   const [innerHeight] = useState(window.innerHeight)
   const canvasRef = useRef(null)
   const containerRef = useRef(null)
@@ -97,7 +97,7 @@ function HomeScreen() {
       images.push(img)
     }
 
-    images[30].onload = render
+    images[25].onload = render
 
     function render() {
       scaleImage(images[imageSeq.frame], context)
@@ -162,7 +162,7 @@ function HomeScreen() {
     const scrollLen = Math.ceil(((scrollPx / winHeight) * 100) / 0.11) + 80
 
     if (scrollLen > 310) {
-      setScroll(0)
+      setScroll(25)
       const divtoHide = document.getElementById('faceContainer')
       divtoHide.style.opacity = 0
       divtoHide.style.display = 'none'
@@ -727,7 +727,7 @@ function HomeScreen() {
             things people say about me and my work.
           </p>
         </div>
-        <div className={'px-1'}>
+        <div className={'px-1 max-w-[84rem] flex mx-auto'}>
           <Carousel />
         </div>
       </section>
