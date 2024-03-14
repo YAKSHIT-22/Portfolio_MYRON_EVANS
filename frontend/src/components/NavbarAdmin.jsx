@@ -1,21 +1,54 @@
 import { Link } from 'react-router-dom'
-import cartDash from '../assets/svgs/cartDash.svg'
-import EcomBoxes from '../assets/svgs/EcomBoxes.svg'
-import blogboxes from '../assets/svgs/blogboxes.svg'
-import RefferFunds from '../assets/svgs/RefferFundBoxes.svg'
-import upload from '../assets/svgs/upload.svg'
-import downArrow from '../assets/svgs/downArrow.svg'
+import dashboardIcon from '../assets/svgs/cartDash.svg'
+import ecommerceIcon from '../assets/svgs/EcomBoxes.svg'
+import blogIcon from '../assets/svgs/blogboxes.svg'
+import refferIcon from '../assets/svgs/RefferFundBoxes.svg'
+import uploadIcon from '../assets/svgs/upload.svg'
+import downArrowIcon from '../assets/svgs/downArrow.svg'
 
 const NavbarAdmin = () => {
+  const links = [
+    {
+      id: 1,
+      to: '',
+      text: 'Dashboard',
+      icon: dashboardIcon,
+    },
+    {
+      id: 2,
+      to: 'case',
+      text: 'Create New Case',
+      icon: uploadIcon,
+    },
+    {
+      id: 3,
+      to: 'ecommerce',
+      text: 'Ecommerce',
+      icon: ecommerceIcon,
+    },
+    {
+      id: 4,
+      to: 'reffer',
+      text: 'Reffer Funds',
+      icon: refferIcon,
+    },
+    {
+      id: 5,
+      to: 'blog',
+      text: 'Blog',
+      icon: blogIcon,
+    },
+  ]
+
   return (
-    <div className="relative  flex min-h-screen">
-      <div className="w- min-h-screen bg-[#262626] text-base">
+    <div className="flex min-h-screen">
+      <div className="w- min-h-screen bg-secondary text-body">
         {/* <!-- logo --> */}
         <div className="flex flex-col justify-center text-center align-middle">
           <div
             className="aspect-square w-40 self-center rounded-full bg-contain bg-center bg-blend-normal"
             style={{
-              backgroundImage: "url('../../public/assets/Section 9.png')",
+              backgroundImage: "url('/assets/Section 9.png')",
             }}
           >
             {/* Logo */}
@@ -24,38 +57,15 @@ const NavbarAdmin = () => {
           <p className="text-base">Admin</p>
         </div>
         <nav className="flex w-64 flex-col">
-          <div className="w-9/11 flex px-4  py-7 text-center">
-            <Link to="/createNewCase" className="flex flex-row">
-              <img src={cartDash} />
-              <span className="px-2">Dashboard</span>
-            </Link>
-            <img src={downArrow} className="w-2/11 block" />
-          </div>
-
-          <div className="flex  border-t-black  px-4 py-7">
-            <Link to="/createNewCase" className="flex flex-row">
-              <img src={EcomBoxes} />
-              <span className="px-2">E-comerce </span>
-            </Link>
-            <img src={downArrow} />
-          </div>
-
-          <div className="flex px-4  py-7">
-            <Link to="/createNewCase" className="flex flex-row">
-              <img src={blogboxes} />
-              <span className="px-2">My Blogs </span>
-            </Link>
-
-            <img src={downArrow} />
-          </div>
-          <div className="flex px-4  py-7">
-            <Link to="/createNewCase" className="flex flex-row">
-              <img src={RefferFunds} />
-              <span className="px-2">Reffer Funds </span>
-            </Link>
-
-            <img src={downArrow} />
-          </div>
+          {links.map((link) => (
+            <div key={link.id} className="flex w-full px-4 py-7 text-center">
+              <Link to={link.to} className="flex flex-row">
+                <img src={link.icon} />
+                <span className="px-2">{link.text}</span>
+              </Link>
+              <img src={downArrowIcon} className="w-2/11 block" />
+            </div>
+          ))}
         </nav>
       </div>
       <div className="mx-5 w-11/12 bg-sm-primary px-9 py-5">
@@ -126,25 +136,24 @@ const NavbarAdmin = () => {
         <div className="flex flex-col px-2 pt-10">
           <div className="text-base"> Upload mockup Image</div>
           <div className="mt-4 flex h-[17rem] cursor-pointer items-center justify-center rounded-xl border border-white bg-[#3F3F3F]">
-            <img src={upload} />
+            <img src={uploadIcon} />
           </div>
         </div>
         <div className="flex flex-col px-2 pt-10">
           <div className="text-base"> Upload Design Case Study</div>
           <div className="mt-4 flex h-[17rem] cursor-pointer items-center justify-center rounded-xl border border-white bg-[#3F3F3F]">
-            <img src={upload} />
+            <img src={uploadIcon} />
           </div>
         </div>
         <div className="flex flex-col px-2 pt-10">
           <div className="text-base"> Upload Development Case Study</div>
           <div className="mt-4 flex h-[17rem] cursor-pointer items-center justify-center rounded-xl border border-white bg-[#3F3F3F]">
-            <img src={upload} />
+            <img src={uploadIcon} />
           </div>
         </div>
         <div className="flex justify-center">
           <Link className="mt-10">
             <div className=" w-64 rounded-md bg-gradient px-3 py-3 text-center font-rubik font-medium">
-              {' '}
               Preview
             </div>
           </Link>

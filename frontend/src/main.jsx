@@ -7,7 +7,7 @@ import './assets/css/index.css'
 
 import App from './App.jsx'
 import store from './store.js'
-import AdminScreen from './screens/AdminScreen.jsx'
+import AdminScreen from './AdminScreen.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

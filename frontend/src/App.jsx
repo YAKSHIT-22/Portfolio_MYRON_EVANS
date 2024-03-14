@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import NavBar from './components/Navbar.jsx'
 import HomeScreen from './screens/HomeScreen.jsx'
 import MyWorkScreen from './screens/MyWorkScreen.jsx'
@@ -7,11 +7,7 @@ import StoreScreen from './screens/StoreScreen.jsx'
 import AffRefScreen from './screens/AffRefScreen.jsx'
 import ProductDetailScreen from './screens/ProductDetailScreen.jsx'
 import CartScreen from './screens/CartScreen.jsx'
-import AdminScreen from './screens/AdminScreen.jsx'
-import { AddNewBlog } from './screens/adminScreens/AddNewBlog.jsx'
 import Footer from './components/Footer.jsx'
-import AddNewProduct from './screens/adminScreens/AddNewProduct.jsx'
-import AdminLogin from './screens/adminScreens/AdminLogin.jsx'
 
 function App() {
   return (
@@ -27,10 +23,6 @@ function App() {
           <Route path="/store" element={<StoreScreen />} />
           <Route path="/store/product" element={<ProductDetailScreen />} />
           <Route path="/store/cart" element={<CartScreen />} />
-          <Route path="/addNewBlog" element={<AddNewBlog />} />
-          <Route path="/demo" element={<AddNewProduct />} />
-          <Route path="/adminLogin" element={<AdminLogin />} />
-
         </Routes>
       </div>
 
