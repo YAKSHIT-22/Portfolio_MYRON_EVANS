@@ -64,7 +64,7 @@ function MyWorkScreen() {
         </animated.div>
         <div className={''}>
           <ProjectBlog
-            img={'ph1.jpeg'}
+            img={'assets/ph1.jpeg'}
             desc="A barbershop management app. Shop management, barber management, client management."
             title="Barbershop"
           />

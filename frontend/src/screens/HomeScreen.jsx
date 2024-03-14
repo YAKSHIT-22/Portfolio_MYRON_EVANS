@@ -518,7 +518,7 @@ function HomeScreen() {
             className="absolute inset-0 left-auto right-auto w-full rounded-3xl bg-cover bg-center bg-no-repeat opacity-40 duration-500 ease-in-out hover:opacity-20 md:h-[35rem] md:max-h-[35rem] md:w-5/6"
             style={{
               backgroundImage:
-                "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/Section4.jpeg')",
+                "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/assets/Section4.jpeg')",
             }}
           ></div>
 

@@ -23,7 +23,6 @@ const ProductDetailScreen = () => {
 
   const descRef = useRef(null)
 
-  const innerWidth = window.innerWidth
   useEffect(() => {
     if (descRef.current) {
       console.log(descRef.current.scrollHeight, descRef.current.clientHeight)
