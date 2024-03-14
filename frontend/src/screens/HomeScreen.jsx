@@ -518,7 +518,7 @@ function HomeScreen() {
             className="absolute inset-0 left-auto right-auto w-full rounded-3xl bg-cover bg-center bg-no-repeat opacity-40 duration-500 ease-in-out hover:opacity-20 md:h-[35rem] md:max-h-[35rem] md:w-5/6"
             style={{
               backgroundImage:
-                "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/Section4.jpeg')",
+                "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/assets/Section4.jpeg')",
             }}
           ></div>
 
@@ -542,12 +542,14 @@ function HomeScreen() {
               go to Bridging Tech and Tech Kids Unlimited.{' '}
             </span>
 
-            <Link
-              to="/my-work"
+            <button
+              onClick={() =>
+                navigator.clipboard.writeText(window.location.href)
+              }
               className="h-15 mt-7 w-fit rounded-full bg-gradient px-10 py-3 text-center font-rubik font-medium transition-all hover:shadow-custom hover:shadow-golden"
             >
               SHARE NOW
-            </Link>
+            </button>
           </animated.div>
         </div>
       </section>
@@ -728,7 +730,7 @@ function HomeScreen() {
           </p>
         </div>
         <div className="flex justify-center">
-          <div className={'px-1 max-w-[82rem] flex justify-center'}>
+          <div className={'flex max-w-[82rem] justify-center px-1'}>
             <Carousel />
           </div>
         </div>

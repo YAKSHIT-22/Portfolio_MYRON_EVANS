@@ -26,10 +26,10 @@ SECRET_KEY = 'django-insecure-cv)yl2_%ec$ifhrl_l7xy6_(2$vr38f%ax!v8&%ad*qz8!ntwb
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['localhost']
 
 # Whitelist Origin Sites for CORS Policy
-CORS_ALLOWED_ORIGINS = ['http://127.0.0.1:5173', 'http://localhost:5173']
+CORS_ALLOWED_ORIGINS = ['http://127.0.0.1:5173', 'http://localhost:5173', 'https://myronevans.vercel.app']
 
 # Application definition
 INSTALLED_APPS = [
