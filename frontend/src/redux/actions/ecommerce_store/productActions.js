@@ -6,6 +6,7 @@ import {
   GET_PRODUCT_ERROR,
   GET_PRODUCT_REQUEST,
   GET_PRODUCT_SUCCESS,
+  REMOVE_FROM_CART,
 } from '../../constants/ecommerce_store/product.js'
 import axios from 'axios'
 import { DEV_BACKEND_URL } from '../../constants/backend_url.js'
@@ -26,10 +27,12 @@ export const getAllProducts = (type) => async (dispatch) => {
 
     dispatch({ type: GET_ALL_PRODUCTS_SUCCESS, payload: data })
   } catch (e) {
-    console.log(e)
     dispatch({
       type: GET_ALL_PRODUCTS_ERROR,
-      error: e.response.data.detail ? e.response.data.detail : e.response.data,
+      error:
+        e.response && e.response.data.detail
+          ? e.response.data.detail
+          : e.message,
     })
   }
 }
@@ -51,6 +54,13 @@ export const getProduct = (id) => async (dispatch) => {
 
 export const addToCart = (product) => (dispatch, getState) => {
   dispatch({ type: ADD_TO_CART, payload: product })
+
+  const { products } = getState().cart
+  localStorage.setItem('cart', JSON.stringify(products))
+}
+
+export const removeFromCart = (product) => (dispatch, getState) => {
+  dispatch({ type: REMOVE_FROM_CART, payload: product })
 
   const { products } = getState().cart
   localStorage.setItem('cart', JSON.stringify(products))

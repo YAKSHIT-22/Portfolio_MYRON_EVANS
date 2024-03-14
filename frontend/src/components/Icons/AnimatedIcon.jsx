@@ -34,6 +34,7 @@ function AnimatedIcon({ iconData, className }) {
       {isVisible && (
         <Player
           autoplay
+          // hover={true}
           keepLastFrame
           className={className}
           mode="bounce"

@@ -3,10 +3,12 @@
 }
 
 .active p {
-  @apply bg-gradient bg-clip-text text-transparent border-b-2 border-b-golden
+  @apply bg-gradient bg-clip-text text-transparent md:border-b-2 md:border-b-golden
 }
 
 
-#navbar-item:hover {
-  @apply active
+@media screen and (min-width: 768px) {
+  #navbar-item:hover {
+    @apply active
+  }
 }

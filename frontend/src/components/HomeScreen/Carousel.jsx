@@ -30,7 +30,7 @@ function Carousel() {
   }
 
   return (
-    <div className="App md:min-h-screen">
+    <div className="App md:min-h-screen self-center">
       <Slider {...settings} variableWidth variableHeight>
         {testimonials.map((testimonial, idx) => (
           <div

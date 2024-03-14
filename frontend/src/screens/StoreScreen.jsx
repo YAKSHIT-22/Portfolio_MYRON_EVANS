@@ -1,17 +1,23 @@
 import Navbar from '../components/StoreScreen/Navbar.jsx'
 import ProductCard from '../components/StoreScreen/ProductCard.jsx'
 import { useSelector } from 'react-redux'
+import Loading from '../components/ui/Loading.jsx'
+import Message from '../components/ui/Message.jsx'
+import ProductCardSm from '../components/StoreScreen/ProductCardSM.jsx'
 
 function StoreScreen() {
   const { loading, error, data } = useSelector((state) => state.products)
+  const innerWidth = window.innerWidth
 
   return (
-    <div>
-      <h1 className={'text-center text-main-heading'}>My Store</h1>
+    <div className={'min-h-screen pt-6 md:pt-16'}>
+      <h1 className={'text-center text-section-heading md:text-main-heading'}>
+        My Store
+      </h1>
 
       <p
         className={
-          'text-center text-secondary md:mx-[16.5rem] md:mb-20 md:mt-2'
+          'mb-3 mt-4 px-6 text-center text-sm text-secondary md:mx-[16.5rem] md:mb-20 md:px-0 md:text-body'
         }
       >
         Welcome to my store and thank you for checking this page out. Feel free
@@ -22,16 +28,26 @@ function StoreScreen() {
 
       <Navbar />
 
-      <div className={'mx-8 flex flex-wrap items-center justify-evenly  py-16'}>
+      <div
+        className={
+          'mx-auto flex max-w-6xl flex-col items-center justify-start gap-5 px-3 py-6 md:flex-row md:flex-wrap md:gap-20 md:py-16 md:pl-7'
+        }
+      >
         {loading ? (
-          <p>Loading...</p>
+          <Loading className={'size-12'} />
         ) : error ? (
-          <p>{error}</p>
+          <Message message={error} severity={'error'} />
         ) : data && data.length === 0 ? (
-          <p>No Products Found</p>
+          <Message message={'No Products Found'} severity={'warning'} />
         ) : (
           data &&
-          data.map((product) => <ProductCard key={product.id} data={product} />)
+          data.map((product) =>
+            innerWidth >= 768 ? (
+              <ProductCard key={product.id} data={product} />
+            ) : (
+              <ProductCardSm key={product.id} data={product} />
+            ),
+          )
         )}
       </div>
     </div>

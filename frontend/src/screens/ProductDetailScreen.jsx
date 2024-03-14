@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProduct } from '../redux/actions/ecommerce_store/productActions.js'
 import { useLocation } from 'react-router-dom'
@@ -6,6 +6,8 @@ import { useLocation } from 'react-router-dom'
 import ImageGallery from '../components/StoreScreen/ImageGallery.jsx'
 import AddToCart from '../components/StoreScreen/AddToCart.jsx'
 import Header from '../components/StoreScreen/Header.jsx'
+import Loading from '../components/ui/Loading.jsx'
+import Message from '../components/ui/Message.jsx'
 
 const ProductDetailScreen = () => {
   const location = useLocation()
@@ -16,6 +18,19 @@ const ProductDetailScreen = () => {
 
   const [sizeIdx, setSizeIdx] = useState(0)
   const [colorIdx, setColorIdx] = useState(0)
+  const [showReadMoreButton, setShowReadMoreButton] = useState(false)
+  const [showFullDescription, setShowFullDescription] = useState(false)
+
+  const descRef = useRef(null)
+
+  useEffect(() => {
+    if (descRef.current) {
+      console.log(descRef.current.scrollHeight, descRef.current.clientHeight)
+      setShowReadMoreButton(
+        descRef.current.scrollHeight !== descRef.current.clientHeight,
+      )
+    }
+  }, [])
 
   useEffect(() => {
     dispatch(getProduct(id))
@@ -26,42 +41,72 @@ const ProductDetailScreen = () => {
   }, [sizeIdx])
 
   return (
-    <div className={'mx-20 pb-10'}>
+    <div className={'min-h-screen pb-10 md:mx-20'}>
       {loading ? (
-        <div
-          className={'flex h-screen items-center justify-center text-center'}
-        >
-          Loading...
-        </div>
+        <Loading className={'size-12'} />
       ) : error ? (
-        <div className={'h-screen text-center'}>{error}</div>
+        <Message message={error} severity={'error'} />
       ) : (
         data && (
-          <>
+          <div className={'relative w-full md:static'}>
             <Header
               totalQty={
                 data.variants[sizeIdx].color[colorIdx]?.count_of_product
               }
             />
-            <div className={'mt-10 flex items-start justify-start '}>
+            <div
+              className={
+                'flex flex-col items-start justify-start md:mt-10 md:flex-row '
+              }
+            >
               <ImageGallery
                 images={data.variants[sizeIdx].color[colorIdx]?.images}
               />
-              <div className={'ml-10'}>
-                <h1 className={'text-section-heading'}>{data.name}</h1>
-                <h3
+              <div className={'mt-5 px-3 md:ml-10 md:mt-0 md:px-0'}>
+                <div
                   className={
-                    'bg-gradient bg-clip-text text-button text-transparent'
+                    'flex items-center justify-between md:flex-col md:items-start'
                   }
                 >
-                  ${data.price}
-                </h3>
-                <p className={'mb-4 mt-2 text-body'}>{data.description}</p>
-                <p className={'mb-3'}>
+                  <h1
+                    className={'text-content-heading md:text-section-heading'}
+                  >
+                    {data.name}
+                  </h1>
+                  <h3
+                    className={
+                      'bg-gradient bg-clip-text text-button text-transparent md:mt-3'
+                    }
+                  >
+                    ${data.price}
+                  </h3>
+                </div>
+                <div className={`mt-3`}>
+                  <p
+                    className={`${showFullDescription ? 'line-clamp-none' : 'line-clamp-3 md:line-clamp-6'} text-xs md:text-body`}
+                    ref={descRef}
+                  >
+                    {data.description}
+                  </p>
+                  {showReadMoreButton && (
+                    <button
+                      className={
+                        'inline bg-transparent text-sm font-bold  text-primary'
+                      }
+                      onClick={() =>
+                        setShowFullDescription(!showFullDescription)
+                      }
+                    >
+                      Read {showFullDescription ? 'less' : 'more'}
+                    </button>
+                  )}
+                </div>
+
+                <p className={'mt-3'}>
                   by <span className={'font-bold'}>{data.provider.name}</span>
                 </p>
 
-                <div className={'mb-3'}>
+                <div className={'mt-3'}>
                   <p className={'mb-2 font-bold'}>Size</p>
                   <div className={'flex items-center justify-start'}>
                     {data.variants.map((variant, index) => (
@@ -77,7 +122,7 @@ const ProductDetailScreen = () => {
                 </div>
 
                 {data.variants[sizeIdx].color && (
-                  <div className={'mb-3'}>
+                  <div className={'my-3'}>
                     <p className={'mb-2 text-secondary'}>Color</p>
                     <div className={'flex items-center justify-start'}>
                       {data.variants[sizeIdx].color.map((color, index) => (
@@ -98,6 +143,7 @@ const ProductDetailScreen = () => {
                   sizeIdx={sizeIdx}
                   colorIdx={colorIdx}
                   product={data}
+                  showQtyElement={false}
                 />
 
                 <div
@@ -110,7 +156,7 @@ const ProductDetailScreen = () => {
                 </div>
               </div>
             </div>
-          </>
+          </div>
         )
       )}
     </div>

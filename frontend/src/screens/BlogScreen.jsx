@@ -1,16 +1,6 @@
 import { PropTypes } from 'prop-types'
 import BoxIcon from '../components/Icons/BoxIcon'
 import blockS from '../assets/svgs/blockS.svg';
-import { FrontBentoGrid, FrontBentoGridItem } from "../components/ui/Front-bento-grid";
-import {
-  IconArrowWaveRightUp,
-  IconBoxAlignRightFilled,
-  IconBoxAlignTopLeft,
-  IconClipboardCopy,
-  IconFileBroken,
-  IconSignature,
-  IconTableColumn,
-} from "@tabler/icons-react";
 import BentoGrid1 from '../components/GridComps/BentoGrid1';
 import FrontBentoGrid1 from '../components/FrontGridComps/FrontBentoGrid1';
 import FrontBentoGrid2 from '../components/FrontGridComps/FrontBentoGrid2';
@@ -22,8 +12,6 @@ const Skeleton = () => (
   <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-200 dark:from-neutral-900 dark:to-neutral-800 to-neutral-100"></div>
 );
 const items = [
-
-
   {
     id: 1,
     title: "First Title",

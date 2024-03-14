@@ -145,7 +145,6 @@ function HomeScreen() {
       const canvas = canvasRef.current
       const container = containerRef.current
       const { width, height } = container.getBoundingClientRect()
-      console.log(width, height)
       canvas.width = width
       canvas.height = height
     }
@@ -519,7 +518,7 @@ function HomeScreen() {
             className="absolute inset-0 left-auto right-auto w-full rounded-3xl bg-cover bg-center bg-no-repeat opacity-40 duration-500 ease-in-out hover:opacity-20 md:h-[35rem] md:max-h-[35rem] md:w-5/6"
             style={{
               backgroundImage:
-                "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/Section4.jpeg')",
+                "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/assets/Section4.jpeg')",
             }}
           ></div>
 
@@ -728,8 +727,10 @@ function HomeScreen() {
             things people say about me and my work.
           </p>
         </div>
-        <div className={'px-1'}>
-          <Carousel />
+        <div className="flex justify-center">
+          <div className={'px-1 max-w-[82rem] flex justify-center'}>
+            <Carousel />
+          </div>
         </div>
       </section>
 
@@ -837,7 +838,7 @@ function HomeScreen() {
                   id={'full_name'}
                   type={'text'}
                   required={true}
-                  className="font-nunito mt-2 h-14 w-full rounded-full border-none bg-sm-primary px-4 text-body outline-none "
+                  className="mt-2 h-14 w-full rounded-full border-none bg-sm-primary px-4 font-nunito text-body outline-none "
                   placeholder="John David"
                 />
               </div>
@@ -847,7 +848,7 @@ function HomeScreen() {
                   id={'email'}
                   type={'email'}
                   required={true}
-                  className="font-nunito mt-2 h-14 w-full rounded-full border-none bg-sm-primary px-4 text-body outline-none "
+                  className="mt-2 h-14 w-full rounded-full border-none bg-sm-primary px-4 font-nunito text-body outline-none "
                   placeholder="example@yourmail.com"
                 />
               </div>
@@ -859,7 +860,7 @@ function HomeScreen() {
                   id={'phone_number'}
                   type={'tel'}
                   required={true}
-                  className="font-nunito mt-2 h-14 w-full rounded-full border-none bg-sm-primary px-4 text-body outline-none "
+                  className="mt-2 h-14 w-full rounded-full border-none bg-sm-primary px-4 font-nunito text-body outline-none "
                   placeholder="(000) 123 456"
                 />
               </div>
@@ -869,7 +870,7 @@ function HomeScreen() {
                   id={'subject'}
                   type={'text'}
                   required={true}
-                  className="font-nunito mt-2 h-14 w-full rounded-full border-none bg-sm-primary px-4 text-body outline-none "
+                  className="mt-2 h-14 w-full rounded-full border-none bg-sm-primary px-4 font-nunito text-body outline-none "
                   placeholder="ex. Project"
                 />
               </div>
@@ -882,7 +883,7 @@ function HomeScreen() {
                 placeholder={
                   'Hello there! I would like to talk about how to...'
                 }
-                className="font-nunito mt-2 h-44 w-full rounded-3xl border-none bg-sm-primary px-4 py-4 text-body outline-none"
+                className="mt-2 h-44 w-full rounded-3xl border-none bg-sm-primary px-4 py-4 font-nunito text-body outline-none"
               />
             </div>
 
