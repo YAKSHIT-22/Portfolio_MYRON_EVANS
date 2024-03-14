@@ -11,96 +11,6 @@ import FrontBentoGrid4 from '../components/FrontGridComps/FrontBentoGrid4';
 const Skeleton = () => (
   <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-200 dark:from-neutral-900 dark:to-neutral-800 to-neutral-100"></div>
 );
-const items = [
-  {
-    id: 1,
-    title: "First Title",
-    desc: "First Description",
-    imageUrl: "url('https://example.com/image1.jpg')",
-    borderColor: "#ff0000"
-  },
-
-  {
-    id: 2,
-    title: "Second Title",
-    desc: "Second Description",
-    imageUrl: "url('https://example.com/image2.jpg')",
-    borderColor: "#0000ff"
-  },
-
-  {
-    id: 3,
-    title: "Third Title",
-    desc: "Third Description",
-    imageUrl: "url('https://example.com/image3.jpg')",
-    borderColor: "#00ff00"
-  },
-
-  {
-    id: 4,
-    title: "Fourth Title",
-    desc: "Fourth Description",
-    imageUrl: "url('https://example.com/image4.jpg')",
-    borderColor: "#ffff00"
-  },
-
-  {
-    id: 5,
-    title: "Fifth Title",
-    desc: "Fifth Description",
-    imageUrl: "url('https://example.com/image5.jpg')",
-    borderColor: "#800080"
-  },
-
-  {
-    id: 6,
-    title: "Sixth Title",
-    desc: "Sixth Description",
-    imageUrl: "url('https://example.com/image6.jpg')",
-    borderColor: "#ffa500"
-  }
-  ,
-  {
-    id: 7,
-    title: "",
-    desc: "",
-    imageUrl: "",
-    borderColor: ""
-  }
-  ,
-  {
-    id: 8,
-    title: "",
-    desc: "",
-    imageUrl: "",
-    borderColor: ""
-  }
-  ,
-  {
-    id: 9,
-    title: "",
-    desc: "",
-    imageUrl: "",
-    borderColor: ""
-  }
-  ,
-  {
-    id: 10,
-    title: "",
-    desc: "",
-    imageUrl: "",
-    borderColor: ""
-  }
-  ,
-  {
-    id: 11,
-    title: "",
-    desc: "",
-    imageUrl: "",
-    borderColor: ""
-  }
-];
-
 
 
 
@@ -170,6 +80,7 @@ function BlogScreen({ img, title, desc }) {
 
       </div>
     </div>
+    {/* get  api req from useEffect and set the FRONTGRIDNUMBER CORRECTLLY */}
     <div className='Bento-blog-container mt-10'>
       <FrontBentoGrid4 />
 
