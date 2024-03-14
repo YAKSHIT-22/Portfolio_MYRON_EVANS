@@ -542,12 +542,14 @@ function HomeScreen() {
               go to Bridging Tech and Tech Kids Unlimited.{' '}
             </span>
 
-            <Link
-              to="/my-work"
+            <button
+              onClick={() =>
+                navigator.clipboard.writeText(window.location.href)
+              }
               className="h-15 mt-7 w-fit rounded-full bg-gradient px-10 py-3 text-center font-rubik font-medium transition-all hover:shadow-custom hover:shadow-golden"
             >
               SHARE NOW
-            </Link>
+            </button>
           </animated.div>
         </div>
       </section>
@@ -728,7 +730,7 @@ function HomeScreen() {
           </p>
         </div>
         <div className="flex justify-center">
-          <div className={'px-1 max-w-[82rem] flex justify-center'}>
+          <div className={'flex max-w-[82rem] justify-center px-1'}>
             <Carousel />
           </div>
         </div>

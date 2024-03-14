@@ -128,15 +128,15 @@ const AddNewBlog = () => {
     colorOrder: [
       {
         color: 'Red',
-        colourCode: `#FF5858`,
+        colorCode: `#FF5858`,
       },
       {
         color: 'blue',
-        colourCode: `#A4FF9C`,
+        colorCode: `#A4FF9C`,
       },
       {
         color: 'green',
-        colourCode: `#2A8CFF`,
+        colorCode: `#2A8CFF`,
       },
     ],
     startLabel: '1',
@@ -210,13 +210,14 @@ const AddNewBlog = () => {
       },
     ],
   })
+
   useEffect(() => {
-    for (var i = 1; i <= 4; i++) {
-      var borderColorDiv = document.getElementById(`BentoDiv${i}`)
+    for (let i = 1; i <= 4; i++) {
+      const borderColorDiv = document.getElementById(`BentoDiv${i}`)
 
       if (i == ParentData.bentoSelected) {
         if (borderColorDiv) {
-          borderColorDiv.style.border = '1px solid yellow'
+          borderColorDiv.style.border = '1px solid #8D611D'
         }
       } else {
         borderColorDiv.style.border = 'none'
@@ -240,15 +241,15 @@ const AddNewBlog = () => {
   const [dataJ, setdataJ] = useState([
     {
       color: 'Red',
-      colourCode: `#FF5858`,
+      colorCode: `#FF5858`,
     },
     {
       color: 'blue',
-      colourCode: `#A4FF9C`,
+      colorCode: `#A4FF9C`,
     },
     {
       color: 'green',
-      colourCode: `#2A8CFF`,
+      colorCode: `#2A8CFF`,
     },
   ])
   const [BoxNum, setBoxNum] = useState(1)
@@ -286,7 +287,7 @@ const AddNewBlog = () => {
   const handleColorchange = (key) => {
     setdataJ((prevData) =>
       prevData.map((item, index) =>
-        index === key ? { ...item, colourCode: colorI.hex } : item,
+        index === key ? { ...item, colorCode: colorI.hex } : item,
       ),
     )
   }
@@ -351,12 +352,12 @@ const AddNewBlog = () => {
                     className="px-4"
                     onClick={() => {
                       handleColorchange(key)
-                      val.colourCode = colorI.hex
+                      val.colorCode = colorI.hex
 
                       console.log(dataJ)
                     }}
                   >
-                    <BoxIcon hexi={val.colourCode} />
+                    <BoxIcon hexi={val.colorCode} />
                   </div>
                 </div>
               ))}

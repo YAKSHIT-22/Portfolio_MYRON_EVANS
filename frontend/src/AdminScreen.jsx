@@ -16,8 +16,8 @@ const AdminScreen = () => {
       {/* content */}
       <div className="flex-1">
         <Routes>
-          <Route path="/case" Component={<CreateNewCase />} />
-          <Route path="/blog" Component={<AddNewBlog />} />
+          <Route path="/case" element={<CreateNewCase />} />
+          <Route path="/blog" element={<AddNewBlog />} />
           <Route path="/demo" element={<AddNewProduct />} />
           <Route path="/login" element={<AdminLogin />} />
         </Routes>
