@@ -739,7 +739,7 @@ function HomeScreen() {
       {/* Section 9 ~ Explore My Works */}
       <section className="mt-24 flex flex-col-reverse items-start justify-evenly bg-primary px-6 py-12 md:flex-row md:bg-sm-primary md:px-10">
         <div
-          className={'relative mb-6 mt-4 h-96 w-full max-w-72 md:mt-0 md:w-1/3'}
+          className={'relative mb-6 mt-4 h-[28rem] w-full max-w-80 md:mt-0 md:w-1/3'}
         >
           <img src={imageBg} className={'absolute left-3 md:static'} />
           <img
@@ -752,27 +752,30 @@ function HomeScreen() {
           <h3 className="mb-1 text-clip bg-gradient bg-clip-text text-body text-transparent md:text-content-heading">
             Born to serve
           </h3>
-          <h2 className="mb-7 text-content-heading md:text-section-heading">
+          <h2 className="-top-10 mb-2 text-content-heading md:text-section-heading">
             <p className="inline-block">The perfect addition to any team</p>
           </h2>
 
-          <div className="max-w-1/3 mb-4 text-body text-secondary">
-            <p className={'w-full'}>
+          <div className="max-w-1/3 mb-2 text-body text-secondary flex flex-col">
+            <p className={'w-[37rem] text-wrap'}>
               I want to thank you for spending time on my portfolio site, I
               truly hope it is clear to you now that I am the right fit for your
               company. Cheers to the success of your business!{' '}
             </p>
+            <div className={'flex items-center justify-start mt-8'}>
+              <Link
+                to="/my-work"
+                className="rounded-full bg-gradient px-3 py-3 font-rubik font-light transition-all hover:font-medium hover:shadow-custom hover:shadow-golden"
+              >
+                Explore My Works
+              </Link>
+            </div>
+            <AnimatedIcon iconData={glassIcon} className={'size-80 aspect-square'} />
+
           </div>
 
-          <div className={'flex items-center justify-evenly'}>
-            <AnimatedIcon iconData={glassIcon} className={'size-36'} />
-            <Link
-              to="/my-work"
-              className="rounded-full bg-gradient px-3 py-3 font-rubik font-light transition-all hover:font-medium hover:shadow-custom hover:shadow-golden"
-            >
-              Explore My Works
-            </Link>
-          </div>
+
+
         </animated.div>
       </section>
 
