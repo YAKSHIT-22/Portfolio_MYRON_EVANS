@@ -511,8 +511,8 @@ function HomeScreen() {
       </section>
 
       {/* Section 4 ~ Share Div */}
-      <section className="mt-24 px-6 md:px-10">
-        <div className="relative mt-7 flex w-full items-center justify-center ">
+      <section className="mt-24 px-6 md:px-10 flex justify-center">
+        <div className="relative mt-7 flex  w-[110rem] max-w-[110rem] items-center justify-center ">
           {/* Background image div */}
           <div
             className="absolute inset-0 left-auto right-auto w-full rounded-3xl bg-cover bg-center bg-no-repeat opacity-40 duration-500 ease-in-out hover:opacity-20 md:h-[35rem] md:max-h-[35rem] md:w-5/6"
@@ -575,7 +575,7 @@ function HomeScreen() {
           interesting and unique projects. Check them out and see if I have a
           skill that could benefit you and your customers.
         </p>
-        <div className="item-center flex w-full flex-col items-center px-6 md:flex-row md:justify-evenly md:px-0">
+        <div className="item-center flex w-[110rem] max-w-[110rem] flex-col items-center px-6 md:flex-row md:justify-evenly md:px-0">
           <div className="mb-4 mt-8 h-fit w-full bg-primary shadow-2xl md:mx-8 md:my-16 md:w-1/2 md:bg-sm-primary">
             <div className="my-9 flex flex-col items-center pb-[6.7rem]">
               <div className="my-10 rounded-xl bg-sm-primary p-2 md:bg-primary">
@@ -656,7 +656,7 @@ function HomeScreen() {
             interesting and unique projects. Check them out and see if I have a
             skill that could benefit you and your customers.
           </p>
-          <div className="mt-16 flex w-full flex-col items-center justify-start md:items-start ">
+          <div className="mt-16 flex w-[110rem] max-w-[120rem] flex-col items-center justify-start md:items-start ">
             <h3 className="text-content-heading font-bold">
               Full Stack Developer with:
             </h3>
@@ -673,7 +673,7 @@ function HomeScreen() {
               ))}
             </div>
           </div>
-          <div className="mt-16 flex w-full flex-col items-center justify-start md:items-start ">
+          <div className="mt-16 flex w-[110rem] max-w-[130rem] flex-col items-center justify-start md:items-start ">
             <h3 className="text-content-heading font-bold">As a Designer:</h3>
             <div className="mt-4 flex w-full flex-col items-center justify-start gap-5 px-4 md:flex-row md:flex-wrap md:gap-0">
               {skillsData.designSkills.map((skill) => (
