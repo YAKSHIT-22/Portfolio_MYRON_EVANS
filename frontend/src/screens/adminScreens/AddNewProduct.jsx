@@ -14,7 +14,7 @@ const AddNewProduct = () => {
 
     })
     useEffect(() => {
-
+        
 
     }, [ProductDetials.size, ProductDetials.colour])
 
