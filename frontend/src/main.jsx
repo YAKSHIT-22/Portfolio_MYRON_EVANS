@@ -15,7 +15,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Router>
         <Routes>
           <Route path="/*" element={<App />} />
-          <Route path={'/admin'} element={<AdminScreen />} />
+          <Route path={'/admin/*'} element={<AdminScreen />} />
         </Routes>
       </Router>
     </Provider>

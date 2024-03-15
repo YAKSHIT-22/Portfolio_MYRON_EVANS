@@ -5,7 +5,7 @@ import BoxIcon from '../../components/Icons/BoxIcon'
 // import "react-color-palette/lib/css/styles.css";
 import TopRight from '../../assets/svgs/TopRight.svg'
 import '../../../node_modules/react-color-palette/dist/css/rcp.css'
-import upload from '../../assets/svgs/upload.svg'
+import upload from '../../assets/icons/upload.svg'
 
 import {
   IconArrowWaveRightUp,

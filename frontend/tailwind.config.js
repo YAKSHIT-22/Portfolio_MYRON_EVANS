@@ -13,12 +13,14 @@ export default {
       backgroundColor: {
         primary: '#2C2B2B',
         secondary: '#201F1F',
+        'admin-navbar': '#262626',
         'sm-primary': '#333333',
       },
       colors: {
         primary: '#FFFFFF',
         secondary: '#EEEEEEB3',
         golden: '#C9B18D',
+        'dark-golden': '#8D611D',
       },
       backgroundImage: {
         gradient: 'linear-gradient(to right, #8D621D, #B79766)',
@@ -30,12 +32,21 @@ export default {
         mulish: ['Mulish', 'sans-serif'],
         publicsans: ['Public Sans', 'sans-serif'],
         nunito: ['Nunito', 'sans-serif'],
+        poppins: ['Poppins', 'sans-serif'],
       },
       borderColor: {
         golden: '#C9B18D',
+        primary: '#2C2B2B',
+        secondary: '#201F1F',
+        'admin-navbar': '#262626',
+        'sm-primary': '#333333',
       },
       boxShadowColor: {
         golden: '#C9B18D',
+        primary: '#2C2B2B',
+        secondary: '#201F1F',
+        'admin-navbar': '#262626',
+        'sm-primary': '#333333',
       },
       boxShadow: {
         custom: '0 0 12px -2px --tw-shadow-color',
@@ -49,6 +60,12 @@ export default {
         button: ['1.125rem', '1.125rem'],
         'cart-item-heading': ['1.375rem', '1.875rem'],
         'cart-item-text': ['0.875rem', '1.25rem'],
+        'admin-nav-lg': ['17px', '25.5px'],
+        'admin-nav-md': ['16px', '24px'],
+        'admin-nav-sm': ['12px', '18px'],
+      },
+      rotate: {
+        270: '270deg',
       },
     },
   },
