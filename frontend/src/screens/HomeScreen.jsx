@@ -759,7 +759,7 @@ function HomeScreen() {
           </h2>
 
           <div className="max-w-1/3 mb-2 flex flex-col text-body text-secondary">
-            <p className={'w-full'}>
+            <p className={'w-[37rem] text-wrap'}>
               I want to thank you for spending time on my portfolio site, I
               truly hope it is clear to you now that I am the right fit for your
               company. Cheers to the success of your business!{' '}
