@@ -511,8 +511,8 @@ function HomeScreen() {
       </section>
 
       {/* Section 4 ~ Share Div */}
-      <section className="mt-24 px-6 md:px-10 flex justify-center">
-        <div className="relative mt-7 flex  w-[110rem] max-w-[110rem] items-center justify-center ">
+      <section className="mt-24 flex justify-center px-6 md:px-10">
+        <div className="relative mt-7 flex w-[110rem] max-w-[110rem] items-center justify-center ">
           {/* Background image div */}
           <div
             className="absolute inset-0 left-auto right-auto w-full rounded-3xl bg-cover bg-center bg-no-repeat opacity-40 duration-500 ease-in-out hover:opacity-20 md:h-[35rem] md:max-h-[35rem] md:w-5/6"
@@ -575,7 +575,7 @@ function HomeScreen() {
           interesting and unique projects. Check them out and see if I have a
           skill that could benefit you and your customers.
         </p>
-        <div className="item-center flex w-[110rem] max-w-[110rem] flex-col items-center px-6 md:flex-row md:justify-evenly md:px-0">
+        <div className="item-center flex w-full flex-col items-center px-6 md:flex-row md:justify-evenly md:px-0">
           <div className="mb-4 mt-8 h-fit w-full bg-primary shadow-2xl md:mx-8 md:my-16 md:w-1/2 md:bg-sm-primary">
             <div className="my-9 flex flex-col items-center pb-[6.7rem]">
               <div className="my-10 rounded-xl bg-sm-primary p-2 md:bg-primary">
@@ -656,7 +656,7 @@ function HomeScreen() {
             interesting and unique projects. Check them out and see if I have a
             skill that could benefit you and your customers.
           </p>
-          <div className="mt-16 flex w-[110rem] max-w-[120rem] flex-col items-center justify-start md:items-start ">
+          <div className="mt-16 flex w-full flex-col items-center justify-start md:items-start ">
             <h3 className="text-content-heading font-bold">
               Full Stack Developer with:
             </h3>
@@ -673,7 +673,7 @@ function HomeScreen() {
               ))}
             </div>
           </div>
-          <div className="mt-16 flex w-[110rem] max-w-[130rem] flex-col items-center justify-start md:items-start ">
+          <div className="mt-16 flex w-full flex-col items-center justify-start md:items-start ">
             <h3 className="text-content-heading font-bold">As a Designer:</h3>
             <div className="mt-4 flex w-full flex-col items-center justify-start gap-5 px-4 md:flex-row md:flex-wrap md:gap-0">
               {skillsData.designSkills.map((skill) => (
@@ -719,7 +719,7 @@ function HomeScreen() {
           <h3 className="hidden bg-gradient bg-clip-text px-6 text-left text-body text-transparent md:block md:px-0 md:text-center md:text-content-heading">
             Client Testimonials
           </h3>
-          <h2 className="mx-auto mt-1 w-full max-w-2xl text-left text-center text-[24px] text-content-heading md:text-center md:text-section-heading">
+          <h2 className="mx-auto mt-1 w-full max-w-2xl px-2 text-left text-center text-[24px] text-content-heading md:px-0 md:text-center md:text-section-heading">
             Check out the{' '}
             <span className="inline bg-gradient px-3">Feedback</span> From
             people I&apos;ve worked with
@@ -730,7 +730,7 @@ function HomeScreen() {
           </p>
         </div>
         <div className="flex justify-center">
-          <div className={'flex max-w-[82rem] justify-center px-1'}>
+          <div className={'flex w-full max-w-[82rem] justify-center px-1'}>
             <Carousel />
           </div>
         </div>
@@ -739,7 +739,9 @@ function HomeScreen() {
       {/* Section 9 ~ Explore My Works */}
       <section className="mt-24 flex flex-col-reverse items-start justify-evenly bg-primary px-6 py-12 md:flex-row md:bg-sm-primary md:px-10">
         <div
-          className={'relative mb-6 mt-4 h-[28rem] w-full max-w-80 md:mt-0 md:w-1/3'}
+          className={
+            'relative mb-6 mt-4 h-[28rem] w-full max-w-80 md:mt-0 md:w-1/3'
+          }
         >
           <img src={imageBg} className={'absolute left-3 md:static'} />
           <img
@@ -756,13 +758,13 @@ function HomeScreen() {
             <p className="inline-block">The perfect addition to any team</p>
           </h2>
 
-          <div className="max-w-1/3 mb-2 text-body text-secondary flex flex-col">
-            <p className={'w-[37rem] text-wrap'}>
+          <div className="max-w-1/3 mb-2 flex flex-col text-body text-secondary">
+            <p className={'w-full'}>
               I want to thank you for spending time on my portfolio site, I
               truly hope it is clear to you now that I am the right fit for your
               company. Cheers to the success of your business!{' '}
             </p>
-            <div className={'flex items-center justify-start mt-8'}>
+            <div className={'mt-8 flex items-center justify-start'}>
               <Link
                 to="/my-work"
                 className="rounded-full bg-gradient px-3 py-3 font-rubik font-light transition-all hover:font-medium hover:shadow-custom hover:shadow-golden"
@@ -770,12 +772,11 @@ function HomeScreen() {
                 Explore My Works
               </Link>
             </div>
-            <AnimatedIcon iconData={glassIcon} className={'size-80 aspect-square'} />
-
+            <AnimatedIcon
+              iconData={glassIcon}
+              className={'aspect-square size-80'}
+            />
           </div>
-
-
-
         </animated.div>
       </section>
 
@@ -791,8 +792,8 @@ function HomeScreen() {
             impact on your company
           </p>
         </div>
-        <div className="flex flex-col items-center justify-center pb-12 md:flex-row">
-          <div className="mx-20 flex h-full w-full flex-col items-start justify-start md:w-1/2">
+        <div className="justify-cente flex flex-col items-center pb-12 md:flex-row md:items-start">
+          <div className="mx-20 flex h-full w-full flex-col items-start justify-start md:w-1/3">
             <div className={'border-b-2 border-[#cecece] pb-10'}>
               <h1 className="text-center text-content-heading md:text-left md:text-section-heading">
                 Let’s <span className="bg-gradient px-2">Talk</span>
