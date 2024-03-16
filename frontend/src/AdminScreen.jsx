@@ -6,6 +6,8 @@ import AddNewProduct from './screens/AdminScreens/AddNewProduct.jsx'
 import AdminLogin from './screens/AdminScreens/AdminLogin.jsx'
 import Topbar from './components/AdminScreen/Topbar.jsx'
 import AddReviewForm from './screens/AdminScreens/AddReviewForm.jsx'
+import MyCaseStudies from './screens/AdminScreens/MyBlogs.jsx'
+import MyBlogs from './screens/AdminScreens/MyBlogs.jsx'
 
 const AdminScreen = () => {
   return (
@@ -26,9 +28,11 @@ const AdminScreen = () => {
         >
           <Routes>
             <Route path={''} element={<>Dashboard</>} />
-            <Route path="/case" element={<> Case Studies </>} />
+            {/* Maybe case studies admin pannel and Blogs admin pannel would be of same style*/}
+            <Route path="/case" element={<> Case Studies </>} /> 
             <Route path="/case/add" element={<CreateNewCase />} />
-            <Route path="/blog" element={<> Blogs </>} />
+            {/*  */}
+            <Route path="/blog" element={<MyBlogs />} />
             <Route path="/blog/add" element={<AddNewBlog />} />
             <Route path="/ecommerce" element={<> Ecommerce Products </>} />
             <Route path="/ecommerce/add" element={<AddNewProduct />} />
