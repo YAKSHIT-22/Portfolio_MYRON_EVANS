@@ -1,11 +1,8 @@
 import { PropTypes } from 'prop-types'
 import BoxIcon from '../components/Icons/BoxIcon'
 import blockS from '../assets/svgs/blockS.svg';
-import BentoGrid1 from '../components/GridComps/BentoGrid1';
-import FrontBentoGrid1 from '../components/FrontGridComps/FrontBentoGrid1';
-import FrontBentoGrid2 from '../components/FrontGridComps/FrontBentoGrid2';
-import FrontBentoGrid3 from '../components/FrontGridComps/FrontBentoGrid3';
-import FrontBentoGrid4 from '../components/FrontGridComps/FrontBentoGrid4';
+import ModalSwitchCase from '../components/AdminScreen/ModalSwitchCase';
+
 
 
 const Skeleton = () => (
@@ -82,7 +79,7 @@ function BlogScreen({ img, title, desc }) {
     </div>
     {/* get  api req from useEffect and set the FRONTGRIDNUMBER CORRECTLLY */}
     <div className='Bento-blog-container mt-10'>
-      <FrontBentoGrid4 />
+      <ModalSwitchCase value={4} />
 
     </div>
   </section>

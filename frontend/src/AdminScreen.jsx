@@ -5,6 +5,7 @@ import AddNewBlog from './screens/AdminScreens/AddNewBlog.jsx'
 import AddNewProduct from './screens/AdminScreens/AddNewProduct.jsx'
 import AdminLogin from './screens/AdminScreens/AdminLogin.jsx'
 import Topbar from './components/AdminScreen/Topbar.jsx'
+import AddReviewForm from './screens/AdminScreens/AddReviewForm.jsx'
 
 const AdminScreen = () => {
   return (
@@ -32,7 +33,7 @@ const AdminScreen = () => {
             <Route path="/ecommerce" element={<> Ecommerce Products </>} />
             <Route path="/ecommerce/add" element={<AddNewProduct />} />
             <Route path={'refer'} element={<> Refer Funds </>} />
-            <Route path={'/review/add'} element={<>Add Reviews Form</>} />
+            <Route path={'/review/add'} element={<AddReviewForm />} />
             <Route path="/login" element={<AdminLogin />} />
           </Routes>
         </div>

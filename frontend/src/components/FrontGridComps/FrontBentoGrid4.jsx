@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { useSpring, useInView, animated } from '@react-spring/web'
 
 const FrontBentoGrid4 = () => {
 
@@ -93,7 +94,6 @@ const FrontBentoGrid4 = () => {
     ];
 
 
-
     // var bg_data_and_title = [
     //     {
     //         id: 1,
@@ -120,15 +120,74 @@ const FrontBentoGrid4 = () => {
             <div className='flex justify-center mt-2'>
                 <div>
                     <div className='flex '>
-                        <div className=' aspect-[169/70] w-[19.5vw] bg-sm-primary mx-2 rounded-xl bg-cover ' key={1} id="div1"></div>
-                        <div className=' w-[9.3vw] aspect-square bg-sm-primary mx-2 rounded-xl bg-cover' key={2} id="div2"></div>
+                        <div className='flex flex-col-reverse aspect-[169/70] w-[19.5vw] bg-sm-primary mx-2 rounded-xl bg-cover ' key={1} id="div1">
+                            <animated.div
+
+                                className={`flex flex-col items-start gap-4 rounded-xl bg-gradient-to-t from-black to-[rgb(0,0,0,0)] p-7 pt-2 md:p-10 transition-opacity opacity-0 hover:opacity-100`}
+                            >
+                                <h1 className="text-center text-content-heading md:text-section-heading">
+                                    {divData[0].title}
+                                </h1>
+                                <p className={'max-w-2xl text-body text-secondary'}>{divData[0].desc}</p>
+
+                            </animated.div>
+
+                        </div>
+                        <div className='flex flex-col-reverse w-[9.3vw] aspect-square bg-sm-primary mx-2 rounded-xl bg-cover' key={2} id="div2">
+                            <animated.div
+
+                                className={`flex flex-col items-start gap-4 rounded-xl bg-gradient-to-t from-black to-[rgb(0,0,0,0)] p-7 pt-2 md:p-10 transition-opacity opacity-0 hover:opacity-100`}
+                            >
+                                <h1 className="text-center text-content-heading md:text-box-heading">
+                                    {divData[1].title}
+                                </h1>
+                                <p className={'max-w-2xl text-base text-secondary'}>{divData[1].desc}</p>
+
+                            </animated.div>
+
+
+                        </div>
                     </div>
                     <div className='flex mt-4' >
                         <div>
-                            <div className=' w-[9.3vw] aspect-[8/7] bg-sm-primary mx-2 rounded-xl bg-cover' key={3} id="div3"></div>
-                            <div className=' w-[9.3vw] aspect-[8/7] bg-sm-primary mx-2 rounded-xl mt-4 bg-cover' key={4} id="div4"></div>
+                            <div className='flex flex-col-reverse w-[9.3vw] aspect-[8/7] bg-sm-primary mx-2 rounded-xl bg-cover' key={3} id="div3">
+                                <animated.div
+
+                                    className={`flex flex-col items-start gap-4 rounded-xl bg-gradient-to-t from-black to-[rgb(0,0,0,0)] p-7 pt-2 md:p-10 transition-opacity opacity-0 hover:opacity-100`}
+                                >
+                                    <h1 className="text-center text-content-heading md:text-box-heading">
+                                        {divData[2].title}
+                                    </h1>
+                                    <p className={'max-w-2xl text-base text-secondary'}>{divData[2].desc}</p>
+
+                                </animated.div>
+                            </div>
+                            <div className=' flex flex-col-reverse w-[9.3vw] aspect-[8/7] bg-sm-primary mx-2 rounded-xl mt-4 bg-cover' key={4} id="div4">
+
+                                <animated.div
+
+                                    className={`flex flex-col items-start gap-4 rounded-xl bg-gradient-to-t from-black to-[rgb(0,0,0,0)] p-7 pt-2 md:p-10 transition-opacity opacity-0 hover:opacity-100`}
+                                >
+                                    <h1 className="text-center text-content-heading md:text-box-heading">
+                                        {divData[3].title}
+                                    </h1>
+                                    <p className={'max-w-2xl text-base text-secondary'}>{divData[3].desc}</p>
+
+                                </animated.div>
+                            </div>
                         </div>
-                        <div className=' w-[19.5vw] aspect-[53/47] bg-sm-primary mx-2 rounded-xl bg-cover' key={5} id="div5"></div>
+                        <div className='flex flex-col-reverse w-[19.5vw] aspect-[53/47] bg-sm-primary mx-2 rounded-xl bg-cover' key={5} id="div5">
+                            <animated.div
+
+                                className={`flex flex-col items-start gap-4 rounded-xl bg-gradient-to-t from-black to-[rgb(0,0,0,0)] p-7 pt-2 md:p-10 transition-opacity opacity-0 hover:opacity-100`}
+                            >
+                                <h1 className="text-center text-content-heading md:text-box-heading">
+                                    {divData[4].title}
+                                </h1>
+                                <p className={'max-w-2xl text-base text-secondary'}>{divData[4].desc}</p>
+
+                            </animated.div>
+                        </div>
                     </div>
                 </div>
                 <div>
@@ -136,11 +195,44 @@ const FrontBentoGrid4 = () => {
             </div>
             <div className='flex flex-col justify-center mt-4'>
                 <div className='flex justify-center'>
-                    <div className='w-[29.5vw] aspect-[99/40] bg-sm-primary  rounded-xl bg-cover' key={6} id="div6"></div>
+                    <div className='flex flex-col-reverse w-[29.5vw] aspect-[99/40] bg-sm-primary  rounded-xl bg-cover' key={6} id="div6">
+                        <animated.div
+
+                            className={`flex flex-col items-start gap-4 rounded-xl bg-gradient-to-t from-black to-[rgb(0,0,0,0)] p-7 pt-2 md:p-10 transition-opacity opacity-0 hover:opacity-100`}
+                        >
+                            <h1 className="text-center text-content-heading md:text-box-heading">
+                                {divData[5].title}
+                            </h1>
+                            <p className={'max-w-2xl text-base text-secondary'}>{divData[5].desc}</p>
+
+                        </animated.div>
+                    </div>
                 </div>
                 <div className='flex justify-center'>
-                    <div className=' w-[10.2vw] aspect-[9/6] bg-sm-primary  rounded-xl mt-4 bg-cover' key={7} id="div7"></div>
-                    <div className=' w-[18.2vw] aspect-[27/8] bg-sm-primary pl-3 rounded-xl ml-4 mt-4 bg-cover' key={8} id="div8"></div>
+                    <div className='flex flex-col-reverse w-[10.2vw] aspect-[9/6] bg-sm-primary  rounded-xl mt-4 bg-cover' key={7} id="div7">
+                        <animated.div
+
+                            className={`flex flex-col items-start gap-4 rounded-xl bg-gradient-to-t from-black to-[rgb(0,0,0,0)] pt-2 md:p-10 transition-opacity opacity-0 hover:opacity-100`}
+                        >
+                            <h1 className="text-center text-content-heading md:text-box-heading">
+                                {divData[6].title}
+                            </h1>
+                            <p className={' text-base text-secondary'}>{divData[6].desc}</p>
+
+                        </animated.div>
+                    </div>
+                    <div className='flex flex-col-reverse w-[18.2vw] aspect-[27/8] bg-sm-primary rounded-xl ml-4 mt-4 bg-cover' key={8} id="div8">
+                        <animated.div
+
+                            className={`flex flex-col align-bottom items-start relative w-full  rounded-xl bg-gradient-to-t from-black to-[rgb(0,0,0,0)] p-7 pt-2 md:p-10 transition-opacity opacity-0 hover:opacity-100`}
+                        >
+                            <h1 className="text-center text-content-heading md:text-box-heading">
+                                {divData[7].title}
+                            </h1>
+                            <p className={' text-base text-secondary'}>{divData[7].desc}</p>
+
+                        </animated.div>
+                    </div>
                 </div>
             </div>
         </div>
